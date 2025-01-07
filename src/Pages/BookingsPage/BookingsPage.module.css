@@ -1,0 +1,63 @@
+.bookingcon{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100%;
+    margin: auto;
+}
+
+.bookingfilter div{
+    width: 90%;
+    height: 35px;
+    margin: 10PX auto;
+    position: relative;
+}
+
+.bookingcon select, .bookingcon input{
+    width: 100%;
+    height: 35px;
+    border-radius: 6PX;
+    border: transparent;
+    padding: 5PX;
+    color: rgb(65, 65, 65);
+    border: 1px solid rgba(65, 65, 65, 0.288);
+    cursor: pointer;
+}
+
+.bookingcon select:focus, .bookingcon input:focus{
+    outline: transparent;
+}
+
+.bookingtable{
+    overflow: scroll;
+    height: 100vh;
+}
+
+.bookingtable table{
+    border-collapse: collapse;
+    width: 98%;
+    margin: 10px auto;
+    background-color: white;
+    text-align: center;
+    color: rgb(65, 65, 65);
+}
+
+.bookingcon table td, .bookingcon table th{
+    border: 1px solid rgba(128, 128, 128, 0.288);
+    /* padding: 15px; */
+    height: 45px;
+}
+
+.searchinp{
+    display: flex;
+    gap: 10px;
+}
+
+.searchinp button{
+    background-color: black;
+    color: white;
+    border: transparent;
+    border-radius: 3px;
+    height: 35px;
+    width: 50px;
+    cursor: pointer;
+}

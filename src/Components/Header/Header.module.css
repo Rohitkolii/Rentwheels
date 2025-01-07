@@ -1,0 +1,18 @@
+.headercol1{
+    background: linear-gradient(to right, rgba(80, 80, 80, 0.356), rgba(0, 0, 0, 0.568)), url('images/cars.jpg');
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-size: 25px;
+}
+
+.headercol1 p:nth-child(2){
+    /* color: gray; */
+    font-size: 20px;
+    font-weight: 200;
+}

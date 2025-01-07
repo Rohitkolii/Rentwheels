@@ -1,0 +1,57 @@
+.vehiclefilter{
+    width: 60%;
+    margin: 20px auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.vehiclefilter .col{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.vehiclefilter .col div:first-child{
+    background-color: gray;
+    width: fit-content;
+    padding: 5px;
+}
+.vehiclefilter svg{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.vehiclefilter .col select{
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.vehiclefilter input{
+    height: 35px;
+    padding: 0 10px;
+}
+
+.vehiclefilter button{
+    background-color: black;
+    color: white;
+    border: transparent;
+    padding: 3px;
+    font-size: 10px;
+}
+
+.vehiclefilter .col select:focus, input:focus{
+    outline: transparent;
+}
+
+.Vehiclescontainer{
+    width: 60%;
+    margin: auto;
+    display: grid;
+    /* grid-template-columns: repeat(2, auto); */
+    gap: 20px;
+}

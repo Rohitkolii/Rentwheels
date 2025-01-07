@@ -1,0 +1,70 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 60px;
+    /* background-color: brown; */
+    height: 4rem;
+    position: relative;
+    background-color: white;
+}
+
+nav p{
+    font-size: 20px;
+    /* color: white; */
+}
+.logo p{
+    display: flex;
+    align-items: center;
+}
+
+.navlinks ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    font-size: 25px;
+}
+
+.navlinks img{
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+}
+
+.dymanu, .profilemenu{
+    background-color: rgb(255, 255, 255);
+    width: calc(fit-content);
+    /* padding: 10px 0; */
+    line-height: 25px;
+    position: absolute;
+    right: 20px;
+    top: 4.5rem;
+    border-radius: 0 0 3px 3px;
+    z-index: 10;
+    box-shadow: 1px 1px 5px rgba(196, 196, 196, 0.466);
+}
+
+.dymanu ul li, .profilemenu ul li{
+    padding: 5px 50px;
+}
+
+.dymanu ul li:hover, .profilemenu ul li:hover{
+    background-color: rgb(214, 237, 252);
+}
+
+.dymanu ul, .dymanu a, .profilemenu ul, .profilemenu a{
+    list-style: none;
+    color: black;
+    text-decoration: none;
+}
+
+.overlay{
+    background-color: rgba(255, 255, 255, 0.26);
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

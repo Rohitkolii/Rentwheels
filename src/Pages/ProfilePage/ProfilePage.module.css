@@ -1,0 +1,29 @@
+.profilecon{
+    width: 50%;
+    margin: auto;
+}
+
+.profilecol{
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    line-height: 50px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px rgba(173, 173, 173, 0.664);
+}
+
+.profilecol p{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.profilebuttons{
+    text-align: right;
+}
+.profilebuttons button{
+    background-color: black;
+    color: white;
+    border: transparent;
+    padding: 10px 30px;
+    border-radius: 3px;
+}

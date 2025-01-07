@@ -1,0 +1,170 @@
+.Logincontainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.innercontainer{
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.637);
+    border-radius: 8px;
+    z-index: 99;
+    background-color: white;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    /* position: relative; */
+    /* top: 2rem; */
+    width: 60%;
+}
+
+.innercontainer1{
+    padding: 30px 40px;
+    width: 50%;
+    background-image: url('../../../public/images/carill.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.innercontainer2{
+    width: 50%;
+    z-index: 9;
+    padding: 30px 40px;
+}
+
+
+.loginswitch{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    line-height: 50px;
+}
+
+.activebtn{
+    width: 90px;
+    height: 35px;
+    background-color: transparent;
+}
+
+.logbtn{
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    /* padding: 10px 35px; */
+    width: 90px;
+    height: 35px;
+    font-size: 16px;
+    /* border-radius: 6px; */
+    background-color: #8da3fa;
+    border: transparent;
+    position: relative;
+}
+
+.loginput input{
+    height: 40px;
+    border: 1px solid rgba(233, 230, 230, 0.568);
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px rgba(216, 216, 216, 0.479);
+    /* margin: 10px 0; */
+    padding: 3px 10px;
+    transition: all .3s;
+}
+.loginput label{
+    margin: 10px 0px -10px 0px;
+}
+
+.loginput input:hover{
+    border: 1px solid gray;
+}
+.loginput input:focus{
+    outline: transparent;
+    border: 1px solid #8da3fa;
+}
+
+
+
+.forgetlink{
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: right;
+}
+.forgetlink a{
+    font-size: 15px;
+    text-decoration: none;
+    color: #8da3fa;
+}
+
+.loginbutt .btn{
+    width: 100%;
+    height: 45px;
+    margin: 10px 0;
+    background-color: #8da3fa;
+    border: transparent;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.loginbutt .btn:hover{
+    background-color: #839cfd;
+}
+
+.loginoutro p{
+    font-size: 16px;
+    text-align: center;
+}
+
+.loginoutro span{
+    color: #8da3fa;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+    .innercontainer{
+        width: 75%;
+    }
+
+}
+
+@media only screen and (max-width: 950px) {
+    
+    .innercontainer{
+        width: 85%;
+    }
+    
+}
+
+@media only screen and (max-width: 800px) {
+    .innercontainer2{
+        width: 100%;
+        padding: 30px 25px;
+    }
+    
+    .innercontainer1{
+        display: none;
+    }
+
+    .innercontainer{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .innercontainer{
+        width: 90%;
+    }
+
+    .innercontainer2{
+        padding: 20px;
+    }
+}

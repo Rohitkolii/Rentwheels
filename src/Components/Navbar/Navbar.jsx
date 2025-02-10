@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
         <nav>
             <div className={Styles.logo}>
-                <p>Rent<span>wheels</span> <span><GiStoneWheel /></span></p>
+                <p>Rent<span>wheels</span> <span><GiStoneWheel style={{color: '#007dfe'}}/></span></p>
             </div>  
             <div className={Styles.navlinks}>
                 <ul>
@@ -31,6 +31,8 @@ const Navbar = () => {
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
+                    <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
+                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/">Contact</NavLink></li>
@@ -51,7 +53,8 @@ const Navbar = () => {
                 <div className={Styles.profilemenu}>
                         <ul>
                             <li><NavLink to="/Profile">Profile</NavLink></li>
-                            <li><NavLink to="/">Logout</NavLink></li>
+                            <li><NavLink to="/login">Login</NavLink></li>
+                            {/* <li><NavLink to="/">Logout</NavLink></li> */}
                         </ul>
                     </div>
         : ''}

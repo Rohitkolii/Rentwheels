@@ -1,0 +1,22 @@
+.bookingtable{
+    width: 100%;
+}
+.bookingtable table{
+    border-collapse: collapse;
+    width: 98%;
+    margin: 10px auto;
+    background-color: white;
+    text-align: center;
+    color: rgb(65, 65, 65);
+}
+
+.bookingtable table td, .bookingtable table th{
+    border: 1px solid rgba(128, 128, 128, 0.288);
+    /* padding: 15px; */
+    height: 45px;
+}
+
+.bookingtable table{
+    overflow-y: scroll;
+    height: 100vh;
+}

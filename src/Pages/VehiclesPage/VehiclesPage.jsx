@@ -35,7 +35,7 @@ const Vehicles = () => {
         </div>
 
         <div className={Styles.col}> 
-          <input type="" />
+          <input placeholder='Search vehicles' type="text" />
           <button>< IoSearchSharp /> </button>
         </div>
       </div>

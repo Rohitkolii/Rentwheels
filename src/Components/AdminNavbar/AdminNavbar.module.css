@@ -1,0 +1,28 @@
+.navlinks ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.navlinks a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.navlinks img{
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo svg{
+    font-size: 25px;
+}

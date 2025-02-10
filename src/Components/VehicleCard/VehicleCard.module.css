@@ -8,6 +8,7 @@
     gap: 10px;
     border-radius: 6px;
     box-shadow: 1px 1px 5px gray;
+    position: relative;
 }
 
 .VehicleCard .Vehicleimg img{
@@ -16,12 +17,13 @@
 }
 
 .Vehicletag span{
-    background-color: black;
-    color: white;
+    background-color: rgba(128, 128, 128, 0.432);
+    color: #007dfe;
     font-size: 12px;
     padding: 5px 10px;
-    /* border-radius: 6px; */
     margin-right: 5px;
+    font-weight: 500;
+    border-radius: 3px;
 }
 
 .Vehicleprice p{
@@ -38,6 +40,14 @@
     font-weight: 1000;
 }
 
-.Vehicleinfo{
-    line-height: 25px;
+
+.Vehicleinfo a{
+    background-color: #007dfe;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 3px;
 }

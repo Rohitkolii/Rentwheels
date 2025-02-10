@@ -16,13 +16,14 @@
     align-items: center;
 }
 .vehiclefilter .col div:first-child{
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.432);
     width: fit-content;
     padding: 5px;
 }
 .vehiclefilter svg{
-    font-size: 25px;
+    font-size: 22px;
     cursor: pointer;
+    color: #007dfe;
 }
 
 .vehiclefilter .col select{
@@ -37,11 +38,12 @@
 }
 
 .vehiclefilter button{
-    background-color: black;
-    color: white;
+    background-color: rgba(128, 128, 128, 0.432);
+    color: #007dfe;
     border: transparent;
-    padding: 3px;
+    padding: 5px 8px;
     font-size: 10px;
+    border-radius: 6px;
 }
 
 .vehiclefilter .col select:focus, input:focus{

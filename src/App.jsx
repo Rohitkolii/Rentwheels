@@ -18,7 +18,7 @@ import AddvehiclePage from './Pages/AddvehiclePage/AddvehiclePage'
 import UpdateVehicle from './Pages/UpdateVehiclePage/UpdateVehicle'
 
 function App() {
-
+    
   return (
     <>
       <Routes>
@@ -31,7 +31,7 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/login' element={<LoginPage />} />
         {/* <Route path='/admin/dashboard' element={<AdminDashboard />} /> */}
-        <Route path='/admin/dashboard' element={<DashboardPage />} />
+        <Route path='/admin' element={<DashboardPage />} />
         <Route path='/admin/bookings' element={<AdminBookings />} />
         <Route path='/admin/userslist' element={<UsersListPage />} />
         <Route path='/admin/vendors' element={<VendorsListPage />} />

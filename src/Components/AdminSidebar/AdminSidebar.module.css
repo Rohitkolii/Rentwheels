@@ -1,8 +1,24 @@
 .sidebar{
     width: 18%;
     height: 100vh;
-    background-color: black;
+    background-color: #0c0c0c;
+    /* background-color: #2C2C2C; */
     color: white;
+    /* transform: translateX(-100%); */
+    /* display: none; */
+}
+
+.sidebarHead{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    /* color: #0061ff; */
+    font-size: 25px;
+    font-weight: 500;
+}
+.sidebarHead img{
+    width: 40px;
 }
 
 .sidebar ul li a{
@@ -15,14 +31,18 @@
     align-items: center;
     height: 55px;
     gap: 15px;
-    font-size: 15px;
+    font-size: 16px;
     transition: .5s;
 }
 
 .sidebar ul li a:hover{
-    color: #ff4d2f;
+    /* color: #8459ba; */
+    /* background: linear-gradient(to right, #0c0c0c00, #ff3131); */
+    background: linear-gradient(to right, #0c0c0c00, #0061ff);
+    /* border-right: 1px solid; */
 }
 
 .sidebar svg{
-    font-size: 25px;
+    font-size: 18px;
+    /* color: #8459ba; */
 }

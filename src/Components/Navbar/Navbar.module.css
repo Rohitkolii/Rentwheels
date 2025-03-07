@@ -1,36 +1,81 @@
-nav{
+.navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 60px;
-    /* background-color: brown; */
-    height: 4rem;
+    padding: 10px 100px;
+    height: 5rem;
     position: relative;
-    background-color: white;
-    box-shadow: 1px 1px 3px rgba(128, 128, 128, 0.253);
+    /* background-color: black; */
+    /* box-shadow: 1px 1px 3px rgba(199, 199, 199, 0.253); */
 }
 
-nav p{
+.navlinks .btn a{
+    background-color: #0061ff;
+    padding: 10px 30px;
+    color: white;
+    transition: .3;
+}
+.navlinks .btn a:hover{
+    color: black;
+}
+
+.navbar p{
     font-size: 20px;
     /* color: white; */
 }
-.logo p{
-    display: flex;
-    align-items: center;
+.logo{
+    /* display: flex;
+    align-items: center; */
+    width: 200px;
 }
 
-.navlinks ul{
+.logo img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.logo p svg{
+    margin-right: 5px;
+}
+.logo p{
+    font-weight: 400;
+    font-size: 25px;
+    font-weight: 500;
+    /* color: #1183c0; */
+    /* transform: translateY(-5px); */
     display: flex;
     align-items: center;
-    gap: 20px;
-    list-style: none;
-    font-size: 25px;
+    text-transform: capitalize;
 }
+
 
 .navlinks img{
     width: 40px;
     border-radius: 50%;
     height: 40px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.navlinks ul{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    /* font-size: 25px; */
+}
+
+.navlinks ul a{
+    list-style: none;
+    color: rgb(67, 67, 67);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s;
+}
+.navlinks ul a:hover{
+    color: #0061ff;
 }
 
 .dymanu, .profilemenu{

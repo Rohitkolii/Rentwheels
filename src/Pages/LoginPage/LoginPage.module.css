@@ -65,7 +65,7 @@
     height: 35px;
     font-size: 16px;
     /* border-radius: 6px; */
-    background-color: #8da3fa;
+    background-color: #0061ff;
     border: transparent;
     position: relative;
 }
@@ -88,7 +88,7 @@
 }
 .loginput input:focus{
     outline: transparent;
-    border: 1px solid #8da3fa;
+    border: 1px solid #0061ff;
 }
 
 
@@ -101,21 +101,21 @@
 .forgetlink a{
     font-size: 15px;
     text-decoration: none;
-    color: #8da3fa;
+    color: #0061ff;
 }
 
 .loginbutt .btn{
     width: 100%;
     height: 45px;
     margin: 10px 0;
-    background-color: #8da3fa;
+    background-color: #0061ff;
     border: transparent;
     cursor: pointer;
     transition: all .3s;
 }
 
 .loginbutt .btn:hover{
-    background-color: #839cfd;
+    background-color: #0062ffdd;
 }
 
 .loginoutro p{
@@ -124,7 +124,7 @@
 }
 
 .loginoutro span{
-    color: #8da3fa;
+    color: #0061ff;
     font-weight: 500;
     cursor: pointer;
 }

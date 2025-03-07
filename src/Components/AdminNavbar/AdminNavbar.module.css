@@ -1,3 +1,13 @@
+.navbar{
+    padding:15px 50px;
+    /* background-color: aqua; */
+    justify-content: space-between;
+    /* height: 4rem; */
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7d9;
+}
+
 .navlinks ul{
     display: flex;
     align-items: center;
@@ -11,11 +21,6 @@
     font-size: 18px;
 }
 
-.navlinks img{
-    border-radius: 50%;
-    height: 45px;
-    width: 45px;
-}
 
 .logo{
     display: flex;
@@ -25,4 +30,27 @@
 
 .logo svg{
     font-size: 25px;
+    cursor: pointer;
+}
+
+.profilelink{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profilelink p:nth-child(1){
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.profilelink p:nth-child(2){
+    font-size: 13px;
+    color: rgb(42, 42, 42);
+}
+
+.profilelink div img{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
 }

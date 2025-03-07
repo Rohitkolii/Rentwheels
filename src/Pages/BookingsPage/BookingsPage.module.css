@@ -1,8 +1,13 @@
 .bookingcon{
     display: grid;
     grid-template-columns: 20% 80%;
+    /* gap: 20px; */
     width: 100%;
     margin: auto;
+}
+
+.bookingfilter{
+    background-color: #edf0ed;
 }
 
 .bookingfilter div{
@@ -27,24 +32,14 @@
     outline: transparent;
 }
 
+.bookingtable_con{
+    width: 95%;
+    margin: auto;
+}
+
 .bookingtable{
-    overflow: scroll;
-    height: 100vh;
-}
-
-.bookingtable table{
-    border-collapse: collapse;
-    width: 98%;
-    margin: 10px auto;
-    background-color: white;
-    text-align: center;
-    color: rgb(65, 65, 65);
-}
-
-.bookingcon table td, .bookingcon table th{
-    border: 1px solid rgba(128, 128, 128, 0.288);
-    /* padding: 15px; */
-    height: 45px;
+    overflow: hidden;
+    height: 100%;
 }
 
 .searchinp{

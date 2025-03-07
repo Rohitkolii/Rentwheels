@@ -14,14 +14,22 @@ const Navbar = () => {
 
   return (
     <>
-        <nav>
+        <nav className={Styles.navbar}>
             <div className={Styles.logo}>
-                <p>Rent<span>wheels</span> <span><GiStoneWheel style={{color: '#007dfe'}}/></span></p>
+                <NavLink to='/'>
+                    <img src="images/RentWheels.png" alt="" />
+                </NavLink>
             </div>  
             <div className={Styles.navlinks}>
                 <ul>
-                    <li onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li>
-                    <li onClick={()=> setProfileStatus(!profileStatus)}><img src="images/user.jpg" alt="profile" /></li>
+                    {/* <li><NavLink to="/">Home</NavLink></li> */}
+                    <li><NavLink to="/vehicles">Vehicles</NavLink></li>
+                    <li><NavLink to="/bookings">Bookings</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/">Contact</NavLink></li>
+                    {/* <li onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li> */}
+                    {/* <li onClick={()=> setProfileStatus(!profileStatus)}><img src="images/user.jpg" alt="profile" /></li> */}
+                    <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>
                 </ul>
             </div>
         </nav>

@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../../Components/Header/Header'
+import Navbar from '../../Components/Navbar/Navbar'
 const AboutPage = () => {
   return (
     <>
-        <Header />
-
+    <Navbar />
         <div style={{width: "90%", margin: '50px auto', lineHeight: "25px"}}>
             <h1>About Rentwheels</h1> <br />
             <p>Welcome to <span style={{fontWeight: 600}}>RentWheels</span>, your ultimate destination for easy, fast, and reliable vehicle rentals. Whether you're looking for a car for a weekend getaway, a van for a road trip, or even a luxury ride for a special occasion, RentWheels connects customers with a wide variety of vehicles to suit any need.</p>

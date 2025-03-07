@@ -1,48 +1,65 @@
+.vehicleheader_in{
+    background:linear-gradient(to bottom, #00000051, #000), url('../../../public/images/bg4.jpg');
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    background-position: center;
+}
+
+.vehicleheader_in h1{
+    font-size: 50px;
+}
+
 .vehiclefilter{
-    width: 60%;
+    width: 70%;
     margin: 20px auto;
-    padding: 15px;
+    padding: 15px 0;
     display: flex;
     justify-content: space-between;
     background-color: white;
-    border-radius: 3px;
-    box-shadow: 1px 1px 5px gray;
+    color: #000;
+    border-radius: 12px;
+    /* box-shadow: 1px 1px 5px gray; */
 }
 
-.vehiclefilter .col{
+.vehiclefilter .col div{
     display: flex;
     gap: 10px;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-}
-.vehiclefilter .col div:first-child{
-    background-color: rgba(128, 128, 128, 0.432);
-    width: fit-content;
-    padding: 5px;
+    margin-top: 2px;
 }
 .vehiclefilter svg{
     font-size: 22px;
     cursor: pointer;
-    color: #007dfe;
+    color: #fff;
 }
 
 .vehiclefilter .col select{
-    height: 35px;
-    width: 100px;
+    height: 45px;
+    width: 200px;
     cursor: pointer;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid gray;
 }
 
 .vehiclefilter input{
-    height: 35px;
+    height: 45px;
     padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid gray;
 }
 
 .vehiclefilter button{
-    background-color: rgba(128, 128, 128, 0.432);
-    color: #007dfe;
+    background-color: black;
+    height: 45px;
+    color: #fff;
     border: transparent;
-    padding: 5px 8px;
-    font-size: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
     border-radius: 6px;
 }
 
@@ -51,9 +68,9 @@
 }
 
 .Vehiclescontainer{
-    width: 60%;
-    margin: auto;
+    width: 70%;
+    margin: 20px auto;
     display: grid;
-    /* grid-template-columns: repeat(2, auto); */
+    grid-template-columns: repeat(3, auto);
     gap: 20px;
 }

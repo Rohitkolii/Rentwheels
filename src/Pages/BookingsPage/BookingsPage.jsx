@@ -8,7 +8,6 @@ const BookingsPage = () => {
   return (
     <>
         <Navbar />
-
         <div className={Styles.bookingcon}>
         <div className={Styles.bookingfilter}>
             
@@ -37,154 +36,10 @@ const BookingsPage = () => {
             </div>
         </div>
 
-        <div className={Styles.bookingtable}>
-            <table>
-                <tr>
-                    <th>Supplier</th>
-                    <th>Vehicle Type</th>
-                    <th>Name</th>
-                    <th>From</th>
-                    <th>to</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                </tr>
-
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td style={{color: 'green', borderRadius: 24, padding: 5}}>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>Ajit Enterprise</td>
-                    <td>Car</td>
-                    <td>Suzuki Dezire</td>
-                    <td>01/01/2025</td>
-                    <td>07/01/2025</td>
-                    <td>1800RS</td>
-                    <td>Active</td>
-                </tr>
-            </table>
+        <div className={Styles.bookinglist_con}>
+            <div className={Styles.bookinglist}>
+               
+            </div>
         </div>
         </div>
     </>

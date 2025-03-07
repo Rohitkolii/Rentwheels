@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
+import Styles from '../DashboardPage/DashboardPage.module.css'
 
 const DashboardPage = () => {
+  const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
   return (
     <>
-        <AdminNavabar />
 
         <div style={{display: 'flex'}}>
-            <AdminSidebar />
+            <AdminSidebar 
+            setSidebarVisiblity={setSidebarVisiblity}
+            sidebarVisiblity={sidebarVisiblity} />
+            <div className={Styles.DashboardPage}>
+              <AdminNavabar 
+              setSidebarVisiblity={setSidebarVisiblity} 
+              sidebarVisiblity={sidebarVisiblity}/>
+            </div>
         </div>
     </>
   )

@@ -12,35 +12,52 @@ import { IoSearchSharp } from "react-icons/io5";
 
 const Vehicles = () => {
 
-  const [vehicleListing, setVehicleListing] = useState(false)
+  // const [vehicleListing, setVehicleListing] = useState(false)
 
   return (
     <>
-      <Navbar />
-      <div className={Styles.vehiclefilter}>
-        <div className={Styles.col}>
-          {
-            vehicleListing ?
-            <div onClick={()=> setVehicleListing(!vehicleListing)}><FaList /></div>
-            :
-            <div onClick={()=> setVehicleListing(!vehicleListing)}><CgMenuGridR /></div>
-          }
-          <div>
-            <select name="vehicletype" id="vehicletype">
-              <option value="Car">Car</option>
-              <option value="Car">Bike</option>
-              <option value="Car">Scooty</option>
-            </select>
-          </div>
-        </div>
 
-        <div className={Styles.col}> 
-          <input placeholder='Search vehicles' type="text" />
-          <button>< IoSearchSharp /> </button>
+      <header className={Styles.vehicleheader}>
+      <Navbar />
+
+      <div className={Styles.vehicleheader_in}>
+        <h1>Our <span style={{color: "#0061ff"}}>Vehicles</span></h1>
+        <p>Your Ride, Your Adventure – Choose. Rent. Drive!</p>
+          
         </div>
-      </div>
+      </header>
+
+      <div className={Styles.vehiclefilter}>
+            <div className={Styles.col}>
+              <p>Select categories :</p>
+              <div>
+                <select name="vehicletype" id="vehicletype">
+                  <option disabled value="select">Select Category</option>
+                  <option value="Car">Car</option>
+                  <option value="Car">Bike</option>
+                  <option value="Car">Scooty</option>
+                </select>
+              </div>
+            </div>
+
+            <div className={Styles.col}>
+                <p>Search Vehicle :</p>
+              <div>
+                <input placeholder='Search vehicles' type="text" />
+                <button> Search </button>
+              </div>
+            </div>
+          </div>
 
       <div className={Styles.Vehiclescontainer}>
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
+        <VehicleCard />
         <VehicleCard />
         <VehicleCard />
         <VehicleCard />

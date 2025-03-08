@@ -11,7 +11,7 @@ const VehicleCard = () => {
     <>
         <div className={Styles.VehicleCard}>
             <div className={Styles.Vehicleimg}>
-                <img src="images/bg4.jpg" alt="" />
+                <img src="images/car1.png" alt="" />
             </div>
             
             <div className={Styles.Vehicleinfo}>

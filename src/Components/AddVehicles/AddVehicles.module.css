@@ -34,7 +34,7 @@
 }
 
 .AddVehiclecon .btn{
-    background-color: #007dfe;
+    background-color: #0061ff;
     color: white;
     border: transparent;
     width: fit-content;
@@ -49,6 +49,6 @@
 }
 
 .AddVehiclecon svg{
-    color: #007ffec7;
+    color: #0061ff;
     font-size: 20px;
 }

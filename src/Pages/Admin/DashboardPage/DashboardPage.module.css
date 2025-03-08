@@ -1,3 +1,48 @@
 .DashboardPage{
     width: 100%;
 }
+
+.dashContent{
+    width: 98%;
+    margin: 20px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.dashTop{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.dashTop div{
+    padding: 20px 10px;
+    background-color: #0061ff;
+    /* background: linear-gradient(135deg, #0062ff00, #0061ff); */
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
+    border: 1px solid rgba(0, 0, 0, 0.211);
+    color: white;
+}
+
+.dashTop div p:nth-child(1){
+    color: black;
+    font-weight: 400;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dashTop div p:nth-child(2){
+    font-size: 40px;
+    font-weight: 700;
+    /* filter: drop-shadow(10px 10px 20px yellow); */
+}
+
+/* .dashTop svg{
+    color: #0061ff;
+} */

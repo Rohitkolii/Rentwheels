@@ -74,3 +74,75 @@
     grid-template-columns: repeat(3, auto);
     gap: 20px;
 }
+
+
+
+@media only screen and (max-width:1300px) {
+    .vehiclefilter{
+        width: 90%;
+    }
+    
+    .Vehiclescontainer{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .vehiclefilter{
+        width: 95%;
+    }
+    
+    .Vehiclescontainer{
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .Vehiclescontainer{
+        gap: 10px;
+    }
+}
+
+
+@media only screen and (max-width:600px) {
+    .Vehiclescontainer{
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .vehiclefilter{
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        color: #000;
+        border-radius: 12px;
+        /* box-shadow: 1px 1px 5px gray; */
+    }
+
+    .vehiclefilter .col select{
+        width: 100%;
+    }
+    
+    .vehiclefilter input{
+        height: 45px;
+        width: 100%;
+    }
+
+    .vehicleheader_in{
+        padding: 50px 0;
+    }
+    
+    .vehicleheader_in h1{
+        font-size: 30px;
+    }
+
+    .vehicleheader_in p{
+        font-size: 10px;
+    }
+}

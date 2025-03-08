@@ -25,12 +25,16 @@ const Navbar = () => {
                     {/* <li><NavLink to="/">Home</NavLink></li> */}
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
+                    <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
+                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/">Contact</NavLink></li>
-                    {/* <li onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li> */}
-                    {/* <li onClick={()=> setProfileStatus(!profileStatus)}><img src="images/user.jpg" alt="profile" /></li> */}
                     <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>
                 </ul>
+            </div>  
+            <div style={{display: 'flex', alignItems: 'center', listStyle: 'none', gap: 20}}>
+                <li className={Styles.hammenu} onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li>
+                <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}><img src="images/user.jpg" alt="profile" /></li>
             </div>
         </nav>
         {
@@ -61,7 +65,7 @@ const Navbar = () => {
                 <div className={Styles.profilemenu}>
                         <ul>
                             <li><NavLink to="/Profile">Profile</NavLink></li>
-                            <li><NavLink to="/login">Login</NavLink></li>
+                            <li><NavLink to="/">Logout</NavLink></li>
                             {/* <li><NavLink to="/">Logout</NavLink></li> */}
                         </ul>
                     </div>

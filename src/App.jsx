@@ -23,19 +23,19 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/vehicles' element={<VehiclesPage />} />
-        <Route path='/addvehicle' element={<AddvehiclePage />} />
-        <Route path='/editvehicle' element={<UpdateVehicle />} />
-        <Route path='/bookings' element={<BookingsPage />} />
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='profile' element={<ProfilePage />} />
+        <Route path='vehicles' element={<VehiclesPage />} />
+        <Route path='addvehicle' element={<AddvehiclePage />} />
+        <Route path='editvehicle' element={<UpdateVehicle />} />
+        <Route path='bookings' element={<BookingsPage />} />
+        <Route path='about' element={<AboutPage />} />
+        <Route path='login' element={<LoginPage />} />
         {/* <Route path='/admin/dashboard' element={<AdminDashboard />} /> */}
-        <Route path='/admin' element={<DashboardPage />} />
-        <Route path='/admin/bookings' element={<AdminBookings />} />
-        <Route path='/admin/userslist' element={<UsersListPage />} />
-        <Route path='/admin/vendors' element={<VendorsListPage />} />
-        <Route path='/admin/vehicleslist' element={<VehiclesListPage />} />
+        <Route path='admin' element={<DashboardPage />} />
+        <Route path='admin/bookings' element={<AdminBookings />} />
+        <Route path='admin/userslist' element={<UsersListPage />} />
+        <Route path='admin/vendors' element={<VendorsListPage />} />
+        <Route path='admin/vehicleslist' element={<VehiclesListPage />} />
       </Routes>
     </>
   )

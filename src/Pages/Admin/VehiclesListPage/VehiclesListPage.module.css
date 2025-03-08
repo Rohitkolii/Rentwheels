@@ -1,9 +1,12 @@
+/* .bookingtable_con{
+    width: 95%;
+    margin: auto;
+}
 
 .bookingtable{
     overflow: hidden;
-    /* height: 100%; */
-}
-
+    height: 100%;
+} */
 
 .bookingtable table{
     border-collapse: collapse;

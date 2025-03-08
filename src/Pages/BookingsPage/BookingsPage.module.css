@@ -8,6 +8,7 @@
 
 .bookingfilter{
     background-color: #edf0ed;
+    height: 100vh;
 }
 
 .bookingfilter div{
@@ -40,6 +41,36 @@
 .bookingtable{
     overflow: hidden;
     height: 100%;
+}
+
+.bookingtable table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px auto;
+    background-color: white;
+    text-align: center;
+    color: rgb(65, 65, 65);
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.bookingcon table tr:first-child{
+    background-color: #0062ff28;
+}
+
+/* .bookingcon table tr:hover{
+    background-color: #fdfdfd;
+} */
+
+
+.bookingcon table td, .bookingcon table th{
+    border-bottom: 1px solid rgba(183, 183, 183, 0.288);
+    padding: 15px 0;
+    height: 60px;
+}
+
+.bookingtable table img{
+    width: 80px;
 }
 
 .searchinp{

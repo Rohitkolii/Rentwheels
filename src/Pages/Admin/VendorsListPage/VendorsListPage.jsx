@@ -18,68 +18,24 @@ const VendorsListPage = () => {
                 setSidebarVisiblity={setSidebarVisiblity}
                 sidebarVisiblity={sidebarVisiblity} />
                 <div className={Styles.bookingtable}>
-                                            <table>
-                                                <tr>
-                                                    <th>Vendor</th>
-                                                    <th>Supplier</th>
-                                                    <th>Vehicle Type</th>
-                                                    <th>Name</th>
-                                                    <th>From</th>
-                                                    <th>to</th>
-                                                    <th>Price</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Ajit Enterprise</td>
-                                                    <td>Car</td>
-                                                    <td>Suzuki Dezire</td>
-                                                    <td>01/01/2025</td>
-                                                    <td>07/01/2025</td>
-                                                    <td>1800RS</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Ajit Enterprise</td>
-                                                    <td>Car</td>
-                                                    <td>Suzuki Dezire</td>
-                                                    <td>01/01/2025</td>
-                                                    <td>07/01/2025</td>
-                                                    <td>1800RS</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Ajit Enterprise</td>
-                                                    <td>Car</td>
-                                                    <td>Suzuki Dezire</td>
-                                                    <td>01/01/2025</td>
-                                                    <td>07/01/2025</td>
-                                                    <td>1800RS</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Ajit Enterprise</td>
-                                                    <td>Car</td>
-                                                    <td>Suzuki Dezire</td>
-                                                    <td>01/01/2025</td>
-                                                    <td>07/01/2025</td>
-                                                    <td>1800RS</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Ajit Enterprise</td>
-                                                    <td>Car</td>
-                                                    <td>Suzuki Dezire</td>
-                                                    <td>01/01/2025</td>
-                                                    <td>07/01/2025</td>
-                                                    <td>1800RS</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                            </table>
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>Vendor</th>
+                            <th>Age</th>
+                            <th>email</th>
+                            <th>Phone</th>
+                            <th>Total Vehicle</th>
+                        </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>Kamal koli</td>
+                            <td>27</td>
+                            <td>kamalk@gmail.com</td>
+                            <td>9988776655</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
                 </div>
             </section>
         </div>

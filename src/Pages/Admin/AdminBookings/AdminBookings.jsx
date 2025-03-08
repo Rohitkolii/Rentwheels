@@ -18,68 +18,71 @@ const AdminBookings = () => {
             setSidebarVisiblity={setSidebarVisiblity}
             sidebarVisiblity={sidebarVisiblity} />
             <div className={Styles.bookingtable}>
-                    <table>
-                        <tr>
-                            <th>Customer</th>
-                            <th>Supplier</th>
-                            <th>Vehicle Type</th>
-                            <th>Name</th>
-                            <th>From</th>
-                            <th>to</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Ajit Enterprise</td>
-                            <td>Car</td>
-                            <td>Suzuki Dezire</td>
-                            <td>01/01/2025</td>
-                            <td>07/01/2025</td>
-                            <td>1800RS</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Ajit Enterprise</td>
-                            <td>Car</td>
-                            <td>Suzuki Dezire</td>
-                            <td>01/01/2025</td>
-                            <td>07/01/2025</td>
-                            <td>1800RS</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Ajit Enterprise</td>
-                            <td>Car</td>
-                            <td>Suzuki Dezire</td>
-                            <td>01/01/2025</td>
-                            <td>07/01/2025</td>
-                            <td>1800RS</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Ajit Enterprise</td>
-                            <td>Car</td>
-                            <td>Suzuki Dezire</td>
-                            <td>01/01/2025</td>
-                            <td>07/01/2025</td>
-                            <td>1800RS</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>Ajit Enterprise</td>
-                            <td>Car</td>
-                            <td>Suzuki Dezire</td>
-                            <td>01/01/2025</td>
-                            <td>07/01/2025</td>
-                            <td>1800RS</td>
-                            <td>Active</td>
-                        </tr>
-                    </table>
+            <table>
+                    <tr>
+                        <th>b. id</th>
+                        <th>Vehicle & Name</th>
+                        <th>customer</th>
+                        <th>Vendor</th>
+                        <th>Start to End</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>1111</td>
+                        <td>
+                            <img src="../images/supcar1.png" alt="" />
+                            <p>Super Delux</p>
+                            {/* <p>025414</p> */}
+                        </td>
+                        <td>Raju</td>
+                        <td>suresh</td>
+                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
+                        <td>1800RS</td>
+                        <td style={{color: 'green'}}>Active</td>
+                    </tr>
+                    <tr>
+                        <td>1111</td>
+                        <td>
+                            <img src="../images/supcar2.png" alt="" />
+                            <p>Super Delux</p>
+                            {/* <p>025414</p> */}
+                        </td>
+                        <td>Raju</td>
+                        <td>suresh</td>
+                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
+                        <td>1800RS</td>
+                        <td style={{color: 'green'}}>Active</td>
+                    </tr>
+                    <tr>
+                        <td>1111</td>
+                        <td>
+                            <img src="../images/bg2.jpg" alt="" />
+                            <p>Super Delux</p>
+                            {/* <p>025414</p> */}
+                        </td>
+                        <td>Raju</td>
+                        <td>suresh</td>
+                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
+                        <td>1800RS</td>
+                        <td style={{color: 'green'}}>Active</td>
+                    </tr>
+                    <tr>
+                        <td>1111</td>
+                        <td>
+                            <img src="../images/supcar3.png" alt="" />
+                            <p>Super Delux</p>
+                            {/* <p>025414</p> */}
+                        </td>
+                        <td>Raju</td>
+                        <td>suresh</td>
+                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
+                        <td>1800RS</td>
+                        <td style={{color: 'green'}}>Active</td>
+                    </tr>
+                    
+                </table>
             </div>
         </section>
       </section>

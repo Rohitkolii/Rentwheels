@@ -54,13 +54,14 @@
 }
 
 .vehiclefilter button{
-    background-color: black;
+    background-color: #0061ff;
+    /* background-color: #ff3131; */
     height: 45px;
     color: #fff;
     border: transparent;
     padding: 10px 20px;
     font-size: 15px;
-    border-radius: 6px;
+    border-radius: 3px;
 }
 
 .vehiclefilter .col select:focus, input:focus{
@@ -71,7 +72,7 @@
     width: 70%;
     margin: 20px auto;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 

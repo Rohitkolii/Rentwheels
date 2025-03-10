@@ -11,7 +11,7 @@ const VehicleCard = () => {
     <>
         <div className={Styles.VehicleCard}>
             <div className={Styles.Vehicleimg}>
-                <img src="images/car1.png" alt="" />
+                <img src="images/bg2.jpg" alt="" />
             </div>
             
             <div className={Styles.Vehicleinfo}>
@@ -23,14 +23,15 @@ const VehicleCard = () => {
                     <p>Average: <span>24.79 kmpl</span></p>
                   </div>
                   <div className={Styles.Vehicleprice}>
-                    <p>Vehicle Rent</p>
+                    {/* <p>Vehicle Rent</p> */}
                     <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />1600</span>
                     <p>For 3 days</p>
                   </div>
                 </div>
                 
                 <div className={Styles.btn}>
-                  <Link to='/'>Rent now<MdKeyboardArrowRight /></Link>
+                  <Link to='/'>Rent now</Link>
+                  {/* <MdKeyboardArrowRight /> */}
                 </div>
             </div>
         </div>

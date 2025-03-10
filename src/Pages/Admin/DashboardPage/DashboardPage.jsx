@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
 import Styles from '../DashboardPage/DashboardPage.module.css'
-import { PiSteeringWheelBold } from "react-icons/pi";
+import { IoCarOutline } from "react-icons/io5";
+import { HiOutlineUsers } from "react-icons/hi2";
+import { VscBook } from "react-icons/vsc";
+import { GrUserWorker } from "react-icons/gr";
+import { PiUserListLight } from "react-icons/pi";
+
+
 import { FaCar } from "react-icons/fa";
 
 const DashboardPage = () => {
@@ -25,18 +31,22 @@ const DashboardPage = () => {
                 {/* <br /> */}
                 <div className={Styles.dashTop}>
                   <div>
-                    <p><FaCar />Total Vehicles</p>
+                    <p><IoCarOutline /></p>
+                    <p>Total Vehicles</p>
                     <p>38</p>
                   </div>
                   <div>
+                    <p><HiOutlineUsers /></p>
                     <p>Total Customer</p>
                     <p>53</p>
                   </div>
                   <div>
+                    <p><PiUserListLight /></p>
                     <p>Total Vendors</p>
                     <p>7</p>
                   </div>
                   <div>
+                    <p><VscBook /></p>
                     <p>Total Bookings</p>
                     <p>33</p>
                   </div>

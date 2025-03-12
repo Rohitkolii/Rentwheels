@@ -185,15 +185,24 @@ line-height: 22px;
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .vehiclefilter{
-        width: 95%;
-        margin: 20px auto;
-        padding: 15px 0;
+    .bookingcon{
+        margin: 30px auto;
+    }
+
+}
+
+@media only screen and (max-width:400px) {
+    .bookingfilter{
         display: flex;
         flex-direction: column;
-        background-color: white;
-        color: #000;
-        border-radius: 12px;
-        /* box-shadow: 1px 1px 5px gray; */
+        gap: 10px;
+    }
+
+    .bookingfilter div{
+        width: 100%;
+    }
+
+    .bookingcon{
+        margin: 20px auto;
     }
 }

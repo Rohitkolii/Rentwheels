@@ -8,15 +8,19 @@ import { FaUsersCog } from "react-icons/fa";
 import { FaUserSecret } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiMenu2Fill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 
 
 const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
   return (
     <>
-      <aside style={!sidebarVisiblity ? {display: "block"} : {display: "none"}} className={Styles.sidebar}>
+      <aside className={!sidebarVisiblity ? Styles.sidebar : Styles.Hidesidebar}>
         <div className={Styles.sidebarHead}>
-          <img src="/images/wheel.png" alt="" />
-          <p><span style={{color: "#0061ff"}}>R</span>entwheels<span style={{color: "#0061ff"}}>.</span></p>
+          <div>
+            <img src="/images/wheel.png" alt="" />
+            <p><span style={{color: "#0061ff"}}>R</span>entwheels<span style={{color: "#0061ff"}}>.</span></p>
+          </div>
+          <IoMdClose onClick={()=> setSidebarVisiblity(!sidebarVisiblity)} />
         </div>
         <ul>
           <li><Link to='/admin'><MdDashboard /> Dashboard</Link></li>

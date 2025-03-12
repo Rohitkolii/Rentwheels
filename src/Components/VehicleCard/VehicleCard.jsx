@@ -27,7 +27,7 @@ const VehicleCard = ({vehicle}) => {
                   <div className={Styles.vehicleprice}>
                     {/* <p>Vehicle Rent</p> */}
                     <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />{vehicle.vehicle_rent}</span>
-                    <p>For 3 days</p>
+                    <p>per day</p>
                   </div>
                 </div>
                 

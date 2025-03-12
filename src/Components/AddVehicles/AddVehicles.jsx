@@ -46,7 +46,7 @@ const AddVehicles = () => {
                 </div>
 
                 <div className={Styles.col}>
-                    <label htmlFor=""><MdCurrencyRupee />Rent / 3days</label>
+                    <label htmlFor=""><MdCurrencyRupee />Rent/day</label>
                     <input placeholder='ex- 2200' min="500" max="15000" type="number" />
                 </div>
                 <div className={Styles.col}>

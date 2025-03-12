@@ -54,3 +54,31 @@
 /* .dashTop svg{
     color: #0061ff;
 } */
+
+@media only screen and (max-width:700px){
+    .dashTop{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin: 15px 0;
+    }
+}
+@media only screen and (max-width:500px){
+    .dashContent{
+        width: 100%;
+        margin: 20px auto;
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 12px;
+        height: 100%;
+    }
+}
+@media only screen and (max-width:350px){
+    .dashTop div p:nth-child(1){
+        margin-bottom: 0px;
+    }
+
+    .dashTop div{
+        padding: 10px;
+    }
+}

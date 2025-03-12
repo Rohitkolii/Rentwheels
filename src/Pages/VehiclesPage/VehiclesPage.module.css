@@ -107,7 +107,7 @@
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
-
+    
     .vehicleheader_in{
         padding: 50px 0;
     }
@@ -115,8 +115,26 @@
     .vehicleheader_in h1{
         font-size: 30px;
     }
-
+    
     .vehicleheader_in p{
         font-size: 10px;
+    }
+}
+@media only screen and (max-width:400px) {
+    .vehiclefilter{
+        /* width: 70%; */
+        margin: 0px auto;
+        margin-top: 20px;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        /* box-shadow: 1px 1px 5px gray; */
+    }
+
+    .vehiclefilter .col{
+        width: 100%;
+    }
+    .vehiclefilter .col input, .vehiclefilter .col select{
+        width: 100%;
     }
 }

@@ -16,7 +16,7 @@ const AddVehicles = () => {
             <div className={Styles.row}>
 
                 <div className={Styles.col}>
-                    <label htmlFor=""><PiSteeringWheelBold />Select vehicle type</label>
+                    <label htmlFor=""><PiSteeringWheelBold />vehicle type</label>
                     <select name="vehicletype" id="vehicletype">
                         <option value="car">Car</option>
                         <option value="bike">Bike</option>
@@ -33,9 +33,6 @@ const AddVehicles = () => {
                     <label htmlFor=""><IoLogoModelS />Model</label>
                     <input placeholder='enter model number' type="text" />
                 </div>
-            </div>
-
-            <div className={Styles.row}>
 
                 <div className={Styles.col}>
                     <label for='fileupload'><FaRegImage />Upload image</label>
@@ -52,8 +49,10 @@ const AddVehicles = () => {
                     <label htmlFor=""><MdCurrencyRupee />Rent / 3days</label>
                     <input placeholder='ex- 2200' min="500" max="15000" type="number" />
                 </div>
+                <div className={Styles.col}>
+                    <input className={Styles.btn} type="submit" value="Add vehicle" />
+                </div>
             </div>
-            <input className={Styles.btn} type="submit" value="Add vehicle" />
         </form>
     </>
   )

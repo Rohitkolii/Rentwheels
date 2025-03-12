@@ -43,7 +43,8 @@ const Header = () => {
             </div>
 
             <div className={Styles.imgcol}>
-              <img src="images/supbike3.png" alt="" />
+              <img src="images/supcar1.png" alt="" />
+              {/* <img src="images/supbike2.png" alt="" /> */}
             </div>
 
             <div className={Styles.dd}></div>

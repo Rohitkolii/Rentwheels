@@ -3,15 +3,16 @@
     /* height: 400px; */
     width: 80%;
     margin:50px auto;
-    padding: 20px;
+    padding: 20px 50px;
     box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.623);
 }
 
 .AddVehiclecon .row{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* margin: 20px 0; */
+    gap: 30px;
+    width: 100%;
 }
 
 .AddVehiclecon .row .col{
@@ -24,7 +25,7 @@
 
 .AddVehiclecon input, .AddVehiclecon select{
     height: 40px;
-    width: 80%;
+    width: 100%;
     padding: 0 10px;
     border: 1px solid rgba(128, 128, 128, 0.445);
 }
@@ -51,4 +52,32 @@
 .AddVehiclecon svg{
     color: #0061ff;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .AddVehiclecon{
+        width: 95%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .AddVehiclecon .row{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 20px 0; */
+        gap: 10px;
+    }
+    
+    .AddVehiclecon{
+        background-color: white;
+        /* height: 400px; */
+        /* width: 80%; */
+        margin:50px auto;
+        padding: 20px;
+        box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.623);
+    }
+}
+@media only screen and (max-width: 500px) {
+    /* .col label{
+        font-size: 15px;
+    } */
 }

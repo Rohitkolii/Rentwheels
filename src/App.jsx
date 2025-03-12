@@ -16,6 +16,7 @@ import VendorsListPage from './Pages/Admin/VendorsListPage/VendorsListPage'
 import VehiclesListPage from './Pages/Admin/VehiclesListPage/VehiclesListPage'
 import AddvehiclePage from './Pages/AddvehiclePage/AddvehiclePage'
 import UpdateVehicle from './Pages/UpdateVehiclePage/UpdateVehicle'
+import SingleVehicle from './Pages/SingleVehicle/SingleVehicle'
 
 function App() {
     
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='profile' element={<ProfilePage />} />
         <Route path='vehicles' element={<VehiclesPage />} />
+        <Route path='/vehicles/:id' element={<SingleVehicle />} ></Route>
         <Route path='addvehicle' element={<AddvehiclePage />} />
         <Route path='editvehicle' element={<UpdateVehicle />} />
         <Route path='bookings' element={<BookingsPage />} />

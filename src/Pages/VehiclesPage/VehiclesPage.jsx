@@ -3,10 +3,38 @@ import Navbar from '../../Components/Navbar/Navbar'
 import VehicleCard from '../../Components/VehicleCard/VehicleCard'
 import Styles from '../VehiclesPage/VehiclesPage.module.css'
 import { CgMenuGridR } from "react-icons/cg";
-import { FaList } from "react-icons/fa";
+import { FaList, FaSearch } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 
-
+const vehicledata = [
+  {
+    vehicle_id : 1,
+    vehicle_type : "car",
+    vehicle_name : "Suzuki",
+    vehicle_model : "Suzuki",
+    vehicle_rent : "2500",
+    vehicle_image : "/images/cars/car1.jpg",
+    vehicle_average : "25km/ltr",
+  },
+  {
+    vehicle_id : 2,
+    vehicle_type : "bike",
+    vehicle_name : "Honda",
+    vehicle_model : "Splender",
+    vehicle_rent : "1400",
+    vehicle_image : "/images/bikes/bike2.jpg",
+    vehicle_average : "30km/ltr",
+  },
+  {
+    vehicle_id : 3,
+    vehicle_type : "car",
+    vehicle_name : "Dacia",
+    vehicle_model : "Duster",
+    vehicle_rent : "1900",
+    vehicle_image : "/images/cars/car2.jpg",
+    vehicle_average : "25km/ltr",
+  },
+]
 
 
 
@@ -29,10 +57,10 @@ const Vehicles = () => {
 
       <div className={Styles.vehiclefilter}>
             <div className={Styles.col}>
-              <p>Select categories :</p>
+              <p>categories:</p>
               <div>
                 <select name="vehicletype" id="vehicletype">
-                  <option disabled value="select">Select Category</option>
+                  <option disabled value="select">Select</option>
                   <option value="Car">Car</option>
                   <option value="Car">Bike</option>
                   <option value="Car">Scooty</option>
@@ -41,27 +69,18 @@ const Vehicles = () => {
             </div>
 
             <div className={Styles.col}>
-                <p>Search Vehicle :</p>
+                <p>Search:</p>
               <div>
                 <input placeholder='Search vehicles' type="text" />
-                <button> Search </button>
+                <button> <FaSearch /> </button>
               </div>
             </div>
           </div>
 
       <div className={Styles.Vehiclescontainer}>
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
-        <VehicleCard />
+        {
+          vehicledata && vehicledata.map((vehicle)=> <VehicleCard key={vehicle.vehicle_id} vehicle={vehicle}/>)
+        }
       </div>
     </>
   )

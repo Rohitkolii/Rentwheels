@@ -1,25 +1,37 @@
 .bookingcon{
     width: 70%;
-    margin: auto;
+    margin: 50px auto;
 }
 
 .bookingfilter{
-    /* background-color: #edf0ed; */
+    /* background-color: #f8f8f8; */
     display: flex;
+    justify-content: space-between;
     gap: 30px;
-    padding: 10px 20px;
+    /* padding: 15px; */
+    border-radius: 6px;
+    /* margin-top: 10px; */
 }
 
-.bookingfilter div{
-    width: 90%;
-    height: 35px;
+.bookingfilter .filtercol1{
+    /* width: 90%; */
+    /* height: 35px; */
     /* margin: 10PX auto; */
-    position: relative;
+    display: flex;
+    gap: 10px;
+    /* align-items: center; */
+    /* position: relative; */
+}
+
+.bookingfilter .filtercol1 div{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .bookingcon select, .bookingcon input{
     width: 100%;
-    height: 45px;
+    height: 35px;
     border-radius: 6PX;
     border: transparent;
     padding: 5PX;
@@ -32,17 +44,17 @@
     outline: transparent;
 }
 
-.bookingtable_con{
+.booking_con_inner{
     width: 100%;
-    margin: 30px auto;
+    margin: 10px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.searchinp{
+.searchinp div{
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .searchinp button{
@@ -50,8 +62,8 @@
     color: white;
     border: transparent;
     border-radius: 3px;
-    height: 45px;
-    width: 50px;
+    height: 35px;
+    /* width: 50px; */
     cursor: pointer;
     padding: 10px;
     width: fit-content;
@@ -136,13 +148,52 @@ line-height: 22px;
     transition: .3s;
 }
 
+@media only screen and (max-width:1300px) {
+    
+    .bookingcon{
+        width: 95%;
+    }
+
+    .booking_con_inner{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    
+    .booking_con_inner{
+        /* width: 95%; */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 @media only screen and (max-width:600px) {
     .VehicleCard .Vehicleimg img{
         width: 100%;
         height: 200px;
-        /* object-fit: contain; */
         border-radius: 6px;
     }
     
+}
+
+@media only screen and (max-width:600px) {
+    .booking_con_inner{
+        /* width: 95%; */
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .vehiclefilter{
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        color: #000;
+        border-radius: 12px;
+        /* box-shadow: 1px 1px 5px gray; */
+    }
 }

@@ -6,27 +6,44 @@ import { IoCarOutline } from "react-icons/io5";
 import { BiEqualizer } from "react-icons/bi";
 import { FaRoute } from "react-icons/fa";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { useEffect } from 'react';
+import { fetchSingleVehicle } from '../../store/getSingleVehicleSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SingleVehicle = () => {
     const { id } = useParams()
+    const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(fetchSingleVehicle(id))
+    },[])
+    
+    const SingleVehicleData = useSelector(state => state.SingleVehicleSlice.data)
+    const SingleVehicleStatus = useSelector(state => state.SingleVehicleSlice.status)
+    console.log("status", SingleVehicleStatus);
+    
+
     return(
         <>
             <Navbar />
             {/* <h1>{id}</h1> */}
+            {
+                SingleVehicleStatus == 'loading' ? <h1 style={{textAlign: 'center', color: "#0061ff", textTransform: 'uppercase', margin: 50}}>Loading...</h1> 
+                :
             <div className={Styles.viewVehicle_con}>
                 <h3>Complete your booking</h3>
                 {/* <h4>Maruti Suzuki - This in model name</h4> */}
                 <div className={Styles.viewVehicle_con_inn}>
                     <div className={Styles.viewVehicle_info}>
                         <div className={Styles.viewVehicle_img}>
-                            <img src="/images/cars/car1.jpg" alt="" />
+                            <img src={`http://localhost:5000${SingleVehicleData.Vehicle_image}`} alt="" />
                         </div>
 
                         <div className={Styles.viewVehicle_info_2}>
-                            <p><IoCarOutline />Maruti Suzuki</p>
-                            <p><BiEqualizer />Maruti Suzuki name with model</p>
-                            <p><FaRoute />Average : 25 kmpl</p>
-                            <p><MdOutlineCurrencyRupee />Rent : 22000</p>
+                            <p><IoCarOutline />{SingleVehicleData.Vehicle_name}</p>
+                            <p><BiEqualizer />{SingleVehicleData.Vehicle_model}</p>
+                            <p><FaRoute />{SingleVehicleData.Vehicle_average}</p>
+                            <p><MdOutlineCurrencyRupee />Rent : {SingleVehicleData.Vehicle_rent}</p>
                         </div>
                     </div>
 
@@ -77,6 +94,7 @@ const SingleVehicle = () => {
                     </div>
                 </div>
             </div>
+            }
             <Footer />
         </>
     )

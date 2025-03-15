@@ -1,46 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import VehicleCard from '../../Components/VehicleCard/VehicleCard'
 import Styles from '../VehiclesPage/VehiclesPage.module.css'
 import { CgMenuGridR } from "react-icons/cg";
 import { FaList, FaSearch } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
+import { fetchVehicleList } from '../../store/getVehicleSlice';
+import {useDispatch, useSelector} from "react-redux"
+import Loader from '../../Components/loader/loader';
+import Footer from '../../Components/Footer/Footer';
 
-const vehicledata = [
-  {
-    vehicle_id : 1,
-    vehicle_type : "car",
-    vehicle_name : "Suzuki",
-    vehicle_model : "Suzuki",
-    vehicle_rent : "2500",
-    vehicle_image : "/images/cars/car1.jpg",
-    vehicle_average : "25km/ltr",
-  },
-  {
-    vehicle_id : 2,
-    vehicle_type : "bike",
-    vehicle_name : "Honda",
-    vehicle_model : "Splender",
-    vehicle_rent : "1400",
-    vehicle_image : "/images/bikes/bike2.jpg",
-    vehicle_average : "30km/ltr",
-  },
-  {
-    vehicle_id : 3,
-    vehicle_type : "car",
-    vehicle_name : "Dacia",
-    vehicle_model : "Duster",
-    vehicle_rent : "1900",
-    vehicle_image : "/images/cars/car2.jpg",
-    vehicle_average : "25km/ltr",
-  },
-]
+// const vehicledata = [
+//   {
+//     vehicle_id : 1,
+//     vehicle_type : "car",
+//     vehicle_name : "Suzuki",
+//     vehicle_model : "Suzuki",
+//     vehicle_rent : "2500",
+//     vehicle_image : "/images/cars/car1.jpg",
+//     vehicle_average : "25km/ltr",
+//   },
+//   {
+//     vehicle_id : 2,
+//     vehicle_type : "bike",
+//     vehicle_name : "Honda",
+//     vehicle_model : "Splender",
+//     vehicle_rent : "1400",
+//     vehicle_image : "/images/bikes/bike2.jpg",
+//     vehicle_average : "30km/ltr",
+//   },
+//   {
+//     vehicle_id : 3,
+//     vehicle_type : "car",
+//     vehicle_name : "Dacia",
+//     vehicle_model : "Duster",
+//     vehicle_rent : "1900",
+//     vehicle_image : "/images/cars/car2.jpg",
+//     vehicle_average : "25km/ltr",
+//   },
+// ]
 
 
 
 const Vehicles = () => {
 
-  // const [vehicleListing, setVehicleListing] = useState(false)
+  const dispatch = useDispatch()
+
+  useEffect(()=> {
+    dispatch(fetchVehicleList())
+  }, [])
+
+  const vehicledata = useSelector(state => state.getVehicleSlice.data)
+  const loadingStatus = useSelector(state => state.getVehicleSlice.status)
+
 
   return (
     <>
@@ -76,12 +88,16 @@ const Vehicles = () => {
               </div>
             </div>
           </div>
-
+      {
+        loadingStatus == 'loading' ? <h1 style={{textAlign: 'center', color: "#0061ff", textTransform: 'uppercase', marginTop: 20}}>Loading...</h1> :
       <div className={Styles.Vehiclescontainer}>
         {
-          vehicledata && vehicledata.map((vehicle)=> <VehicleCard key={vehicle.vehicle_id} vehicle={vehicle}/>)
+          vehicledata && vehicledata.map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>)
         }
       </div>
+      }
+
+      <Footer />
     </>
   )
 }

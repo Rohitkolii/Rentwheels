@@ -1,16 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import Styles from '../Navbar/Navbar.module.css'
 import { GiStoneWheel } from "react-icons/gi";
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserProfile } from '../../store/ProfileSlice'
+// import { useNavigate } from 'react-router';
 import '../../App.css'
+import { toast } from 'react-toastify';
 
 
 
 const Navbar = () => {
 
+    const dispatch = useDispatch()
+    // const navigate = useNavigate()
     const [menuStatus, setMenuStatus] = useState(false);
+    const [islogin, setislogin] = useState(false);
     const [profileStatus, setProfileStatus] = useState(false);
+
+    useEffect(()=> {
+        dispatch(fetchUserProfile(localStorage.getItem("token")))
+        if(localStorage.getItem("token")){
+            setislogin(true)
+        }
+    },[islogin])
+
+    
+
+    const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+    // console.log("Navbar",ProfileData);
+    
+    const logoutUser = () => {
+        localStorage.removeItem("token")
+        toast.success('Logout Successfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        // navigate("/login")
+    }
+
 
   return (
     <>
@@ -22,20 +57,40 @@ const Navbar = () => {
             </div>  
             <div className={Styles.navlinks}>
                 <ul>
-                    {/* <li><NavLink to="/">Home</NavLink></li> */}
+                    <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
-                    {/* <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
-                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li> */}
                     <li><NavLink to="/about">About</NavLink></li>
                     {/* <li><NavLink to="/">Contact</NavLink></li> */}
-                    <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>
-                    {/* <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}><img src="/images/user.jpg" alt="profile" /></li> */}
+                    {
+                        islogin ?
+                        <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
+                            <img src="/images/user.jpg" alt="profile" />
+                            <div>
+                                <p>{ProfileData?.username}</p>
+                                <p>{ProfileData?.email}</p>
+                            </div>
+                        </li>
+                        :
+                        <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>
+                    }
                 </ul>
             </div>  
-            <li className={Styles.hammenu} onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li>
-            {/* <div style={{display: 'flex', alignItems: 'center', listStyle: 'none', gap: 20}}> */}
-            {/* </div> */}
+            <div className={Styles.mobextra}>
+                {
+                    islogin ?
+                    <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
+                    <img src="/images/user.jpg" alt="profile" />
+                    <div className={Styles.userinfo}>
+                        <p>{ProfileData?.username}</p>
+                        <p>{ProfileData?.email}</p>
+                    </div>
+                </li>
+                    :
+                    <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>
+                }
+                <li className={Styles.hammenu} onClick={()=> setMenuStatus(!menuStatus)} style={{fontSize: 30,cursor: 'pointer'}}><AiOutlineMenu /></li>
+            </div>
         </nav>
         {
             menuStatus ?
@@ -43,8 +98,6 @@ const Navbar = () => {
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
-                    <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
-                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     {/* <li><NavLink to="/">Contact</NavLink></li> */}
@@ -65,7 +118,7 @@ const Navbar = () => {
                 <div className={Styles.profilemenu}>
                         <ul>
                             <li><NavLink to="/Profile">Profile</NavLink></li>
-                            <li><NavLink to="/">Logout</NavLink></li>
+                            <li><NavLink onClick={logoutUser} to="/login">Logout</NavLink></li>
                             {/* <li><NavLink to="/">Logout</NavLink></li> */}
                         </ul>
                     </div>

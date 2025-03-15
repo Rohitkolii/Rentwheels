@@ -13,26 +13,26 @@ const VehicleCard = ({vehicle}) => {
     <>
         <div className={Styles.VehicleCard}>
             <div className={Styles.Vehicleimg}>
-                <img src={vehicle.vehicle_image} alt="" />
+                <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
             </div>
             
             <div className={Styles.Vehicleinfo}>
                 {/* <span>XYR7878QS</span> */}
                 <div className={Styles.info_row1}>
                   <div>
-                    <p><span>{vehicle.vehicle_name}</span></p>
-                    <p><span>{vehicle.vehicle_model}</span></p>
+                    <p><span>{vehicle.Vehicle_name}</span></p>
+                    <p><span>{vehicle.Vehicle_model}</span></p>
                     <p>Average: <span>{vehicle.Vehicle_average}</span></p>
                   </div>
                   <div className={Styles.vehicleprice}>
                     {/* <p>Vehicle Rent</p> */}
-                    <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />{vehicle.vehicle_rent}</span>
+                    <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />{vehicle.Vehicle_rent}</span>
                     <p>per day</p>
                   </div>
                 </div>
                 
                 <div className={Styles.btn}>
-                  <Link to={`${vehicle.vehicle_id}`}>Rent now</Link>
+                  <Link to={`${vehicle._id}`}>Rent now</Link>
                 </div>
             </div>
         </div>

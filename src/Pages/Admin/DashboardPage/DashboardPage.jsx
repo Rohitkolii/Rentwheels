@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
 // import Styles from '../DashboardPage/DashboardPage.module.css'
@@ -8,10 +8,28 @@ import { VscBook } from "react-icons/vsc";
 import { GrUserWorker } from "react-icons/gr";
 import { PiUserListLight } from "react-icons/pi";
 import Styles from "../../Admin/DashboardPage/DashboardPage.module.css"
+import { useNavigate } from 'react-router';
 
 import { FaCar } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserProfile } from '../../../store/ProfileSlice';
 
 const DashboardPage = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  useEffect(()=> {
+    dispatch(fetchUserProfile(localStorage.getItem("token")))
+    // if(ProfileData?.role != "admin" || !localStorage.getItem("token")){
+    //   navigate("/")
+    // }
+  }, [])
+
+  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+
+
+
   const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
   return (
     <>

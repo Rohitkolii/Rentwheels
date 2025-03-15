@@ -128,7 +128,7 @@ const RegisterPage = () => {
                             </div>
                             <div className={`${Styles.column} ${Styles.loginput}`}>
                                 <label htmlFor="">Role:</label>
-                                <select value={role} onChange={(e)=> setrole(e.target.value)} name="" id="">
+                                <select value={role} onChange={(e)=> setrole(e.target.value)} name="" id="" required>
                                     <option value="user">User</option>
                                     <option value="vendor">Vendor</option>
                                 </select>

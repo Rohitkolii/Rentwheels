@@ -14,7 +14,16 @@
     padding: 10px 30px;
     color: white;
     transition: .3;
+    text-decoration: none;
 }
+.mobextra .btn a{
+    background-color: #0061ff;
+    padding: 8px 20px;
+    color: white;
+    transition: .3;
+    text-decoration: none;
+}
+
 .navlinks .btn a:hover{
     color: black;
 }
@@ -46,6 +55,20 @@
     display: flex;
     align-items: center;
     text-transform: capitalize;
+}
+
+.profilelogo{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.profilelogo p{
+    font-size: 13px;
+}
+.profilelogo :first-child{
+    font-weight: 500;
+    font-size: 15px;
 }
 
 
@@ -127,8 +150,12 @@
     top: 0;
     left: 0;
 }
-
+/* 
 .hammenu{
+    display: none;
+} */
+
+.mobextra{
     display: none;
 }
 
@@ -139,14 +166,30 @@
 }
 
 @media only screen and (max-width:1100px) {
-    .hammenu{
+    /* .hammenu{
         display: block;
+    } */
+
+    .mobextra{
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        gap: 50px;
     }
     .navlinks{
         display: none;
     }
 }
 
+@media only screen and (max-width:600px) {
+    .navbar{
+        padding: 10px 40px;
+    }
+
+    .profilelogo .userinfo{
+        display: none;
+    }
+}
 @media only screen and (max-width:500px) {
     .dymanu{
         background-color: rgb(255, 255, 255);

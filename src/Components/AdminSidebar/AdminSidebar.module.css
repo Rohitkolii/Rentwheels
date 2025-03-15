@@ -28,7 +28,11 @@
     font-weight: 500;
 }
 
-.Hidesidebar .sidebarHead svg{
+.closeMenu{
+    display: none;
+}
+
+.closeMenu{
     /* font-size: 5px; */
     padding: 5px;
     /* background-color: #0061ff; */
@@ -77,6 +81,10 @@
     .Hidesidebar{
         position: absolute;
         width: 300px;
+        display: block;
+    }
+
+    .closeMenu{
         display: block;
     }
     

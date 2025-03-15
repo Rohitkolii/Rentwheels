@@ -20,7 +20,7 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
             <img src="/images/wheel.png" alt="" />
             <p><span style={{color: "#0061ff"}}>R</span>entwheels<span style={{color: "#0061ff"}}>.</span></p>
           </div>
-          <IoMdClose onClick={()=> setSidebarVisiblity(!sidebarVisiblity)} />
+          <IoMdClose className={Styles.closeMenu} onClick={()=> setSidebarVisiblity(!sidebarVisiblity)} />
         </div>
         <ul>
           <li><Link to='/admin'><MdDashboard /> Dashboard</Link></li>

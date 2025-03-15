@@ -25,8 +25,8 @@ const Navbar = () => {
                     {/* <li><NavLink to="/">Home</NavLink></li> */}
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
-                    <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
-                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li>
+                    {/* <li><NavLink to="/addvehicle">Add Vehicle</NavLink></li>
+                    <li><NavLink to="/editvehicle">Update Vehicle</NavLink></li> */}
                     <li><NavLink to="/about">About</NavLink></li>
                     {/* <li><NavLink to="/">Contact</NavLink></li> */}
                     <li className={Styles.btn}><NavLink to="/login">Login</NavLink></li>

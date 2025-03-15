@@ -16,20 +16,12 @@
     justify-content: space-between;
     /* position: relative; */
     /* top: 2rem; */
-    width: 60%;
+    width: 40%;
 }
 
-.innercontainer1{
-    padding: 30px 40px;
-    width: 50%;
-    background-image: url('../../../public/images/carill.jpg');
-    background-position: center;
-    background-size: cover;
-    border-radius: 8px 0px 0px 8px;
-}
 
 .innercontainer2{
-    width: 50%;
+    width: 100%;
     z-index: 9;
     padding: 30px 40px;
 }
@@ -43,10 +35,17 @@
     margin: 10px 0;
 }
 
+.row{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
 .column{
     display: flex;
     flex-direction: column;
     line-height: 50px;
+    width: 100%;
 }
 
 .activebtn{
@@ -54,7 +53,6 @@
     height: 35px;
     background-color: transparent;
 }
-
 
 .loginput input{
     height: 40px;
@@ -78,18 +76,6 @@
 }
 
 
-
-.forgetlink{
-    font-size: 18px;
-    margin: 10px 0;
-    text-align: right;
-}
-.forgetlink a{
-    font-size: 15px;
-    text-decoration: none;
-    color: #0061ff;
-}
-
 .loginbutt .btn{
     width: 100%;
     height: 45px;
@@ -98,9 +84,9 @@
     border: transparent;
     cursor: pointer;
     transition: all .3s;
-    margin-top: 30px;
-    color: white;
     font-size: 18px;
+    color: white;
+    margin-top: 30px;
 }
 
 .loginbutt .btn:hover{
@@ -151,10 +137,19 @@
 
 @media only screen and (max-width: 550px) {
     .innercontainer{
-        width: 90%;
+        width: 98%;
     }
 
     .innercontainer2{
-        padding: 20px;
+        width: 100%;
+        z-index: 9;
+        padding: 30px 10px;
     }
+
+    
+.row{
+    display: flex;
+    width: 100%;
+    gap: 5px;
+}
 }

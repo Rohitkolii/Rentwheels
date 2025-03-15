@@ -1,0 +1,16 @@
+.ErrorPage{
+    margin: 50px auto;
+    text-align: center;
+    line-height: 100px;
+    line-height: 80px;
+}
+
+.ErrorPage img{
+    width: 100px;
+    opacity: .3;
+}
+
+.ErrorPage h1{
+    color: #0061ff;
+    font-size: 150px;
+}

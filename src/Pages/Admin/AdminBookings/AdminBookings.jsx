@@ -1,11 +1,21 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from '../../../Components/Navbar/Navbar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
 // import Styles from '../BookingsPage/BookingsPage.module.css'
 import Styles from './AdminBookings.module.css'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
+import { fetchBookingList } from '../../../store/getBookingListSlice'
+import { useDispatch, useSelector } from 'react-redux'
 const AdminBookings = () => {
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
+
+    const dispatch  =useDispatch();
+
+    useEffect(()=> {
+        dispatch(fetchBookingList())
+    },[])
+
+    const bookingData = useSelector(state => state.BookingListSlice.data)
   
   return (
     <>
@@ -26,61 +36,27 @@ const AdminBookings = () => {
                         <th>Vendor</th>
                         <th>Start to End</th>
                         <th>Price</th>
-                        <th>Status</th>
+                        {/* <th>Status</th> */}
                     </tr>
-
-                    <tr>
-                        <td>1111</td>
-                        <td>
-                            <img src="../images/supcar1.png" alt="" />
-                            <p>Super Delux</p>
-                            {/* <p>025414</p> */}
-                        </td>
-                        <td>Raju</td>
-                        <td>suresh</td>
-                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
-                        <td>1800RS</td>
-                        <td style={{color: 'green'}}>Active</td>
-                    </tr>
-                    <tr>
-                        <td>1111</td>
-                        <td>
-                            <img src="../images/supcar2.png" alt="" />
-                            <p>Super Delux</p>
-                            {/* <p>025414</p> */}
-                        </td>
-                        <td>Raju</td>
-                        <td>suresh</td>
-                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
-                        <td>1800RS</td>
-                        <td style={{color: 'green'}}>Active</td>
-                    </tr>
-                    <tr>
-                        <td>1111</td>
-                        <td>
-                            <img src="../images/bg2.jpg" alt="" />
-                            <p>Super Delux</p>
-                            {/* <p>025414</p> */}
-                        </td>
-                        <td>Raju</td>
-                        <td>suresh</td>
-                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
-                        <td>1800RS</td>
-                        <td style={{color: 'green'}}>Active</td>
-                    </tr>
-                    <tr>
-                        <td>1111</td>
-                        <td>
-                            <img src="../images/supcar3.png" alt="" />
-                            <p>Super Delux</p>
-                            {/* <p>025414</p> */}
-                        </td>
-                        <td>Raju</td>
-                        <td>suresh</td>
-                        <td>01/01/2025 <br /> to <br /> 15/03/2025</td>
-                        <td>1800RS</td>
-                        <td style={{color: 'green'}}>Active</td>
-                    </tr>
+                    {
+                        bookingData && bookingData.map((booking)=> {
+                            return(
+                                <tr key={booking._id}>
+                                    <td>{booking._id}</td>
+                                    <td>
+                                        <img src={`http://localhost:5000${booking.Vehicle_image}`} alt="" />
+                                        <p>{booking.Vehicle_name}</p>
+                                        {/* <p>025414</p> */}
+                                    </td>
+                                    <td title={booking.Booking_User_id}>{booking.Booking_User_id.substring(0,10)}</td>
+                                    <td title={booking.Vendor_id}>{booking.Vendor_id.substring(0,10)}</td>
+                                    <td>{booking.Vehicle_Booking_Date} <br /> to <br /> {booking.Vehicle_Dropof_Date}</td>
+                                    <td>{booking.Vehicle_rent}</td>
+                                    {/* <td style={{color: 'green'}}>Active</td> */}
+                                </tr>
+                            )
+                        })
+                    }
                     
                 </table>
             </div>

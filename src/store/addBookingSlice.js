@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 
-const addVehicleSlice = createSlice({
-    name: 'add Vehicle',
+const addBookingSlice = createSlice({
+    name: 'add Booking',
 
     initialState : {
         data: [],
@@ -10,49 +10,43 @@ const addVehicleSlice = createSlice({
     },
 
     reducers: {
-        setVehicleList : (state, action) => {
+        setBooking : (state, action) => {
             state.data = action.payload;
         },
 
-        setVehicleLoadStatus: (state, action) => {
+        setBookingLoadStatus: (state, action) => {
             state.status = action.payload;
         },
     }
 })
 
-export const { setVehicleList, setVehicleLoadStatus } = addVehicleSlice.actions;
-export default addVehicleSlice.reducer;
+export const { setBooking, setBookingLoadStatus } = addBookingSlice.actions;
+export default addBookingSlice.reducer;
 
 
 // Thunk 
 
-export const addVehicle = (data)=> {
-    return async function addVehicleThunk(dispatch, getState) {
-        dispatch(setVehicleLoadStatus('loading'))
-        const formData = new FormData();
-        formData.append("Vehicle_type", data.Vehicle_type);
-        formData.append("Vehicle_name", data.Vehicle_name);
-        formData.append("Vehicle_model", data.Vehicle_model);
-        formData.append("Vehicle_rent", data.Vehicle_rent);
-        formData.append("Vehicle_average", data.Vehicle_average);
-        formData.append("user_name", data.user_name);
-        formData.append("user_id", data.user_id);
-        formData.append("image", data.image);
+export const addBooking = (data)=> {
+    return async function addBookingThunk(dispatch, getState) {
+        dispatch(setBookingLoadStatus('loading'))
         try {
-            const response = await fetch("http://localhost:5000/api/vehicle/add",{
+            const response = await fetch("http://localhost:5000/api/booking/add",{
                 method: "POST",
-                body:formData,
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body:JSON.stringify(data),
         
             });
             console.log(response);
             
             if(response.ok){
                 const data = await response.json();
-                dispatch(setVehicleLoadStatus('idle'));
-                dispatch(setVehicleList(data));
+                dispatch(setBookingLoadStatus('idle'));
+                dispatch(setBooking(data));
                 // console.log(data);
 
-                toast.success('Vehicle added Successfully', {
+                toast.success('Vehicle Booked Successfully', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -76,7 +70,7 @@ export const addVehicle = (data)=> {
                 }
         } catch (error) {
             console.log(error)
-            dispatch(setVehicleLoadStatus('error'))
+            dispatch(setBookingLoadStatus('error'))
             toast.error('Something went wrong!', {
                 position: "top-center",
                 autoClose: 5000,

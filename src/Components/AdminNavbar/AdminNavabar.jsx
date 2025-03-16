@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from '../AdminNavbar/AdminNavbar.module.css'
-import { Link } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import { RiMenu2Fill } from 'react-icons/ri'
+import { fetchUserProfile } from '../../store/ProfileSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
+
+  const [profileStatus, setProfileStatus] = useState(false)
+
+  const dispatch = useDispatch();
+
+   useEffect(()=> {
+          dispatch(fetchUserProfile(localStorage.getItem("token")))
+      },[])
+  
+      const userProfile = useSelector(state => state.profileSlice.data.userData)
+
   return (
     <>
         <nav className={Styles.navbar}>
@@ -11,19 +24,34 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
                 <RiMenu2Fill onClick={()=> setSidebarVisiblity(!sidebarVisiblity)}/>
             </div>
             
-            <div className={Styles.navlinks}>
+            <div onClick={()=> setProfileStatus(!profileStatus)} className={Styles.navlinks}>
                 <div className={Styles.profilelink}>
                   <div>
                     <img src="/images/user2.jpg" alt="" />
                   </div>
 
                   <div>
-                    <p>Rohit k.</p>
-                    <p>rk112koli@gmail.com</p>
+                    <p>{userProfile?.username || "Admin"}</p>
+                    <p>{userProfile?.email}</p>
                   </div>
                 </div>
             </div>
         </nav>
+
+        {
+          profileStatus ? <div onClick={()=> setProfileStatus(!profileStatus)} className ={Styles.overlay}></div> : ''
+        }
+
+        {
+          profileStatus ?
+          <div className={Styles.profilemenu}>
+                  <ul>
+                      <li><NavLink to="/Profile">Profile</NavLink></li>
+                      <li><NavLink onClick={()=> localStorage.removeItem("token")} to="/login">Logout</NavLink></li>
+                      {/* <li><NavLink to="/">Logout</NavLink></li> */}
+                  </ul>
+              </div>
+        : ''}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const getVehicleListSlice = createSlice({
-    name: 'userlist',
+    name: 'vehicle List',
 
     initialState : {
         data: [],

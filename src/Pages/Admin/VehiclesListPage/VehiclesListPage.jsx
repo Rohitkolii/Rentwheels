@@ -31,6 +31,7 @@ const VehiclesListPage = () => {
                     <tr>
                         <th>S.No</th>
                         <th>V.id</th>
+                        <th>Vendor name</th>
                         <th>Vehicle & Name</th>
                         <th>Model</th>
                         <th>Rent</th>
@@ -43,6 +44,7 @@ const VehiclesListPage = () => {
                                 <tr>
                                 <td>{i}</td>
                                 <td>{vehicle._id}</td>
+                                <td>{vehicle.user_name}</td>
                                 <td>
                                     <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
                                     <p>{vehicle.Vehicle_name}</p>

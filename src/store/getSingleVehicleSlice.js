@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const SingleVehicleSlice = createSlice({
-    name: 'register',
+    name: 'single Vehicle',
 
     initialState : {
         data: [],

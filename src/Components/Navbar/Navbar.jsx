@@ -65,7 +65,7 @@ const Navbar = () => {
                     {
                         islogin ?
                         <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
-                            <img src="/images/user.jpg" alt="profile" />
+                            <img src="/images/user2.jpg" alt="profile" />
                             <div>
                                 <p>{ProfileData?.username}</p>
                                 <p>{ProfileData?.email}</p>

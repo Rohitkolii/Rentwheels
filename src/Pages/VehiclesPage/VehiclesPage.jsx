@@ -53,6 +53,14 @@ const Vehicles = () => {
   const vehicledata = useSelector(state => state.getVehicleSlice.data)
   const loadingStatus = useSelector(state => state.getVehicleSlice.status)
 
+  console.log(vehicledata);
+  
+
+  const filteredVehicleData = vehicledata && vehicledata.filter((vehicle)=> vehicle?.isBooked === false)
+  console.log(filteredVehicleData);
+  
+
+
 
   return (
     <>
@@ -92,7 +100,7 @@ const Vehicles = () => {
         loadingStatus == 'loading' ? <h1 style={{textAlign: 'center', color: "#0061ff", textTransform: 'uppercase', marginTop: 20}}>Loading...</h1> :
       <div className={Styles.Vehiclescontainer}>
         {
-          vehicledata && vehicledata.map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>)
+          filteredVehicleData && filteredVehicleData.map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>)
         }
       </div>
       }

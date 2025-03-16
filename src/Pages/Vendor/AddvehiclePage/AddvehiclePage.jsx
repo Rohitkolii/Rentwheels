@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import Navbar from '../../../Components/Navbar/Navbar'
 import AddVehicles from '../../../Components/AddVehicles/AddVehicles'
 import Navbar from '../../../Components/Navbar/Navbar'
@@ -15,8 +15,9 @@ import { FaRegImage } from "react-icons/fa";
 import { MdCurrencyRupee } from "react-icons/md";
 import { BiEqualizer } from "react-icons/bi";
 
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { ToastContainer } from 'react-toastify'
+import { fetchUserProfile } from '../../../store/ProfileSlice'
 
 const AddvehiclePage = () => {
 
@@ -31,11 +32,19 @@ const AddvehiclePage = () => {
   const[Vehicle_rent, setVehicle_rent] = useState("")
   const[Vehicle_average, setVehicle_average] = useState("")
 
+  useEffect(()=> {
+    dispatch(fetchUserProfile(localStorage.getItem("token")))
+  },[])
+
+  const userData = useSelector(state => state.profileSlice.data.userData)
+
   const Createvehicle = (e) => {
 
     e.preventDefault();
 
     const data = {
+      user_name : userData.username,
+      user_id : userData._id,
       image,
       Vehicle_type,
       Vehicle_name,

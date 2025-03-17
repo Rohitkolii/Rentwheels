@@ -51,7 +51,7 @@ export const fetchUserProfile = (token)=> {
                 dispatch(setProfileStatus('idle'));
                 dispatch(setProfile(data));
                 // console.log(data);
-                dispatch(setProfileStatus('loading'))
+                dispatch(setProfileStatus('idle'))
             }
         } catch (error) {
             console.log(error)

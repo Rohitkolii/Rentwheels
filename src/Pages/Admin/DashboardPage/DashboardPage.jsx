@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
+import Loader from '../../../Components/Loader/Loader'
 // import Styles from '../DashboardPage/DashboardPage.module.css'
 import { IoCarOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
@@ -15,22 +16,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../../store/ProfileSlice';
 
 const DashboardPage = () => {
+  const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
+  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
+  console.log(ProfileDataStatus);
+  
+
   useEffect(()=> {
     dispatch(fetchUserProfile(localStorage.getItem("token")))
-    // if(ProfileData?.role != "admin" || !localStorage.getItem("token")){
-    //   navigate("/")
-    // }
-  }, [])
-
-  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-
-
-
-  const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
+  }, [ProfileDataStatus])
+  
+  if(ProfileDataStatus == "loading"){
+    return <Loader />
+  }
+  
+  if(ProfileData?.role != "admin"){
+    navigate("/")
+  }
   return (
     <>
 

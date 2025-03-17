@@ -5,6 +5,8 @@ import Styles from '../AdminBookings/AdminBookings.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserList } from '../../../store/userlistSlice'
 
+import { ImBin } from "react-icons/im";
+
 const UsersListPage = () => {
     const dispatch = useDispatch()
     const users = useSelector(state => state.userListSlice.data.userslist)
@@ -33,6 +35,7 @@ const UsersListPage = () => {
                 <div className={Styles.bookingtable}>
                     <table>
                         <tr>
+                            <th>S.No</th>
                             <th>id</th>
                             <th>Customer</th>
                             <th>Age</th>
@@ -40,18 +43,21 @@ const UsersListPage = () => {
                             <th>email</th>
                             <th>Phone</th>
                             <th>Address</th>
+                            <th>Action</th>
                         </tr>
                         {
-                            userlist && userlist.map((elm)=> {
+                            userlist && userlist.map((elm,i)=> {
                                 return(
-                                    <tr>
-                                        <td>{elm._id}</td>
+                                    <tr key={elm._id}>
+                                        <td>{i+1}</td>
+                                        <td title={elm._id}>{elm._id.substring(0,10)}...</td>
                                         <td>{elm.username}</td>
                                         <td>{elm.age}</td>
                                         <td>{elm.dlnumber}</td>
                                         <td>{elm.email}</td>
                                         <td>{elm.phone}</td>
                                         <td>{elm.adress}</td>
+                                        <td style={{cursor: "pointer"}}><ImBin style={{color: "#0061ff", fontSize: 20}}/></td>
                                     </tr>
                                 )
                             })

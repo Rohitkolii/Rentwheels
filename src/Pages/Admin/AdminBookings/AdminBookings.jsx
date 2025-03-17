@@ -16,6 +16,8 @@ const AdminBookings = () => {
     },[])
 
     const bookingData = useSelector(state => state.BookingListSlice.data)
+    console.log(bookingData);
+    
   
   return (
     <>
@@ -30,7 +32,8 @@ const AdminBookings = () => {
             <div className={Styles.bookingtable}>
             <table>
                     <tr>
-                        <th>b. id</th>
+                        <th>S.No</th>
+                        <th>b.Id</th>
                         <th>Vehicle & Name</th>
                         <th>customer</th>
                         <th>Vendor</th>
@@ -39,10 +42,11 @@ const AdminBookings = () => {
                         {/* <th>Status</th> */}
                     </tr>
                     {
-                        bookingData && bookingData.map((booking)=> {
+                        bookingData && bookingData.map((booking, i)=> {
                             return(
                                 <tr key={booking._id}>
-                                    <td>{booking._id}</td>
+                                    <td>{i+1}</td>
+                                    <td title={booking._id}>{booking._id.substring(0,10)}</td>
                                     <td>
                                         <img src={`http://localhost:5000${booking.Vehicle_image}`} alt="" />
                                         <p>{booking.Vehicle_name}</p>
@@ -50,8 +54,8 @@ const AdminBookings = () => {
                                     </td>
                                     <td title={booking.Booking_User_id}>{booking.Booking_User_id.substring(0,10)}</td>
                                     <td title={booking.Vendor_id}>{booking.Vendor_id.substring(0,10)}</td>
-                                    <td>{booking.Vehicle_Booking_Date} <br /> to <br /> {booking.Vehicle_Dropof_Date}</td>
-                                    <td>{booking.Vehicle_rent}</td>
+                                    <td style={{minWidth: 150}}>{booking.Vehicle_Booking_Date} <br /> to <br /> {booking.Vehicle_Dropof_Date}</td>
+                                    <td>₹ {booking.Vehicle_rent}</td>
                                     {/* <td style={{color: 'green'}}>Active</td> */}
                                 </tr>
                             )

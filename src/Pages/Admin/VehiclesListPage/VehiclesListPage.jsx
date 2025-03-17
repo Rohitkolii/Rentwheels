@@ -5,6 +5,8 @@ import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
 import Styles from '../VehiclesListPage/VehiclesListPage.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 import { fetchVehicleList } from '../../../store/getVehicleSlice'
+import { ImBin } from "react-icons/im";
+
 
 const VehiclesListPage = () => {
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
@@ -34,16 +36,17 @@ const VehiclesListPage = () => {
                         <th>Vendor name</th>
                         <th>Vehicle & Name</th>
                         <th>Model</th>
-                        <th>Rent</th>
+                        <th>₹ Rent</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                     
                     {
                         vehicledata && vehicledata.map((vehicle, i) => {
                             return(
                                 <tr>
-                                <td>{i}</td>
-                                <td>{vehicle._id}</td>
+                                <td>{i+1}</td>
+                                <td title={vehicle._id}>{vehicle._id.substring(0,10)}...</td>
                                 <td>{vehicle.user_name}</td>
                                 <td>
                                     <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
@@ -51,8 +54,9 @@ const VehiclesListPage = () => {
                                     {/* <p>025414</p> */}
                                 </td>
                                 <td>{vehicle.Vehicle_model}</td>
-                                <td>{vehicle.Vehicle_rent}</td>
-                                <td style={{color: 'green'}}>Available</td>
+                                <td>₹ {vehicle.Vehicle_rent}</td>
+                                <td>{vehicle.isBooked ? <span style={{color: 'orange'}}> Booked </span> : <span style={{color: 'green'}}>Available</span>}</td>
+                                <td style={{cursor: "pointer"}}><ImBin style={{color: "#0061ff", fontSize: 20, cursor: "pointer"}} /></td>
                             </tr>
                             )
                         })

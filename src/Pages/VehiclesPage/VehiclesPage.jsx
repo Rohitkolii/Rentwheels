@@ -7,8 +7,8 @@ import { FaList, FaSearch } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 import { fetchVehicleList } from '../../store/getVehicleSlice';
 import {useDispatch, useSelector} from "react-redux"
-import Loader from '../../Components/loader/loader';
 import Footer from '../../Components/Footer/Footer';
+import Loader from '../../Components/loader/loader';
 
 // const vehicledata = [
 //   {
@@ -64,7 +64,6 @@ const Vehicles = () => {
 
   return (
     <>
-
       <header className={Styles.vehicleheader}>
       <Navbar />
 
@@ -97,7 +96,7 @@ const Vehicles = () => {
             </div>
           </div>
       {
-        loadingStatus == 'loading' ? <h1 style={{textAlign: 'center', color: "#0061ff", textTransform: 'uppercase', marginTop: 20}}>Loading...</h1> :
+        loadingStatus == 'loading' ? <Loader /> :
       <div className={Styles.Vehiclescontainer}>
         {
           filteredVehicleData && filteredVehicleData.map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>)

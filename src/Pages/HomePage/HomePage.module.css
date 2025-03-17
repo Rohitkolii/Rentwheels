@@ -1,13 +1,10 @@
-.detailsconinner{
+/* .detailsconinner{
     width: 90%;
     margin: auto;
 }
 
 .detailscon{
-    /* background-color: #0c0c0c;
-    color: white; */
     background: linear-gradient(135deg, #fff 10%, #1E3A8A 50%, #011859 60%);
-    /* background-color: #000; */
     padding: 50px 0;
 }
 .row1{
@@ -28,7 +25,7 @@
 
 /* Row 2 Start here  */
 
-.row2{
+/* .row2{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
@@ -62,8 +59,30 @@
 
 .row2inner img:hover{
     transform: scale(101%);
+} */
+
+
+/* //Card latest */
+.latestCon{
+    padding: 50px 0;
+    background-color: #ebe8dbb4;
+    
 }
 
+.latestCon h1{
+    text-transform: uppercase;
+}
+
+.latestConInn{
+    width: 70%;
+    margin: auto;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
 
 
 /* /// Media Query */

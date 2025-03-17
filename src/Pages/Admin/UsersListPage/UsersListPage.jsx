@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserList } from '../../../store/userlistSlice'
 
 import { ImBin } from "react-icons/im";
+import { toast } from 'react-toastify'
 
 const UsersListPage = () => {
     const dispatch = useDispatch()
@@ -17,9 +18,39 @@ const UsersListPage = () => {
 
     useEffect(()=> {
         dispatch(fetchUserList(localStorage.getItem("token")))
-    },[])
+    },[userlist])
     
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
+
+    const deleteuser = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/auth/delete/${id}`,{
+                method: "DELETE"
+            })
+            toast.success('User Deleted Successfully!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        } catch (error) {
+            toast.error('Something went wrong!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
+        
+    }
   return (
     <>
 
@@ -50,14 +81,15 @@ const UsersListPage = () => {
                                 return(
                                     <tr key={elm._id}>
                                         <td>{i+1}</td>
-                                        <td title={elm._id}>{elm._id.substring(0,10)}...</td>
+                                        {/* <td title={elm._id}>{elm._id.substring(0,10)}...</td> */}
+                                        <td title={elm._id}>{elm._id}</td>
                                         <td>{elm.username}</td>
                                         <td>{elm.age}</td>
                                         <td>{elm.dlnumber}</td>
                                         <td>{elm.email}</td>
                                         <td>{elm.phone}</td>
                                         <td>{elm.adress}</td>
-                                        <td style={{cursor: "pointer"}}><ImBin style={{color: "#0061ff", fontSize: 20}}/></td>
+                                        <td onClick={()=> deleteuser(elm._id)} style={{cursor: "pointer"}}><ImBin style={{color: "#0061ff", fontSize: 20}}/></td>
                                     </tr>
                                 )
                             })

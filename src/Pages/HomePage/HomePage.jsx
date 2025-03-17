@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import EngageModule from '../../Components/EngageModule/EngageModule'
 import TechStack from '../../Components/TechStack/TechStack'
 import Styles from '../HomePage/HomePage.module.css'
 import { MdHomeRepairService } from "react-icons/md";
-import { FaCar, FaEyeSlash } from 'react-icons/fa';
+import { FaCar, FaEyeSlash, FaRupeeSign } from 'react-icons/fa';
 import { RiPassValidFill } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchVehicleList } from '../../store/getVehicleSlice'
+import Stylesc from '../../Components/VehicleCard/VehicleCard.module.css'
+import { Link } from 'react-router'
 
 const HomePage = () => {
+
+  const dispatch = useDispatch()
+  useEffect(()=> {
+    dispatch(fetchVehicleList())
+  },[])
+
+  const featuredVehicle = useSelector(state => state.getVehicleSlice.data)
+  const filterfeaturedVehicle = featuredVehicle && featuredVehicle.filter((v)=> v.isBooked === false)
+  console.log(filterfeaturedVehicle);
+  
+
   return (
     <>
         <Header />
-        <TechStack />
-        <section className={Styles.detailscon}>
+        {/* <TechStack /> */}
+        {/* <section className={Styles.detailscon}>
           <div className={Styles.detailsconinner}>
             <div className={Styles.row1}>
               <div>
@@ -49,7 +64,50 @@ const HomePage = () => {
                   </div>
               </div>
           </div>
+        </section> */}
+
+        <section className={Styles.latestCon}>
+          <div className={Styles.latestConInn}>
+          <h1>Latest Added</h1>
+          <p style={{marginBottom: 15}}>Redefining the road with innovation, power, and style!</p>
+            <div className={Styles.grid}>
+              {
+                filterfeaturedVehicle && filterfeaturedVehicle.slice(0,3).map((vehicle)=> {
+                  return(
+                          <div className={Stylesc.VehicleCard}>
+                            <div className={Stylesc.Vehicleimg}>
+                                <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
+                            </div>
+                            
+                            <div className={Stylesc.Vehicleinfo}>
+                                {/* <span>XYR7878QS</span> */}
+                                <div className={Stylesc.info_row1}>
+                                  <div>
+                                    <p><span>{vehicle.Vehicle_name}</span></p>
+                                    <p><span>{vehicle.Vehicle_model}</span></p>
+                                    <p>Average: <span>{vehicle.Vehicle_average}</span> kmpl</p>
+                                  </div>
+                                  <div className={Stylesc.vehicleprice}>
+                                    {/* <p>Vehicle Rent</p> */}
+                                    <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />{vehicle.Vehicle_rent}</span>
+                                    <p>per day</p>
+                                  </div>
+                                </div>
+                                
+                                <div className={Stylesc.btn}>
+                                  <Link to={`vehicles/${vehicle._id}`}>Rent now</Link>
+                                </div>
+                            </div>
+                          </div>
+                  )
+                } 
+                // <VehicleCard vehicle={vehicle} />
+              )
+              }
+            </div>
+          </div>
         </section>
+        
         <EngageModule />
         <Footer />
     </>

@@ -2,21 +2,27 @@ import React, {useEffect, useState} from 'react'
 import Navbar from '../../../Components/Navbar/Navbar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
 // import Styles from '../BookingsPage/BookingsPage.module.css'
-import Styles from './AdminBookings.module.css'
+import Styles from '../../Admin/AdminBookings/AdminBookings.module.css'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import { fetchBookingList } from '../../../store/getBookingListSlice'
 import { useDispatch, useSelector } from 'react-redux'
-const AdminBookings = () => {
+import { fetchUserProfile } from '../../../store/ProfileSlice'
+const BookingHistory = () => {
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
     const dispatch  =useDispatch();
 
     useEffect(()=> {
         dispatch(fetchBookingList())
+        dispatch(fetchUserProfile(localStorage.getItem("token")))
     },[])
 
     const bookingData = useSelector(state => state.BookingListSlice.data)
+    const userProfile = useSelector(state => state.profileSlice.data.userData)
     console.log(bookingData);
+    console.log(userProfile);
+
+    const filteredbookingData = bookingData && bookingData.filter((booking)=> booking.Vendor_id ==userProfile._id )
     
   
   return (
@@ -42,7 +48,7 @@ const AdminBookings = () => {
                         {/* <th>Status</th> */}
                     </tr>
                     {
-                        bookingData && bookingData.map((booking, i)=> {
+                        filteredbookingData && filteredbookingData.map((booking, i)=> {
                             return(
                                 <tr key={booking._id}>
                                     <td>{i+1}</td>
@@ -72,4 +78,4 @@ const AdminBookings = () => {
   )
 }
 
-export default AdminBookings
+export default BookingHistory

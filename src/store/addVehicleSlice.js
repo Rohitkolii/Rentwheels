@@ -26,7 +26,7 @@ export default addVehicleSlice.reducer;
 
 // Thunk 
 
-export const addVehicle = (data)=> {
+export const addVehicle = (data, token)=> {
     return async function addVehicleThunk(dispatch, getState) {
         dispatch(setVehicleLoadStatus('loading'))
         const formData = new FormData();
@@ -41,6 +41,9 @@ export const addVehicle = (data)=> {
         try {
             const response = await fetch("http://localhost:5000/api/vehicle/add",{
                 method: "POST",
+                headers : {
+                    Authorization: `Bearer ${token}`,
+                },
                 body:formData,
         
             });

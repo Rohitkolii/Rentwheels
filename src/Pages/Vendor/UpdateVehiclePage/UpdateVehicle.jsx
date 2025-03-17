@@ -25,7 +25,7 @@ const UpdateVehicle = () => {
     
 
     const filteredVehicle = vehicledata && vehicledata.filter((vehicle)=> vehicle?.user_id === userid?._id)
-    // console.log(filteredVehicle);
+    console.log(filteredVehicle);
     
 
   
@@ -65,7 +65,7 @@ const UpdateVehicle = () => {
                                     <td>{vehcle.Vehicle_model}</td>
                                     <td>{vehcle.Vehicle_average} km/l</td>
                                     <td>{vehcle.Vehicle_rent}</td>
-                                    <td style={{color: 'green'}}>Available</td>
+                                    <td style={vehcle?.isBooked ? {color: "orange"} :{color: 'green'}}>{vehcle?.isBooked ? "Booked" : "Available"}</td>
                                 </tr>
 
                             )  

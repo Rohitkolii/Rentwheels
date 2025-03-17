@@ -80,7 +80,7 @@ const Navbar = () => {
                 {
                     islogin ?
                     <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
-                    <img src="/images/user.jpg" alt="profile" />
+                    <img src="/images/user2.jpg" alt="profile" />
                     <div className={Styles.userinfo}>
                         <p>{ProfileData?.username}</p>
                         <p>{ProfileData?.email}</p>
@@ -118,6 +118,14 @@ const Navbar = () => {
                 <div className={Styles.profilemenu}>
                         <ul>
                             <li><NavLink to="/Profile">Profile</NavLink></li>
+                            {
+                                ProfileData?.role == "admin" ?
+                                <li><NavLink to="/admin">Dashboard</NavLink></li>
+                                :
+                                ProfileData?.role == "vendor" ?
+                                <li><NavLink to="/vendor">Dashboard</NavLink></li>
+                                : ""
+                            }
                             <li><NavLink onClick={logoutUser} to="/login">Logout</NavLink></li>
                             {/* <li><NavLink to="/">Logout</NavLink></li> */}
                         </ul>

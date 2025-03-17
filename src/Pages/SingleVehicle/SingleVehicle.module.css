@@ -116,7 +116,7 @@
     border: 1px solid gray;
 }
 
-.formrow button{
+.formrow input[type = submit]{
     background-color: #0061ff;
     border: transparent;
     padding: 10px;

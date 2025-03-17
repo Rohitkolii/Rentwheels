@@ -14,8 +14,18 @@ import { useNavigate } from 'react-router';
 import { FaCar } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../../store/ProfileSlice';
+import { fetchVehicleList } from '../../../store/getVehicleSlice';
+import { fetchBookingList } from '../../../store/getBookingListSlice';
+import { fetchUserList } from '../../../store/userlistSlice';
 
 const DashboardPage = () => {
+  useEffect(()=> {
+    dispatch(fetchUserProfile(localStorage.getItem("token")))
+    dispatch(fetchVehicleList())
+    dispatch(fetchBookingList())
+    dispatch(fetchUserList())
+  },[])
+  
   const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
   const navigate = useNavigate();
@@ -23,20 +33,26 @@ const DashboardPage = () => {
 
   const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
   const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
-  console.log(ProfileDataStatus);
+  // console.log(ProfileData);
+  
+    const Vehiclesdata = useSelector(state=> state.getVehicleSlice.data)
+    const Bookingdata = useSelector(state=> state.BookingListSlice.data)
+    const userdatalist = useSelector(state=> state.userListSlice.data.userslist)
+  console.log(userdatalist);
+  
+  const vendor = userdatalist && userdatalist.filter((item) => item?.role == 'vendor')
+  const user = userdatalist && userdatalist.filter((item) => item?.role == 'user')
+  
+  // if(ProfileDataStatus === "loading"){
+  //   return <Loader />
+  // }
+  
+  // if(ProfileData?.role !== "admin"){
+  //   navigate("/")
+  // }
+
   
 
-  useEffect(()=> {
-    dispatch(fetchUserProfile(localStorage.getItem("token")))
-  }, [ProfileDataStatus])
-  
-  if(ProfileDataStatus == "loading"){
-    return <Loader />
-  }
-  
-  if(ProfileData?.role != "admin"){
-    navigate("/")
-  }
   return (
     <>
 
@@ -57,22 +73,22 @@ const DashboardPage = () => {
                   <div>
                     <p><IoCarOutline /></p>
                     <p>Total Vehicles</p>
-                    <p>38</p>
+                    <p>{Vehiclesdata?.length || 0}</p>
                   </div>
                   <div>
                     <p><HiOutlineUsers /></p>
                     <p>Total Customer</p>
-                    <p>53</p>
+                    <p>{vendor?.length || 0}</p>
                   </div>
                   <div>
                     <p><PiUserListLight /></p>
                     <p>Total Vendors</p>
-                    <p>7</p>
+                    <p>{vendor?.length || 0}</p>
                   </div>
                   <div>
                     <p><VscBook /></p>
                     <p>Total Bookings</p>
-                    <p>33</p>
+                    <p>{Bookingdata?.length || 0}</p>
                   </div>
                 </div>
               </section>

@@ -22,7 +22,7 @@ const VehicleCard = ({vehicle}) => {
                   <div>
                     <p><span>{vehicle.Vehicle_name}</span></p>
                     <p><span>{vehicle.Vehicle_model}</span></p>
-                    <p>Average: <span>{vehicle.Vehicle_average}</span></p>
+                    <p>Average: <span>{vehicle.Vehicle_average}</span> kmpl</p>
                   </div>
                   <div className={Styles.vehicleprice}>
                     {/* <p>Vehicle Rent</p> */}

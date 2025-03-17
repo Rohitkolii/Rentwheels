@@ -53,8 +53,15 @@ const AddvehiclePage = () => {
       Vehicle_average
     }
 
-    dispatch(addVehicle(data))
+    dispatch(addVehicle(data, localStorage.getItem("token")))
     // console.log(data);
+
+    setimage("")
+    setVehicle_type("")
+    setVehicle_name("")
+    setVehicle_model("")
+    setVehicle_rent("")
+    setVehicle_average("")
     
   }
 

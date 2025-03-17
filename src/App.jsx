@@ -20,6 +20,7 @@ import SingleVehicle from './Pages/SingleVehicle/SingleVehicle'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
 import DashboardPageVendor from './Pages/Vendor/DashboardPage/DashboardPage'
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
+import BookingHistory from './Pages/Vendor/BookingHistory/BookingHistory'
 
 function App() {
     
@@ -43,6 +44,7 @@ function App() {
         <Route path='vendor' element={<DashboardPageVendor />} />
         <Route path='vendor/addvehicle' element={<AddvehiclePage />} />
         <Route path='vendor/editvehicle' element={<UpdateVehicle />} />
+        <Route path='vendor/bookinghistory' element={<BookingHistory />} />
         
         {/* <Route path='/admin/dashboard' element={<AdminDashboard />} /> */}
         <Route path='admin' element={<DashboardPage />} />

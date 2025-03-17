@@ -12,6 +12,8 @@ import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserProfile } from '../../store/ProfileSlice';
 import { HiOutlineDocumentPlus } from "react-icons/hi2";
+import { MdManageHistory } from "react-icons/md";
+
 
 
 
@@ -24,6 +26,7 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
   }, [])
 
   const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
   // console.log(ProfileData.role);
 
   return (
@@ -52,6 +55,7 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
             <li><Link to='/vendor'><MdDashboard /> Dashboard</Link></li>
             <li><Link to='/vendor/addvehicle'><HiOutlineDocumentPlus /> Add Vehicle</Link></li>
             <li><Link to='/vendor/editvehicle'><PiSteeringWheelBold />Vehicles</Link></li>
+            <li><Link to='/vendor/bookinghistory'><MdManageHistory />Booking History</Link></li>
             {/* <li><Link to='/'><MdAdminPanelSettings />Settings</Link></li> */}
           </ul>
           : ""

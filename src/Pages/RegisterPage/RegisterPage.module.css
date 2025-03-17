@@ -139,7 +139,7 @@
     .innercontainer{
         width: 98%;
     }
-
+    
     .innercontainer2{
         width: 100%;
         z-index: 9;
@@ -147,9 +147,28 @@
     }
 
     
-.row{
+    .row{
     display: flex;
     width: 100%;
     gap: 5px;
 }
+}
+
+@media only screen and (max-width: 400px){
+    .innercontainer{
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .row{
+        display: flex;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .innercontainer2{
+        width: 98%;
+        z-index: 9;
+        padding: 10px 0px;
+    }
 }

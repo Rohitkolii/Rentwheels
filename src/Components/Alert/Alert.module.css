@@ -1,0 +1,40 @@
+.alertcon{
+    background-color: white;
+    border-radius: 1px solid rgb(204, 204, 204);
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    padding: 20px 100px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px gray;
+    text-align: center;
+    transform: translateX(-50%)
+}
+
+.alertcon img{
+    width: 50px;
+}
+
+.alertcon .btn{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+.alertcon .btn button{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 16px;
+}
+.alertcon .btn button:nth-child(1){
+    border: 1px solid black;
+}
+
+.alertcon .btn button:nth-child(2){
+    background-color: #0061ff;
+    color: white;
+}

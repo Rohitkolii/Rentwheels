@@ -8,7 +8,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { fetchVehicleList } from '../../store/getVehicleSlice';
 import {useDispatch, useSelector} from "react-redux"
 import Footer from '../../Components/Footer/Footer';
-import Loader from '../../Components/loader/loader';
+import Loader from '../../Components/Loader/Loader';
 
 // const vehicledata = [
 //   {

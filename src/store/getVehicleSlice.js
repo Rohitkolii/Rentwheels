@@ -40,7 +40,7 @@ export const fetchVehicleList = ()=> {
                 // console.log(data);
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             dispatch(setVehicleListStatus('error'))
         }
     }

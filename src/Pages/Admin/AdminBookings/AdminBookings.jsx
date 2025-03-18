@@ -16,7 +16,7 @@ const AdminBookings = () => {
     },[])
 
     const bookingData = useSelector(state => state.BookingListSlice.data)
-    console.log(bookingData);
+    // console.log(bookingData);
     
   
   return (

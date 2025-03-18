@@ -116,7 +116,7 @@
     border: 1px solid gray;
 }
 
-.formrow input[type = submit]{
+.formrow input[type = submit], .feedpopbtn{
     background-color: #0061ff;
     border: transparent;
     padding: 10px;
@@ -130,6 +130,107 @@
 .formrow button:hover{
     background-color: #0062ffdc;
     /* color: rgb(200, 200, 200); */
+}
+
+/* //feedback */
+.feedback{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #0061ff; */
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px black;
+    width: 500px;
+    /* height: 300px; */
+    z-index: 9;
+    padding: 20px;
+    /* display: none; */
+}
+
+.feedback div{
+    width: 100%;
+}
+.feedback div input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgb(182, 182, 182);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.feedback div textarea{
+    width: 100%;
+    height: 100px;
+    border: 1px solid rgb(182, 182, 182);
+    padding: 10px;
+}
+.feedback div textarea:focus{
+    outline: transparent;
+}
+
+.feedback button{
+    background-color: #0061ff;
+    float: right;
+    border: transparent;
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+/* //feedbox */
+
+.feedbox{
+    /* width: 100%; */
+    background-color: #E4EFE7;
+    padding: 15px;
+    border-radius: 12px;
+}
+.feedboxInn{
+    overflow-y: scroll;
+    max-height: 250px;
+}
+
+.feedbox h1{
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.feedbackContent{
+    margin-bottom: 15px;
+    border-bottom: 1px solid gray;
+}
+
+.feedbackContent p:nth-child(1){
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.feedbackContent p:nth-child(2){
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.notfeed{
+    text-align: center;
+    margin: 20px 0;
+}
+.notfeed svg{
+    color: #0061ff;
+    font-size: 30px;
+}
+.notfeed p{
+    font-size: 15px;
 }
 
 @media only screen and (max-width:1300px) {
@@ -222,5 +323,9 @@
         background-color: transparent;
         margin: 10px auto;
         border: none;
+    }
+
+    .feedback{
+        width: 95%;
     }
 }

@@ -23,7 +23,7 @@ const DashboardPage = () => {
     dispatch(fetchUserProfile(localStorage.getItem("token")))
     dispatch(fetchVehicleList())
     dispatch(fetchBookingList())
-    dispatch(fetchUserList())
+    dispatch(fetchUserList(localStorage.getItem("token")))
   },[])
   
   const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
@@ -31,14 +31,14 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
+  // const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+  // const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
   // console.log(ProfileData);
   
     const Vehiclesdata = useSelector(state=> state.getVehicleSlice.data)
     const Bookingdata = useSelector(state=> state.BookingListSlice.data)
     const userdatalist = useSelector(state=> state.userListSlice.data.userslist)
-  console.log(userdatalist);
+  // console.log(userdatalist);
   
   const vendor = userdatalist && userdatalist.filter((item) => item?.role == 'vendor')
   const user = userdatalist && userdatalist.filter((item) => item?.role == 'user')

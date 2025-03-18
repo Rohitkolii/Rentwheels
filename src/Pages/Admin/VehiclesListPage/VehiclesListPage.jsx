@@ -51,40 +51,41 @@ const deleteVehicle = async (id) => {
         
     }
 
-    const updateVehicleStatus = async (vehicle) => {
-        const id = vehicle._id;
-        if(!vehicle.isBooked){
-            alert("Vehicle is already Available!")
-        }else{
-        try {
-            await fetch(`http://localhost:5000/api/vehicle/updatestatus/${id}`,{
-                method: "PUT"
-            })
-            toast.success('Vehicle Deleted Successfully!', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        } catch (error) {
-            toast.error('Something went wrong!', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        }
-    }
+    // const updateVehicleStatus = async (vehicle) => {
+    //     const id = vehicle._id;
+    //     if(!vehicle.isBooked){
+    //         alert("Vehicle is already Available!")
+    //     }else{
+    //     try {
+    //         await fetch(`http://localhost:5000/api/vehicle/updatestatus/${id}`,{
+    //             method: "PUT"
+    //         })
+    //         toast.success('Vehicle Deleted Successfully!', {
+    //             position: "top-center",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: false,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "light",
+    //             });
+    //     } catch (error) {
+    //         toast.error('Something went wrong!', {
+    //             position: "top-center",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: false,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "light",
+    //             });
+    //     }
+    // }
         
-    }
+    // }
+
 
   return (
     <>
@@ -114,7 +115,7 @@ const deleteVehicle = async (id) => {
                     {
                         vehicledata && vehicledata.map((vehicle, i) => {
                             return(
-                                <tr>
+                                <tr key={vehicle._id}>
                                 <td>{i+1}</td>
                                 {/* <td title={vehicle._id}>{vehicle._id.substring(0,10)}...</td> */}
                                 <td title={vehicle._id}>{vehicle._id}</td>
@@ -126,7 +127,8 @@ const deleteVehicle = async (id) => {
                                 </td>
                                 <td>{vehicle.Vehicle_model}</td>
                                 <td>₹ {vehicle.Vehicle_rent}</td>
-                                <td onClick={()=> updateVehicleStatus(vehicle)}>{vehicle.isBooked ? <span style={{color: 'orange'}}> Booked </span> : <span style={{color: 'green'}}>Available</span>}</td>
+                                <td>{vehicle.isBooked ? <span style={{color: 'orange'}}> Booked </span> : <span style={{color: 'green'}}>Available</span>}</td>
+                                {/* <td onClick={()=> updateVehicleStatus(vehicle)}>{vehicle.isBooked ? <span style={{color: 'orange'}}> Booked </span> : <span style={{color: 'green'}}>Available</span>}</td> */}
                                 <td onClick={()=> deleteVehicle(vehicle._id)} style={{cursor: "pointer"}}><ImBin style={{color: "#0061ff", fontSize: 20, cursor: "pointer"}} /></td>
                             </tr>
                             )

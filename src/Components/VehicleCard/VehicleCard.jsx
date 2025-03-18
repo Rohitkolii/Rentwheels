@@ -7,7 +7,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 const VehicleCard = ({vehicle}) => {
-  console.log(vehicle);
+  // console.log(vehicle);
   
   return (
     <>

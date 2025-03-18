@@ -17,6 +17,20 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
   
       const userProfile = useSelector(state => state.profileSlice.data.userData)
 
+      const logoutUser = () => {
+              localStorage.removeItem("token")
+              toast.success('Logout Successfully', {
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  });
+          }
+
   return (
     <>
         <nav className={Styles.navbar}>
@@ -47,7 +61,7 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
           <div className={Styles.profilemenu}>
                   <ul>
                       <li><NavLink to="/Profile">Profile</NavLink></li>
-                      <li><NavLink onClick={()=> localStorage.removeItem("token")} to="/login">Logout</NavLink></li>
+                      <li><NavLink onClick={logoutUser} to="/login">Logout</NavLink></li>
                       {/* <li><NavLink to="/">Logout</NavLink></li> */}
                   </ul>
               </div>

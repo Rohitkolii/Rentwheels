@@ -118,7 +118,7 @@ const RegisterPage = () => {
                             </div>
                             <div className={`${Styles.column} ${Styles.loginput}`}>
                                 <label htmlFor="">Address:</label>
-                                <input onChange={(e)=> setadress(e.target.value)} value={adress} type="password" placeholder='Enter You Adress : City' required/>
+                                <input onChange={(e)=> setadress(e.target.value)} value={adress} type="text" placeholder='Enter You Adress : City' required/>
                             </div>
                         </div>
                         <div className={Styles.row}>

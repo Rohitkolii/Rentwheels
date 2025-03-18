@@ -45,7 +45,7 @@ export const fetchSingleVehicle = (id)=> {
                 const data = await response.json();
                 dispatch(setSingleVehicleStatus('idle'));
                 dispatch(setSingleVehicle(data));
-                console.log(data);
+                // console.log(data);
             }
         } catch (error) {
             console.log(error)

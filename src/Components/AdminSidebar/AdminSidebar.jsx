@@ -47,7 +47,7 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
             <li><Link to='/admin/vendors'><FaUserSecret />Vendors</Link></li>
             <li><Link to='/admin/vehicleslist'><PiSteeringWheelBold />Vehicles</Link></li>
             <li><Link to='/admin/bookings'><FaBookReader />Booking</Link></li>
-            <li><Link to='/'><MdAdminPanelSettings />Settings</Link></li>
+            <li><Link to='/admin/feedbacks'><MdAdminPanelSettings />Feedbacks</Link></li>
           </ul>
             :
             ProfileData?.role == "vendor" ? 
@@ -56,6 +56,7 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
             <li><Link to='/vendor/addvehicle'><HiOutlineDocumentPlus /> Add Vehicle</Link></li>
             <li><Link to='/vendor/editvehicle'><PiSteeringWheelBold />Vehicles</Link></li>
             <li><Link to='/vendor/bookinghistory'><MdManageHistory />Booking History</Link></li>
+              <li><Link to='/vendor/feedbacks'><MdAdminPanelSettings />Feedbacks</Link></li>
             {/* <li><Link to='/'><MdAdminPanelSettings />Settings</Link></li> */}
           </ul>
           : ""

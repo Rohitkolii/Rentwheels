@@ -1,0 +1,93 @@
+.DashboardPage{
+    width: 100%;
+}
+
+.dashContent{
+    width: 98%;
+    margin: 20px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.dashTop{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.dashTop .dashTopin{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
+    border: 1px solid rgba(0, 0, 0, 0.211);
+    /* color: white; */
+}
+.dashTop .dashTopin div{
+    display: flex;
+    gap: 5px;
+}
+
+.dashTop div p:nth-child(1){
+    color: black;
+    /* font-weight: 400; */
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.dashTop div p:nth-child(2){
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(42, 42, 42);
+    /* filter: drop-shadow(10px 10px 20px yellow); */
+}
+.dashTop div p:nth-child(3){
+    font-size: 20px;
+    font-weight: 400;
+
+}
+
+/* .dashTop svg{
+    color: #0061ff;
+} */
+
+@media only screen and (max-width:700px){
+    .dashTop{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin: 15px 0;
+    }
+}
+@media only screen and (max-width:500px){
+    .dashContent{
+        width: 100%;
+        margin: 20px auto;
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 12px;
+        height: 100%;
+    }
+
+    .dashTop{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+    }
+}
+@media only screen and (max-width:350px){
+    .dashTop div p:nth-child(1){
+        margin-bottom: 0px;
+    }
+
+    .dashTop div{
+        padding: 10px;
+    }
+}

@@ -21,7 +21,7 @@ const HomePage = () => {
 
   const featuredVehicle = useSelector(state => state.getVehicleSlice.data)
   const filterfeaturedVehicle = featuredVehicle && featuredVehicle.filter((v)=> v.isBooked === false)
-  console.log(filterfeaturedVehicle);
+  // console.log(filterfeaturedVehicle);
   
 
   return (

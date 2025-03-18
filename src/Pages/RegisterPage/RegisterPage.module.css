@@ -169,6 +169,12 @@
     .innercontainer2{
         width: 98%;
         z-index: 9;
-        padding: 10px 0px;
+        padding: 10px;
+    }
+
+    .loginput input{
+        height: 40px;
+        width: 100%;
+        padding: 3px 5px;
     }
 }

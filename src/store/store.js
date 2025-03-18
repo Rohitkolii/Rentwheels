@@ -6,6 +6,7 @@ import userListReducer from "./userlistSlice"
 import VehicleListReducer from "./getVehicleSlice"
 import SingleVehicleReducer from "./getSingleVehicleSlice"
 import BookingListReducer from "./getBookingListSlice"
+import FeedbackReducer from "./getFeedbackSlice"
 
 const store = configureStore({
     reducer : {
@@ -13,7 +14,8 @@ const store = configureStore({
         userListSlice : userListReducer,
         getVehicleSlice : VehicleListReducer,
         SingleVehicleSlice : SingleVehicleReducer,
-        BookingListSlice : BookingListReducer
+        BookingListSlice : BookingListReducer,
+        FeedbackSlice : FeedbackReducer
     }
 })
 

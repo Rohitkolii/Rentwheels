@@ -12,8 +12,7 @@ import { fetchUserProfile } from '../../store/ProfileSlice';
 const BookingsPage = () => {
 
     const dispatch  = useDispatch();
-    // const [userid, setuserid] = useState()
-
+    
     useEffect(()=> {
         dispatch(fetchBookingList())
         dispatch(fetchUserProfile(localStorage.getItem("token")))
@@ -22,38 +21,47 @@ const BookingsPage = () => {
     const userid = useSelector(state => state.profileSlice.data.userData)
     const bookingData = useSelector(state => state.BookingListSlice.data)
     console.log(bookingData);
-    console.log(userid);
+    // console.log(userid);
     
-
+    
     const filteredbookingData = bookingData && bookingData.filter((booking)=> booking?.Booking_User_id === userid?._id)
     // console.log(filteredbookingData);
+
+    const [searchQuery, setSearchQuery] = useState("");
+      const [selectedType, setSelectedType] = useState("");
     
+    const filteredVehicles = filteredbookingData.filter(booking => {
+        const matchesName = booking.Vehicle_name.toLowerCase().includes(searchQuery.toLowerCase());
+        let matchesType;
+        if(selectedType == 'a'){
+            matchesType = booking.Vehicle_Dropof_Date > new Date().toISOString().split('T')[0];
+        }else if(selectedType == 'e'){
+            matchesType = booking.Vehicle_Dropof_Date < new Date().toISOString().split('T')[0];
+        }else{
+            matchesType = true;
+        }
+    
+        return matchesName && matchesType;
+      });
+
+    //   console.log("new Date : ", new Date().toISOString().split('T')[0]);
+      
 
   return (
     <>
         <Navbar />
         <div className={Styles.bookingcon}>
+            <h1>Bookings</h1>
             <div className={Styles.bookingfilter}>
                 
                 <div className={Styles.filtercol1}>
-                    <div>
-                        <label htmlFor="">Suppliers:</label>
-                        <select name="status" id="status">
-                            <option value="Supplier1">Supplier 1</option>
-                            <option value="Supplier1">Supplier 2</option>
-                            <option value="Supplier1">Supplier 3</option>
-                            <option value="Supplier1">Supplier 4</option>
-                            <option value="Supplier1">Supplier 5</option>
-                            <option value="Supplier1">Supplier 6</option>
-                        </select>
-                    </div>
                     
                     <div>
                         <label htmlFor="">Status:</label>
-                        <select name="status" id="status">
-                            <option value="Active">Active</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Cancelled">Cancelled</option>
+                        <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} name="status" id="status">
+                            <option value="">All</option>
+                            <option value="a">Available</option>
+                            <option value="e">Expired</option>
                         </select>
                     </div>
                 </div>
@@ -61,19 +69,19 @@ const BookingsPage = () => {
                 <div className={Styles.searchinp}>
                     <label htmlFor="">Search:</label>
                     <div>
-                        <input type="text" placeholder='search booking'/>
+                        <input onChange={(e) => setSearchQuery(e.target.value)} type="text" placeholder='search booking'/>
                         <button><FaSearch /></button>
                     </div>
                 </div>
             </div>
 
             <div className={Styles.booking_con}>
-                {/* <p>Bookings</p> */}
-                <div className={Styles.booking_con_inner}>
-                
+                {
+                    filteredVehicles.length ?
+                    <div className={Styles.booking_con_inner}>
                     {
-                        filteredbookingData && filteredbookingData.map((booking)=> {
-                            return <div className={Styles.VehicleCard}>
+                        filteredVehicles.map((booking)=> {
+                            return <div key={booking._id} className={Styles.VehicleCard}>
                             <div className={Styles.Vehicleimg}>
                                 <img src={`http://localhost:5000${booking.Vehicle_image}`} alt="" />
                             </div>
@@ -88,27 +96,36 @@ const BookingsPage = () => {
                                     </div>
                                     <div className={Styles.Vehicleprice}>
                                     {/* <p>Vehicle Rent</p> */}
-                                    <span style={{display: 'flex', alignItems: 'center'}}><FaRupeeSign />{booking.Vehicle_rent}</span>
-                                    <p>For 3 days</p>
+                                    <span style={{display: 'flex', alignItems: 'center', justifyContent: 'right'}}><FaRupeeSign />{booking.Vehicle_rent}</span>
+                                    {/* <p>{booking.Vehicle_Booking_Date}</p> */}
+                                    {/* <p>to</p> */}
+                                    <p>Dropof: {booking.Vehicle_Dropof_Date}</p>
                                     </div>
                                 </div>
                                 
                                 <div className={Styles.btn}>
-                                    <Link to='/'>View Details</Link>
+                                    {/* <Link to='/'>View Details</Link> */}
+                                    <span style={booking?.Vehicle_Dropof_Date > new Date().toISOString().split('T')[0] ? {background: '#399918'} : {background: 'red'}}>{booking?.Vehicle_Dropof_Date > new Date().toISOString().split('T')[0] ? "Yours" : "Expired"}</span>
                                 </div>
                             </div>
                         </div>
                         })
-                    }
+                    }    
+                    </div>
 
-                
+                    :
 
-                </div>
+                    <div className={Styles.notfound}>
+                        <img src="images/re.webp" alt="" />
+                        <p>No Booking Found!</p>
+                    </div>
+                }
             </div>
         </div>
         <Footer />
     </>
   )
+                        
 }
 
 export default BookingsPage

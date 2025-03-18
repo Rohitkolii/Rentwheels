@@ -3,6 +3,11 @@
     margin: 50px auto;
 }
 
+.bookingcon h1{
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
 .bookingfilter{
     /* background-color: #f8f8f8; */
     display: flex;
@@ -122,30 +127,32 @@ line-height: 22px;
 }
 
 .btn{
-    /* margin-top: 10px; */
-    width: 100%;
-    /* text-align: center; */
-}
-.btn a:hover{
-    background-color: rgb(66, 66, 66);
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
-.btn a{
-    background-color: rgb(102, 102, 102);
-    /* background-color: #ff3131; */
-    color: white;
-    /* color: rgb(25, 25, 25); */
-    text-decoration: none;
-    padding: 10px 0px;
+.btn span{
+    /* background-color: red; */
+    padding: 5px 15px;
     border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 95%;
-    font-size: 15px;
-    margin: 10px auto;
+    box-shadow: 1px 1px 5px black;
+    color: white;
     font-weight: 500;
-    transition: .3s;
+}
+
+.notfound{
+    width: 100%;
+    text-align: center;
+}
+.notfound img{
+    width: 300px;
+}
+.notfound p{
+    text-transform: uppercase;
+    color: #007dfe;
+    font-size: 25px;
+    font-weight: 700;
 }
 
 @media only screen and (max-width:1300px) {

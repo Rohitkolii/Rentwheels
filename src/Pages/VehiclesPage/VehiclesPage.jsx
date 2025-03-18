@@ -9,6 +9,7 @@ import { fetchVehicleList } from '../../store/getVehicleSlice';
 import {useDispatch, useSelector} from "react-redux"
 import Footer from '../../Components/Footer/Footer';
 import Loader from '../../Components/Loader/Loader';
+import { fetchFeedback } from '../../store/getFeedbackSlice';
 
 // const vehicledata = [
 //   {
@@ -46,21 +47,27 @@ const Vehicles = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(()=> {
-    dispatch(fetchVehicleList())
-  }, [])
-
   const vehicledata = useSelector(state => state.getVehicleSlice.data)
   const loadingStatus = useSelector(state => state.getVehicleSlice.status)
-
-  console.log(vehicledata);
-  
-
   const filteredVehicleData = vehicledata && vehicledata.filter((vehicle)=> vehicle?.isBooked === false)
-  console.log(filteredVehicleData);
-  
 
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [Vehiclelength, setVehiclelength] = useState(6);
+
+  useEffect(()=> {
+    dispatch(fetchVehicleList())
+    dispatch(fetchFeedback())
+  }, [])
+
+   // Filtering logic
+  const filteredVehicles = filteredVehicleData.filter(vehicle => {
+    const matchesName = vehicle.Vehicle_name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesType = selectedType ? vehicle.Vehicle_type === selectedType : true;
+
+    return matchesName && matchesType;
+  });
 
   return (
     <>
@@ -78,11 +85,11 @@ const Vehicles = () => {
             <div className={Styles.col}>
               <p>categories:</p>
               <div>
-                <select name="vehicletype" id="vehicletype">
-                  <option disabled value="select">Select</option>
-                  <option value="Car">Car</option>
-                  <option value="Car">Bike</option>
-                  <option value="Car">Scooty</option>
+                <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} name="vehicletype" id="vehicletype">
+                  <option value="">All</option>
+                  <option value="car">Car</option>
+                  <option value="bike">Bike</option>
+                  <option value="scooty">Scooty</option>
                 </select>
               </div>
             </div>
@@ -90,7 +97,7 @@ const Vehicles = () => {
             <div className={Styles.col}>
                 <p>Search:</p>
               <div>
-                <input placeholder='Search vehicles' type="text" />
+                <input onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search vehicles' type="text" />
                 <button> <FaSearch /> </button>
               </div>
             </div>
@@ -99,10 +106,21 @@ const Vehicles = () => {
         loadingStatus == 'loading' ? <Loader /> :
       <div className={Styles.Vehiclescontainer}>
         {
-          filteredVehicleData && filteredVehicleData.map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>)
+          filteredVehicles && filteredVehicles.slice(0,Vehiclelength).map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>) 
         }
       </div>
       }
+      {
+        filteredVehicles.length > 6 &&
+        <div className={Styles.showmorebtn}>
+          {
+            Vehiclelength === filteredVehicles.length ?
+            <button onClick={()=> setVehiclelength(6)}>Show less</button>
+            :
+            <button onClick={()=> setVehiclelength(filteredVehicles.length)}>Show More</button>
+          }
+        </div>
+        }
 
       <Footer />
     </>

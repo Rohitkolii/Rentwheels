@@ -21,6 +21,8 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage'
 import DashboardPageVendor from './Pages/Vendor/DashboardPage/DashboardPage'
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
 import BookingHistory from './Pages/Vendor/BookingHistory/BookingHistory'
+import Feedbacks from './Pages/Admin/Feedbacks/Feedbacks'
+import FeedbacksVendor from './Pages/Vendor/Feedbacks/Feedbacks'
 
 function App() {
     
@@ -45,6 +47,7 @@ function App() {
         <Route path='vendor/addvehicle' element={<AddvehiclePage />} />
         <Route path='vendor/editvehicle' element={<UpdateVehicle />} />
         <Route path='vendor/bookinghistory' element={<BookingHistory />} />
+        <Route path='vendor/feedbacks' element={<FeedbacksVendor />} />
         
         {/* <Route path='/admin/dashboard' element={<AdminDashboard />} /> */}
         <Route path='admin' element={<DashboardPage />} />
@@ -52,6 +55,7 @@ function App() {
         <Route path='admin/userslist' element={<UsersListPage />} />
         <Route path='admin/vendors' element={<VendorsListPage />} />
         <Route path='admin/vehicleslist' element={<VehiclesListPage />} />
+        <Route path='admin/feedbacks' element={<Feedbacks />} />
 
         {/* //Error Page is here */}
         <Route path='*' element={<ErrorPage />} />

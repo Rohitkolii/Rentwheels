@@ -83,7 +83,38 @@
     outline: transparent;
 }
 
+.showmorebtn{
+    /* margin:20px; */
+    margin-bottom: 20px;
+    text-align: center;
+}
+.showmorebtn button{
+    /* background-color: #007dfe; */
+    border: 1px solid #007dfe;
+    padding: 10px 20px;
+    /* border: transparent; */
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    color: black;
+    font-size: 15px;
+    background-color: transparent;
+}
 
+
+.notfound{
+    width: 100%;
+    text-align: center;
+}
+.notfound img{
+    width: 300px;
+}
+.notfound p{
+    text-transform: uppercase;
+    color: #007dfe;
+    font-size: 25px;
+    font-weight: 700;
+}
 
 @media only screen and (max-width:1300px) {
     .vehiclefilter{
@@ -99,8 +130,24 @@
     .vehiclefilter{
         width: 95%;
     }
+    
+    .Vehiclescontainer{
+        width: 95%;
+        display: grid;
+    }
 }
 
+@media only screen and (max-width:950px) {
+    .vehiclefilter{
+        width: 95%;
+    }
+    
+    .Vehiclescontainer{
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 @media only screen and (max-width:600px) {
     .Vehiclescontainer{

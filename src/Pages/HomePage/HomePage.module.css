@@ -87,6 +87,12 @@
 
 /* /// Media Query */
 
+@media only screen and (max-width:1300px) {
+    .latestConInn{
+        width: 90%;
+    }
+}
+
 @media only screen and (max-width:1200px) {
     .detailsconinner{
         width: 95%;
@@ -95,6 +101,16 @@
     
     .row2inner_1{
         height: 250px;
+    }
+}
+@media only screen and (max-width:1000px) {
+    .latestConInn{
+        width: 90%;
+    }
+
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -106,14 +122,29 @@
         align-items: center;
         margin-bottom: 20px;
     }
-
+    
     .row2{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 0px;
     }
-
+    
     .row2inner_1{
         height: 300px;
+    }
+}
+@media only screen and (max-width:800px) {
+    .latestConInn{
+        width: 80%;
+    }
+
+    .grid{
+        gap: 10px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media only screen and (max-width:450px) {
+    .latestConInn{
+        width: 90%;
     }
 }

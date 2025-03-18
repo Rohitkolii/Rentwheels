@@ -10,8 +10,12 @@ import { useEffect, useState } from 'react';
 import { fetchSingleVehicle } from '../../store/getSingleVehicleSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../store/ProfileSlice';
-import { addBooking } from '../../store/addBookingSlice';
+import { RiFeedbackLine } from "react-icons/ri";
+import { FaUserCircle } from "react-icons/fa";
+
+
 import { toast } from 'react-toastify';
+import { fetchFeedback } from '../../store/getFeedbackSlice';
 
 const SingleVehicle = () => {
     const { id } = useParams()
@@ -20,17 +24,23 @@ const SingleVehicle = () => {
 
     const[bookingDate, setBookingDate] = useState("");
     const[dropofDate, setDropofDate] = useState("");
+    const[DisplayFeed, setDisplayFeed] = useState(false);
+    const[FeedbackMessage, setFeedbackMessage] = useState("");
+
+
+    const SingleVehicleData = useSelector(state => state.SingleVehicleSlice.data)
+    const Feedbacks = useSelector(state => state.FeedbackSlice.data)
+    const SingleVehicleStatus = useSelector(state => state.SingleVehicleSlice.status)
+    const Booking_Userid = useSelector(state => state.profileSlice.data.userData)
+    // console.log("vehicle", SingleVehicleData);
+    // console.log("Booking_Userid", Booking_Userid);
 
     useEffect(()=> {
         dispatch(fetchSingleVehicle(id))
+        dispatch(fetchFeedback())
         dispatch(fetchUserProfile(localStorage.getItem("token")))
     },[id])
     
-    const SingleVehicleData = useSelector(state => state.SingleVehicleSlice.data)
-    const SingleVehicleStatus = useSelector(state => state.SingleVehicleSlice.status)
-    const Booking_Userid = useSelector(state => state.profileSlice.data.userData)
-    console.log("vehicle", SingleVehicleData);
-    console.log("Booking_Userid", Booking_Userid);
 
     const bookVehicle = (e) => {
         e.preventDefault();
@@ -110,12 +120,122 @@ const SingleVehicle = () => {
         }
         // console.log((new Date("2025-03-25") - new Date("2025-03-20")) / (24 * 60 *60 *1000));
     }
-    
 
+    const submitFeedback = async () => {
+
+        const data = {
+            vendor_id: SingleVehicleData.user_id,
+            User_name : Booking_Userid.username,
+            User_id: Booking_Userid._id,
+            Vehicle_id: SingleVehicleData._id,
+            Feedback_message: FeedbackMessage,
+            Feedback_date: new Date().toISOString().split('T')[0]
+        }
+
+        if(FeedbackMessage){
+
+        if(!localStorage.getItem("token")){
+            toast.error('Please Login First', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }else if(Booking_Userid?.role == 'user'){
+            try {
+                const response = await fetch("http://localhost:5000/api/feedback/add", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json" // Specify JSON format
+                    },
+                    body: JSON.stringify(data)
+                })
+
+                if(response.ok){
+                    toast.success('Feedback submitted Successfully', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
+
+                        setDisplayFeed(false)
+                        setFeedbackMessage("")
+                }else{
+                    toast.error('Something went wrong', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }else{
+            toast.error('Only user allowed to give feedback!', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
+    }else{
+        toast.error('Please Fill Form!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+    }
+    
+    // console.log("BEfore",Feedbacks);
+    const filteredFeedbacks = Feedbacks && Feedbacks.filter((feedback)=> feedback.Vehicle_id === SingleVehicleData._id)
+    // console.log("After",filteredFeedbacks);
+    
     return(
         <>
             <Navbar />
-            {/* <h1>{id}</h1> */}
+            <div style={DisplayFeed ? {display: 'block'} : {display: 'none'} } className={Styles.feedback}>
+                <div>
+                    <label htmlFor="">Name:</label> <br />
+                    <input value={Booking_Userid?.username} type="text" name="" id="" />
+                </div>
+                <div>
+                    <label htmlFor="">Message:</label> <br />
+                    <textarea onChange={(e)=> setFeedbackMessage(e.target.value)} placeholder='what do you think about this vehicle!' name="" id=""></textarea>
+                </div>
+                
+                <div className={Styles.feedbtn}>
+                    <button onClick={()=> submitFeedback()}>Submit</button>
+                    <button onClick={()=> setDisplayFeed(false)} style={{background: 'white', color: "black", border: "1px solid black"}}>Cancle</button>
+                </div>
+            </div>
+
+
             {
                 SingleVehicleStatus == 'loading' ? <h1 style={{textAlign: 'center', color: "#0061ff", textTransform: 'uppercase', margin: 50}}>Loading...</h1> 
                 :
@@ -152,32 +272,6 @@ const SingleVehicle = () => {
                                 </div>
                             </div>
 
-                            {/* <div className={Styles.formrow}>
-                                <div className={Styles.formcol}>
-                                    <label htmlFor="">Pickup Time</label>
-                                    <input type="time" name="" id="" />
-                                </div>
-                                <div className={Styles.formcol}>
-                                    <label htmlFor="">Dropof time</label>
-                                    <input type="time" name="" id="" />
-                                </div>
-                            </div> */}
-
-
-                            {/* <div className={Styles.formrow}>
-                                <div className={Styles.formcol}>
-                                    <label htmlFor="">Days:</label>
-                                    <select name="" id="">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="1">5</option>
-                                        <option value="1">6</option>
-                                        <option value="1">7</option>
-                                    </select>
-                                </div>
-                            </div> */}
                             <div className={Styles.formrow}>
                                 {/* <div className={Styles.formcol}> */}
                                     {/* <button >Pay Now</button> */}
@@ -185,7 +279,32 @@ const SingleVehicle = () => {
                                 {/* </div> */}
                             </div>
                         </form>
+
+                        <div className={Styles.feedbox}>
+                            <h1>Feedbacks</h1>
+                            <div className={Styles.feedboxInn}>
+                                <div className={Styles.feedboxScroll}>
+                                {
+                                    filteredFeedbacks.length != 0 ? filteredFeedbacks.map((feedback)=> {
+                                        return(
+                                            <div key={feedback._id} className={Styles.feedbackContent}>
+                                                <p><FaUserCircle style={{fontSize: 25, color: '#73BBA3'}} />{feedback.User_name}</p>
+                                                <p>{feedback.Feedback_message}</p>
+                                            </div>
+                                        )
+                                    }) :
+                                    <div className={Styles.notfeed}>
+                                        <RiFeedbackLine />
+                                        <p>Feedbacks Are not Available for this vehicle!</p>
+                                    </div>
+                                }
+                                </div>
+                            </div>
+                                <button onClick={()=> setDisplayFeed(true)} className={Styles.feedpopbtn}>Give Feedback</button>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
             }

@@ -23,6 +23,7 @@ import { fetchFeedback } from '../../store/getFeedbackSlice';
 const SingleVehicle = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const[bookingDate, setBookingDate] = useState("");
     const[dropofDate, setDropofDate] = useState("");
@@ -92,7 +93,6 @@ const SingleVehicle = () => {
         }
         else{
         if(dropofDate > bookingDate){
-            setpaymentmode(true)
             // navigate("/bookings")
 
             let options = {
@@ -109,6 +109,7 @@ const SingleVehicle = () => {
                 //   console.log("res", response);
                   if(paymentId){
                     dispatch(addBooking(data))
+                    navigate("/bookings")
                   }
                 },
                 theme: {

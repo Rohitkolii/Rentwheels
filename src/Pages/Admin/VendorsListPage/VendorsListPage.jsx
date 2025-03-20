@@ -26,11 +26,14 @@ const VendorsListPage = () => {
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
 const deleteuser = async (id) => {
+    const res = confirm("Are you sure! you want to delete")
+
+    if(res){
     try {
-        const response = await fetch(`http://localhost:5000/api/auth/delete/${id}`,{
+        const response = await fetch(`${import.meta.env.VITE_URL}/api/auth/delete/${id}`,{
             method: "DELETE"
         })
-        toast.success('User Deleted Successfully!', {
+        toast.success('Vendor Deleted Successfully!', {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -54,8 +57,35 @@ const deleteuser = async (id) => {
             theme: "light",
             });
     }
+}else{
+    toast.error('Request Cancel', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+}
     
 }
+
+const [searchQuery, setSearchQuery] = useState("");
+    
+        // Filtering function
+        const filteredUsers = userlist && userlist.filter(user => {
+            const query = searchQuery.toLowerCase();
+            return (
+                user.username.toLowerCase().includes(query) ||
+                user.email.toLowerCase().includes(query) ||
+                user.phone.toLowerCase().includes(query) ||
+                user.age.toLowerCase().includes(query) ||
+                user.dlnumber.toLowerCase().includes(query) ||
+                user.adress.toLowerCase().includes(query)
+            );
+        });
     
   return (
     <>
@@ -69,6 +99,10 @@ const deleteuser = async (id) => {
                 setSidebarVisiblity={setSidebarVisiblity}
                 sidebarVisiblity={sidebarVisiblity} />
                 <div className={Styles.bookingtable}>
+                <div style={{width: "95%", margin: "10px auto"}}>
+                    <label htmlFor="">Search:</label> <br />
+                    <input onChange={(e)=> setSearchQuery(e.target.value)} placeholder='Search' type="text" name="" id="" />
+                </div>
                     <table>
                         <tr>
                             <th>S.No</th>
@@ -82,7 +116,7 @@ const deleteuser = async (id) => {
                             <th>Action</th>
                         </tr>
                         {
-                            userlist && userlist.map((elm, i)=> {
+                            filteredUsers?.length ? filteredUsers.map((elm, i)=> {
                                 return(
                                     <tr key={elm._id}>
                                         <td>{i+1}</td>
@@ -97,6 +131,8 @@ const deleteuser = async (id) => {
                                     </tr>
                                 )
                             })
+                            :
+                            <h1 style={{margin: "20px auto", textAlign: 'center', textTransform: 'uppercase', color:'#0061ff'}}>No Vendors Found!</h1>
                         }
                     </table>
                 </div>

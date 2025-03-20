@@ -3,6 +3,8 @@ import Styles from './LoginPage.module.css'
 import { Link } from 'react-router';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+
 
 
 const LoginPage = () => {
@@ -10,6 +12,7 @@ const LoginPage = () => {
     const navigate = useNavigate()
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
+    const [visiblity, setvisiblity] = useState(false)
 
     const Loginfunction = async (e) => {
         e.preventDefault();
@@ -22,7 +25,7 @@ const LoginPage = () => {
         console.log(email, password);
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/login",{
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/auth/login`,{
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json",
@@ -33,7 +36,7 @@ const LoginPage = () => {
 
             if(response.ok){
                 const res_data = await response.json();
-                console.log(res_data);
+                // console.log(res_data);
                 localStorage.setItem("token", res_data.token)
                 setemail("");
                 setpassword("");
@@ -96,7 +99,11 @@ const LoginPage = () => {
                             <label htmlFor="">username</label>
                             <input onChange={(e)=> setemail(e.target.value)} value={email} type="text" placeholder='E-mail or Username' required/>
                             <label htmlFor="">password</label>
-                            <input onChange={(e)=> setpassword(e.target.value)} value={password} type="password" placeholder='Enter You Password' required/>
+                            <div style={{display:'flex'}}>
+                                <input onChange={(e)=> setpassword(e.target.value)} value={password} type={visiblity ? "text" : "password"} placeholder='Enter You Password' required/>
+                                <button onClick={()=> setvisiblity(!visiblity)} style={{padding: "0 10px", background:"transparent", color:"black",border:"transparent", cursor:"pointer"}}><FaEye /></button>
+                            </div>
+                            
                         </div>
 
                         <div className={Styles.loginbutt}>

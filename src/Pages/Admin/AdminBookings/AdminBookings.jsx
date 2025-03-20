@@ -17,6 +17,19 @@ const AdminBookings = () => {
 
     const bookingData = useSelector(state => state.BookingListSlice.data)
     // console.log(bookingData);
+
+    const [searchQuery, setSearchQuery] = useState("");
+
+    // Filtering function
+    const filteredVehicles = bookingData && bookingData.filter(booking => {
+        const query = searchQuery.toLowerCase();
+        return (
+            booking.Vehicle_name.toLowerCase().includes(query) ||
+            booking.Vendor_id.toLowerCase().includes(query) ||
+            booking._id.toLowerCase().includes(query) ||
+            booking.Booking_User_id.toLowerCase().includes(query)
+        );
+    });
     
   
   return (
@@ -30,6 +43,10 @@ const AdminBookings = () => {
             setSidebarVisiblity={setSidebarVisiblity}
             sidebarVisiblity={sidebarVisiblity} />
             <div className={Styles.bookingtable}>
+                <div style={{width: "95%", margin: "10px auto"}}>
+                    <label htmlFor="">Search:</label> <br />
+                    <input onChange={(e)=> setSearchQuery(e.target.value)} placeholder='Search' type="text" name="" id="" />
+                </div>
             <table>
                     <tr>
                         <th>S.No</th>
@@ -42,14 +59,14 @@ const AdminBookings = () => {
                         {/* <th>Status</th> */}
                     </tr>
                     {
-                        bookingData && bookingData.map((booking, i)=> {
+                        filteredVehicles?.length ? filteredVehicles.map((booking, i)=> {
                             return(
                                 <tr key={booking._id}>
                                     <td>{i+1}</td>
                                     {/* <td title={booking._id}>{booking._id.substring(0,10)}</td> */}
                                     <td title={booking._id}>{booking._id.substring(0,10)}</td>
                                     <td>
-                                        <img src={`http://localhost:5000${booking.Vehicle_image}`} alt="" />
+                                        <img src={`${import.meta.env.VITE_URL}${booking.Vehicle_image}`} alt="" />
                                         <p>{booking.Vehicle_name}</p>
                                         {/* <p>025414</p> */}
                                     </td>
@@ -61,6 +78,8 @@ const AdminBookings = () => {
                                 </tr>
                             )
                         })
+                        
+                        :  <h1 style={{margin: "20px auto", textAlign: 'center', textTransform: 'uppercase', color:'#0061ff'}}>No Bookings Found!</h1>
                     }
                     
                 </table>

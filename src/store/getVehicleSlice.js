@@ -30,7 +30,7 @@ export const fetchVehicleList = ()=> {
         dispatch(setVehicleListStatus('loading'))
         
         try {
-            const response = await fetch("http://localhost:5000/api/vehicle/get");
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/vehicle/get`  );
             // console.log(response);
             
             if(response.ok){

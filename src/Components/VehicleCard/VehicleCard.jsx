@@ -13,7 +13,7 @@ const VehicleCard = ({vehicle}) => {
     <>
         <div className={Styles.VehicleCard}>
             <div className={Styles.Vehicleimg}>
-                <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
+                <img src={`${import.meta.env.VITE_URL}${vehicle.Vehicle_image}`} alt="" />
             </div>
             
             <div className={Styles.Vehicleinfo}>

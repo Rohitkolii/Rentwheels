@@ -61,7 +61,7 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
           <div className={Styles.profilemenu}>
                   <ul>
                       <li><NavLink to="/Profile">Profile</NavLink></li>
-                      <li><NavLink onClick={logoutUser} to="/login">Logout</NavLink></li>
+                      <li><NavLink onClick={logoutUser} to="">Logout</NavLink></li>
                       {/* <li><NavLink to="/">Logout</NavLink></li> */}
                   </ul>
               </div>

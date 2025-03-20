@@ -12,21 +12,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../store/ProfileSlice';
 import { RiFeedbackLine } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
+import { addBooking } from "../../store/addBookingSlice";
+
 
 
 import { toast } from 'react-toastify';
 import { fetchFeedback } from '../../store/getFeedbackSlice';
+// import PaymentGateway from '../../Components/PaymentGateway/PaymentGateway';
 
 const SingleVehicle = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
     const[bookingDate, setBookingDate] = useState("");
     const[dropofDate, setDropofDate] = useState("");
     const[DisplayFeed, setDisplayFeed] = useState(false);
     const[FeedbackMessage, setFeedbackMessage] = useState("");
-
 
     const SingleVehicleData = useSelector(state => state.SingleVehicleSlice.data)
     const Feedbacks = useSelector(state => state.FeedbackSlice.data)
@@ -39,14 +40,30 @@ const SingleVehicle = () => {
         dispatch(fetchSingleVehicle(id))
         dispatch(fetchFeedback())
         dispatch(fetchUserProfile(localStorage.getItem("token")))
-    },[id])
+    },[id, DisplayFeed])
     
 
-    const bookVehicle = (e) => {
+    const bookVehicle =async (e) => {
         e.preventDefault();
 
         const rentDays = (new Date(dropofDate) - new Date(bookingDate)) / (24 * 60 *60 *1000)
         const rent_by_date = (SingleVehicleData.Vehicle_rent) * rentDays;
+
+        const data = {
+            Vehicle_id: SingleVehicleData._id,
+            Vendor_id: SingleVehicleData.user_id, //vedor id means who added that vehicle
+            Booking_User_id: Booking_Userid._id,
+            Vehicle_type: SingleVehicleData.Vehicle_type,
+            Vehicle_name: SingleVehicleData.Vehicle_name,
+            Vehicle_model: SingleVehicleData.Vehicle_model,
+            Vehicle_rent: rent_by_date,
+            Vehicle_average: SingleVehicleData.Vehicle_average,
+            Vehicle_image: SingleVehicleData.Vehicle_image,
+            Vehicle_Booking_Date: bookingDate,
+            Vehicle_Dropof_Date: dropofDate
+        }
+
+        if(localStorage.getItem("token")){
         
         if(Booking_Userid?._id === SingleVehicleData.user_id){
             toast.error('Sorry, you cant book your own vehicles!', {
@@ -75,35 +92,32 @@ const SingleVehicle = () => {
         }
         else{
         if(dropofDate > bookingDate){
+            setpaymentmode(true)
+            // navigate("/bookings")
 
-            const data = {
-                    Vehicle_id: SingleVehicleData._id,
-                    Vendor_id: SingleVehicleData.user_id, //vedor id means who added that vehicle
-                    Booking_User_id: Booking_Userid._id,
-                    Vehicle_type: SingleVehicleData.Vehicle_type,
-                    Vehicle_name: SingleVehicleData.Vehicle_name,
-                    Vehicle_model: SingleVehicleData.Vehicle_model,
-                    Vehicle_rent: rent_by_date,
-                    Vehicle_average: SingleVehicleData.Vehicle_average,
-                    Vehicle_image: SingleVehicleData.Vehicle_image,
-                    Vehicle_Booking_Date: bookingDate,
-                    Vehicle_Dropof_Date: dropofDate
-            }
+            let options = {
+                key: import.meta.env.VITE_RAZORPAY_KEY,
+                key_secret: import.meta.env.VITE_RAZORPAY_SECRET_KEY,
+                amount: parseInt(data.Vehicle_rent) * 100,
+                currency: "INR",
+                name: "Rent Wheels",
+                description: "for testing purpose",
+                image:"/images/supcar1.png",
+                handler: function (response) {
+                  const paymentId = response.razorpay_payment_id;
+                //   console.log("paymant id", paymentId);
+                //   console.log("res", response);
+                  if(paymentId){
+                    dispatch(addBooking(data))
+                  }
+                },
+                theme: {
+                  color: "#0061ff",
+                },
+              };
 
-            // dispatch(addBooking(data))
-            // console.log(data);
-
-            toast.success('Vehicle booked successfully', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            navigate("/bookings")
+              let pay = new window.Razorpay(options);
+              pay.open();
 
         }else{
             toast.info('Select date properly!', {
@@ -118,7 +132,18 @@ const SingleVehicle = () => {
             });
         }}
         }
-        // console.log((new Date("2025-03-25") - new Date("2025-03-20")) / (24 * 60 *60 *1000));
+    }else{
+        toast.error('Please login!!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
     }
 
     const submitFeedback = async () => {
@@ -147,7 +172,7 @@ const SingleVehicle = () => {
             });
         }else if(Booking_Userid?.role == 'user'){
             try {
-                const response = await fetch("http://localhost:5000/api/feedback/add", {
+                const response = await fetch(`${import.meta.env.VITE_URL}/api/feedback/add`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json" // Specify JSON format
@@ -212,13 +237,12 @@ const SingleVehicle = () => {
     }
     }
     
-    // console.log("BEfore",Feedbacks);
     const filteredFeedbacks = Feedbacks && Feedbacks.filter((feedback)=> feedback.Vehicle_id === SingleVehicleData._id)
-    // console.log("After",filteredFeedbacks);
     
     return(
         <>
             <Navbar />
+
             <div style={DisplayFeed ? {display: 'block'} : {display: 'none'} } className={Styles.feedback}>
                 <div>
                     <label htmlFor="">Name:</label> <br />
@@ -246,7 +270,7 @@ const SingleVehicle = () => {
                 <div className={Styles.viewVehicle_con_inn}>
                     <div className={Styles.viewVehicle_info}>
                         <div className={Styles.viewVehicle_img}>
-                            <img src={`http://localhost:5000${SingleVehicleData.Vehicle_image}`} alt="" />
+                            <img src={`${import.meta.env.VITE_URL}${SingleVehicleData.Vehicle_image}`} alt="" />
                         </div>
 
                         <div className={Styles.viewVehicle_info_2}>
@@ -288,7 +312,10 @@ const SingleVehicle = () => {
                                     filteredFeedbacks.length != 0 ? filteredFeedbacks.map((feedback)=> {
                                         return(
                                             <div key={feedback._id} className={Styles.feedbackContent}>
-                                                <p><FaUserCircle style={{fontSize: 25, color: '#73BBA3'}} />{feedback.User_name}</p>
+                                                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                                                    <p><FaUserCircle style={{fontSize: 25, color: '#73BBA3'}} />{feedback.User_name}</p>
+                                                    <p style={{fontWeight: 700}}>{feedback.Feedback_date}</p>
+                                                </div>
                                                 <p>{feedback.Feedback_message}</p>
                                             </div>
                                         )

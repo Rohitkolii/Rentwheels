@@ -27,8 +27,8 @@ const HomePage = () => {
   return (
     <>
         <Header />
-        {/* <TechStack /> */}
-        {/* <section className={Styles.detailscon}>
+        <TechStack />
+        <section className={Styles.detailscon}>
           <div className={Styles.detailsconinner}>
             <div className={Styles.row1}>
               <div>
@@ -64,7 +64,7 @@ const HomePage = () => {
                   </div>
               </div>
           </div>
-        </section> */}
+        </section>
 
         <section className={Styles.latestCon}>
           <div className={Styles.latestConInn}>
@@ -74,9 +74,9 @@ const HomePage = () => {
               {
                 filterfeaturedVehicle && filterfeaturedVehicle.slice(0,3).map((vehicle)=> {
                   return(
-                          <div className={Stylesc.VehicleCard}>
+                          <div key={vehicle._id} className={Stylesc.VehicleCard}>
                             <div className={Stylesc.Vehicleimg}>
-                                <img src={`http://localhost:5000${vehicle.Vehicle_image}`} alt="" />
+                                <img src={`${import.meta.env.VITE_URL}${vehicle.Vehicle_image}`} alt="" />
                             </div>
                             
                             <div className={Stylesc.Vehicleinfo}>

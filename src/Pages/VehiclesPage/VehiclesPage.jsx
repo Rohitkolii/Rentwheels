@@ -102,14 +102,20 @@ const Vehicles = () => {
               </div>
             </div>
           </div>
-      {
-        loadingStatus == 'loading' ? <Loader /> :
-      <div className={Styles.Vehiclescontainer}>
-        {
-          filteredVehicles && filteredVehicles.slice(0,Vehiclelength).map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>) 
-        }
-      </div>
-      }
+          {     
+            filteredVehicles.length != 0 ?
+          <div className={Styles.Vehiclescontainer}>
+            {
+              filteredVehicles.slice(0,Vehiclelength).map((vehicle)=> <VehicleCard key={vehicle._id} vehicle={vehicle}/>) 
+            }
+          </div>
+          :
+          <div className={Styles.notfound}>
+              <img src="images/re.webp" alt="" />
+              <p>No Vehicles Found!</p>
+          </div>
+          }
+
       {
         filteredVehicles.length > 6 &&
         <div className={Styles.showmorebtn}>

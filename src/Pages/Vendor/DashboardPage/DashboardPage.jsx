@@ -17,6 +17,7 @@ import { fetchUserProfile } from '../../../store/ProfileSlice';
 import Loader from '../../../Components/Loader/Loader';
 import { fetchVehicleList } from '../../../store/getVehicleSlice';
 import { fetchBookingList } from '../../../store/getBookingListSlice';
+import { fetchFeedback } from '../../../store/getFeedbackSlice';
 
 const DashboardPageVendor = () => {
   const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
@@ -33,10 +34,13 @@ const DashboardPageVendor = () => {
     dispatch(fetchUserProfile(localStorage.getItem("token")))
     dispatch(fetchVehicleList())
     dispatch(fetchBookingList())
+    dispatch(fetchFeedback())
   }, [])
 
   const Vehiclesdata = useSelector(state=> state.getVehicleSlice.data)
   const Bookingdata = useSelector(state=> state.BookingListSlice.data)
+  const Feedbacks = useSelector(state => state.FeedbackSlice.data)
+  
   
   const filteredv = Vehiclesdata && Vehiclesdata.filter((item) => item?.user_id == ProfileData._id)
   const filteredb = Bookingdata && Bookingdata.filter((item) => item?.Vendor_id == ProfileData._id)
@@ -44,21 +48,12 @@ const DashboardPageVendor = () => {
   
   // console.log(filteredb);
 
-  
-  // filteredb && filteredb.forEach(element => {
-  //   totalRent += parseInt(element.Vehicle_rent);  
-  // });
+  if(ProfileData?.role != "vendor"){
+    navigate("/")
+  }
 
-  // console.log(totalRent);
-  
-  
-  // if(ProfileDataStatus == "loading"){
-    //   return <Loader />
-    // }
-    
-    // if(ProfileData && ProfileData.role != "vendor"){
-    //   navigate("/")
-    // }
+  const filteredFeedbacks = Feedbacks && Feedbacks.filter((feedback)=> feedback?.Vehicle_id === filteredv?._id)
+
   
   return (
     <>
@@ -90,7 +85,7 @@ const DashboardPageVendor = () => {
                   <div>
                     <p><HiOutlineUsers /></p>
                     <p>Total Feedback</p>
-                    <p>53</p>
+                    <p>{filteredFeedbacks?.length || 0}</p>
                   </div>
                   <div>
                     <p><MdCurrencyRupee /></p>

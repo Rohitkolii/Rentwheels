@@ -37,8 +37,8 @@ const Header = () => {
                   
                   <div className={Styles.btncon}>
                     {/* <NavLink to='/services'>Services</NavLink> */}
-                    <NavLink to='/contact'>Connect <MdKeyboardArrowRight /></NavLink>
-                    <NavLink to='/vehicles'>Rent Vehicle <MdKeyboardArrowRight /></NavLink>
+                    <NavLink to='/vehicles'>Vehicles <MdKeyboardArrowRight /></NavLink>
+                    <NavLink to='/bookings'>Bookings <MdKeyboardArrowRight /></NavLink>
                   </div>
             </div>
 

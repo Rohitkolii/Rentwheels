@@ -30,7 +30,7 @@ export const fetchUserList = (token)=> {
         dispatch(setUserListStatus('loading'))
         
         try {
-            const response = await fetch("http://localhost:5000/api/admin/users",{
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/admin/users`,{
                 method: "GET",
                 headers : {
                     Authorization: `Bearer ${token}`,

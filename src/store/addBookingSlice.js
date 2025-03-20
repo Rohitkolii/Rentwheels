@@ -29,8 +29,10 @@ export default addBookingSlice.reducer;
 export const addBooking = (data)=> {
     return async function addBookingThunk(dispatch, getState) {
         dispatch(setBookingLoadStatus('loading'))
+
         try {
-            const response = await fetch("http://localhost:5000/api/booking/add",{
+
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/booking/add`,{
                 method: "POST",
                 headers : {
                     "Content-Type" : "application/json"
@@ -38,13 +40,12 @@ export const addBooking = (data)=> {
                 body:JSON.stringify(data),
         
             });
-            console.log(response);
             
             if(response.ok){
                 const data = await response.json();
                 dispatch(setBookingLoadStatus('idle'));
                 dispatch(setBooking(data));
-                // console.log(data);
+                console.log(data);
 
                 toast.success('Vehicle Booked Successfully', {
                     position: "top-center",

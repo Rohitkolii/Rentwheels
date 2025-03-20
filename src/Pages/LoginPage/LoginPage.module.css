@@ -64,6 +64,7 @@
     /* margin: 10px 0; */
     padding: 3px 10px;
     transition: all .3s;
+    width: 100%;
 }
 .loginput label{
     margin: 10px 0px -10px 0px;

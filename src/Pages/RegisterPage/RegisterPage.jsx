@@ -3,6 +3,7 @@ import Styles from './RegisterPage.module.css'
 import { Link } from 'react-router';
 import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaEye } from 'react-icons/fa';
 
 
 const RegisterPage = () => {
@@ -16,6 +17,9 @@ const RegisterPage = () => {
     const [dlnumber, setdlnumber] = useState('')
     const [role, setrole] = useState('user')
     const [phone, setphone] = useState('')
+
+    const [visiblity, setvisiblity] = useState(false)
+
 
     const Registerfunction = async (e) => {
         e.preventDefault();
@@ -34,7 +38,7 @@ const RegisterPage = () => {
         console.log(data);
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/register",{
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/auth/register`,{
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json",
@@ -108,7 +112,11 @@ const RegisterPage = () => {
                             </div>
                             <div className={`${Styles.column} ${Styles.loginput}`}>
                                 <label htmlFor="">Password:</label>
-                                <input onChange={(e)=> setpassword(e.target.value)} value={password} minLength={4} maxLength={8} type="password" placeholder='Enter You Password' required/>
+                            
+                                <div style={{display:'flex'}}>
+                                <input onChange={(e)=> setpassword(e.target.value)} value={password} minLength={4} type={visiblity ? "text" : "password"} placeholder='Enter You Password' required/>
+                                <button onClick={()=> setvisiblity(!visiblity)} style={{padding: "0 10px", background:"transparent", color:"black",border:"transparent", cursor:"pointer"}}><FaEye /></button>
+                            </div>
                             </div>
                         </div>
                         <div className={Styles.row}>

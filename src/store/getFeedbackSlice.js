@@ -30,7 +30,7 @@ export const fetchFeedback = ()=> {
         dispatch(setFeedbackStatus('loading'))
         
         try {
-            const response = await fetch("http://localhost:5000/api/feedback/get");
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/feedback/get`);
             // console.log(response);
             
             if(response.ok){

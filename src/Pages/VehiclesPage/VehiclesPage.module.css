@@ -105,6 +105,7 @@
 .notfound{
     width: 100%;
     text-align: center;
+    margin: 20px auto;
 }
 .notfound img{
     width: 300px;

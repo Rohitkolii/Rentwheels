@@ -37,7 +37,7 @@ export const fetchSingleVehicle = (id)=> {
         
         
         try {
-            const response = await fetch(`http://localhost:5000/api/vehicle/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/vehicle/${id}`);
             // console.log(response);
             
             

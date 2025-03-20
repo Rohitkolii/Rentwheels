@@ -30,7 +30,7 @@ export const fetchBookingList = ()=> {
         dispatch(setBookingListStatus('loading'))
         
         try {
-            const response = await fetch("http://localhost:5000/api/booking/get");
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/booking/get`);
             // console.log(response);
             
             if(response.ok){

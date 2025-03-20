@@ -11,51 +11,63 @@ const TechStack = () => {
 
                 <div className={Styles.innerrow}>
                     <div className={Styles.col}>
-                        <img src="images/supbike1.png"/>
+                        <img src="logos/logo1.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike2.png"/>
+                        <img src="logos/logo2.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike3.png"/>
+                        <img src="logos/logo3.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike4.png"/>
+                        <img src="logos/logo4.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar1.png"/>
+                        <img src="logos/logo6.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar2.png"/>
+                        <img src="logos/logo7.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar3.png"/>
+                        <img src="logos/logo8.jpg"/>
+                    </div>
+                    <div className={Styles.col}>
+                        <img src="logos/logo9.jpg"/>
+                    </div>
+                    <div className={Styles.col}>
+                        <img src="logos/logo10.png"/>
                     </div>
 
                 </div>
 
 
                 <div className={Styles.innerrow}>
-                <div className={Styles.col}>
-                        <img src="images/supbike1.png"/>
+                    <div className={Styles.col}>
+                        <img src="logos/logo1.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike2.png"/>
+                        <img src="logos/logo2.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike3.png"/>
+                        <img src="logos/logo3.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supbike4.png"/>
+                        <img src="logos/logo4.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar1.png"/>
+                        <img src="logos/logo6.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar2.png"/>
+                        <img src="logos/logo7.jpg"/>
                     </div>
                     <div className={Styles.col}>
-                        <img src="images/supcar3.png"/>
+                        <img src="logos/logo8.jpg"/>
+                    </div>
+                    <div className={Styles.col}>
+                        <img src="logos/logo9.jpg"/>
+                    </div>
+                    <div className={Styles.col}>
+                        <img src="logos/logo10.png"/>
                     </div>
 
                 </div>

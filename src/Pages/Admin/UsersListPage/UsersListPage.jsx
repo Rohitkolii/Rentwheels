@@ -9,11 +9,12 @@ import { ImBin } from "react-icons/im";
 import { toast } from 'react-toastify'
 
 const UsersListPage = () => {
+    // const res = confirm()
     const dispatch = useDispatch()
     const users = useSelector(state => state.userListSlice.data.userslist)
     // console.log(users.userslist);
     
-    const userlist = users && users.filter((u)=> u.role == "user")
+    const userlist = users && users.filter((u)=> u?.role == "user")
     // console.log(userlist);
 
     useEffect(()=> {
@@ -23,8 +24,10 @@ const UsersListPage = () => {
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
     const deleteuser = async (id) => {
+        const res = confirm("Are you sure! you want to delete")
+        if(res){
         try {
-            const response = await fetch(`http://localhost:5000/api/auth/delete/${id}`,{
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/auth/delete/${id}`,{
                 method: "DELETE"
             })
             toast.success('User Deleted Successfully!', {
@@ -49,8 +52,36 @@ const UsersListPage = () => {
                 theme: "light",
                 });
         }
+    }else{
+        toast.error('Request Cancel', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
         
     }
+
+    const [searchQuery, setSearchQuery] = useState("");
+    
+        // Filtering function
+        const filteredVehicles = userlist && userlist.filter(user => {
+            const query = searchQuery.toLowerCase();
+            return (
+                user.username.toLowerCase().includes(query) ||
+                user.email.toLowerCase().includes(query) ||
+                user.phone.toLowerCase().includes(query) ||
+                user.age.toLowerCase().includes(query) ||
+                user.dlnumber.toLowerCase().includes(query) ||
+                user.adress.toLowerCase().includes(query)
+            );
+        });
+
   return (
     <>
 
@@ -64,6 +95,10 @@ const UsersListPage = () => {
                 setSidebarVisiblity={setSidebarVisiblity}
                 sidebarVisiblity={sidebarVisiblity} />
                 <div className={Styles.bookingtable}>
+                <div style={{width: "95%", margin: "10px auto"}}>
+                    <label htmlFor="">Search:</label> <br />
+                    <input onChange={(e)=> setSearchQuery(e.target.value)} placeholder='Search' type="text" name="" id="" />
+                </div>
                     <table>
                         <tr>
                             <th>S.No</th>
@@ -77,7 +112,7 @@ const UsersListPage = () => {
                             <th>Action</th>
                         </tr>
                         {
-                            userlist && userlist.map((elm,i)=> {
+                            filteredVehicles?.length ? filteredVehicles.map((elm,i)=> {
                                 return(
                                     <tr key={elm._id}>
                                         <td>{i+1}</td>
@@ -94,7 +129,7 @@ const UsersListPage = () => {
                                 )
                             })
 
-                            || <h1 style={{margin: "20px auto", textAlign: 'center'}}>No Users Found</h1>
+                            : <h1 style={{margin: "20px auto", textAlign: 'center', textTransform: 'uppercase', color:'#0061ff'}}>No Users Found!</h1>
                         }
                         
                     </table>

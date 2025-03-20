@@ -103,7 +103,7 @@ const AddvehiclePage = () => {
                 </div>
 
                 <div className={StylesVendor.col}>
-                    <label for='fileupload'><FaRegImage />Upload image</label>
+                    <label htmlFor='fileupload'><FaRegImage />Upload image</label>
                     <input onChange={(e)=> setimage(e.target.files[0])}  id='fileupload' type="file" required />
                 </div>
 

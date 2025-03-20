@@ -31,8 +31,8 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  // const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-  // const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
+  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
   // console.log(ProfileData);
   
     const Vehiclesdata = useSelector(state=> state.getVehicleSlice.data)
@@ -47,9 +47,9 @@ const DashboardPage = () => {
   //   return <Loader />
   // }
   
-  // if(ProfileData?.role !== "admin"){
-  //   navigate("/")
-  // }
+  if(ProfileData?.role != "admin"){
+    navigate("/")
+  }
 
   
 

@@ -71,7 +71,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     background-color: rgba(225, 225, 225, 0.879);
     padding: 5px 15px;
@@ -79,7 +79,7 @@
 }
 
 .viewVehicle_info svg{
-    font-size: 25px;
+    font-size: 22px;
     color: rgb(0, 0, 0);
 }
 
@@ -195,6 +195,7 @@
 .feedboxInn{
     overflow-y: scroll;
     max-height: 250px;
+    margin: 10px 0;
 }
 
 .feedbox h1{
@@ -233,6 +234,86 @@
     font-size: 15px;
 }
 
+
+/* /////Payment GAteway */
+
+
+.form{
+    position: fixed;
+    background-color: white;
+    border: 1px solid rgb(177, 177, 177);
+    padding: 15px;
+    font-size: 13px;
+    width: 500px;
+    z-index: 9;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.form p{
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.row{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.row img{
+    width: 100%;
+    margin: 10px 0;
+    object-fit: contain;
+    /* height: 80px; */
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.form input{
+    height: 35px;
+    padding: 5px;
+    border: 1px solid rgb(167, 167, 167);
+    width: 100%;
+}
+.form input:placeholder-shown{
+    font-size: 12px;
+    color: rgb(183, 183, 183);
+}
+
+.form input[type='submit']{
+    background-color: #00b64c;
+    border: transparent;
+    width: 100%;
+    margin-top: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.bg{
+    background-color: #0061ff;
+    width: 100vw;
+    height: 100vh;
+    z-index: 8;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* /////////////////// */
+
+
 @media only screen and (max-width:1300px) {
     .viewVehicle_con{
         width: 90%;
@@ -244,6 +325,7 @@
         gap: 20px;
     }
 }
+
 @media only screen and (max-width:1100px) {
     .viewVehicle_con{
         width: 95%;
@@ -260,7 +342,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 5px;
-        position: absolute;
+        /* position: absolute; */
         bottom: 30px;
         left: 10px;
     }
@@ -326,6 +408,10 @@
     }
 
     .feedback{
+        width: 95%;
+    }
+    
+    .form{
         width: 95%;
     }
 }

@@ -39,7 +39,7 @@ export const addVehicle = (data, token)=> {
         formData.append("user_id", data.user_id);
         formData.append("image", data.image);
         try {
-            const response = await fetch("http://localhost:5000/api/vehicle/add",{
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/vehicle/add`,{
                 method: "POST",
                 headers : {
                     Authorization: `Bearer ${token}`,

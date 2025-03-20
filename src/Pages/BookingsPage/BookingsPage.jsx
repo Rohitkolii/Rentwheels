@@ -83,7 +83,7 @@ const BookingsPage = () => {
                         filteredVehicles.map((booking)=> {
                             return <div key={booking._id} className={Styles.VehicleCard}>
                             <div className={Styles.Vehicleimg}>
-                                <img src={`http://localhost:5000${booking.Vehicle_image}`} alt="" />
+                                <img src={`${import.meta.env.VITE_URL}${booking.Vehicle_image}`} alt="" />
                             </div>
                             
                             <div className={Styles.Vehicleinfo}>

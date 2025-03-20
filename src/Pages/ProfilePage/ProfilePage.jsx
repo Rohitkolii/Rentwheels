@@ -10,7 +10,7 @@ const ProfilePage = () => {
   const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
   console.log(ProfileData);
 
-  const [EditUSer,setEditUSer] = useState(true)
+  const [EditUSer,setEditUSer] = useState(false)
   const [name,setname] = useState(ProfileData?.username)
   const [age,setage] = useState(ProfileData?.age)
   const [pass,setpass] = useState()
@@ -38,7 +38,7 @@ try {
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(data)
   })
-  toast.success('Status Changed Successfully!', {
+  toast.success('Profile updated Successfully!', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -48,6 +48,7 @@ try {
       progress: undefined,
       theme: "light",
       });
+      setEditUSer(false)
 } catch (error) {
   toast.error('Something went wrong!', {
       position: "top-center",
@@ -147,8 +148,8 @@ try {
         ''
       }
 
-      {
-        <div className={Styles.editoverlay}></div>
+      {EditUSer &&
+        <div onClick={()=> setEditUSer(false)} className={Styles.editoverlay}></div>
       }
     </>
   )

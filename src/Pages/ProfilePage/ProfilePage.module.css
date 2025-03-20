@@ -40,12 +40,16 @@
     border-radius: 6px;
     background-color: white;
     box-shadow: 1px 1px 5px gray;
+    z-index: 9;
 }
 
 .editoverlay{
-    background-color: #00000089;
+    background-color: #0000009f;
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .EditUSer p{
@@ -57,6 +61,7 @@
     width: 100%;
     gap: 20px;
     align-items: center;
+    width: 100%;
 }
 
 .col{
@@ -78,6 +83,7 @@ input[type=submit]{
     padding: 10px;
     color: white;
     font-weight: 500;
+    width: 100%;
 }
 input[type=button]{
     background-color: #000;
@@ -85,4 +91,22 @@ input[type=button]{
     padding: 10px;
     color: #fff;
     font-weight: 500;
+    width: 100%;
+}
+
+@media only screen and (max-width:900px) {
+    .profilecon{
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width:550px) {
+    .EditUSer{
+        width: 95%;
+    }
+
+    .row{
+        gap: 5px;
+    }
 }

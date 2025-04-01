@@ -93,7 +93,6 @@ const SingleVehicle = () => {
         }
         else{
         if(dropofDate > bookingDate){
-            // navigate("/bookings")
 
             let options = {
                 key: import.meta.env.VITE_RAZORPAY_KEY,
@@ -245,6 +244,7 @@ const SingleVehicle = () => {
             <Navbar />
 
             <div style={DisplayFeed ? {display: 'block'} : {display: 'none'} } className={Styles.feedback}>
+                <h3>FEEDBACK FORM</h3>
                 <div>
                     <label htmlFor="">Name:</label> <br />
                     <input value={Booking_Userid?.username} type="text" name="" id="" />

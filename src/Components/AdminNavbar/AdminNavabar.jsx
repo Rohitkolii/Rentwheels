@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Styles from '../AdminNavbar/AdminNavbar.module.css'
-import { Link, NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import { RiMenu2Fill } from 'react-icons/ri'
 import { fetchUserProfile } from '../../store/ProfileSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,7 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
   const [profileStatus, setProfileStatus] = useState(false)
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
    useEffect(()=> {
           dispatch(fetchUserProfile(localStorage.getItem("token")))
@@ -29,6 +30,8 @@ const AdminNavabar = ({setSidebarVisiblity, sidebarVisiblity}) => {
                   progress: undefined,
                   theme: "light",
                   });
+
+                  navigate("/login")
           }
 
   return (

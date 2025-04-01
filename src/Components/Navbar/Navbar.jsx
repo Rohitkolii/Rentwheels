@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import Styles from '../Navbar/Navbar.module.css'
-import { GiStoneWheel } from "react-icons/gi";
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../store/ProfileSlice'
-// import { useNavigate } from 'react-router';
 import '../../App.css'
 import { toast } from 'react-toastify';
-
-
 
 const Navbar = () => {
 
     const dispatch = useDispatch()
-    // const navigate = useNavigate()
     const [menuStatus, setMenuStatus] = useState(false);
     const [islogin, setislogin] = useState(false);
     const [profileStatus, setProfileStatus] = useState(false);
@@ -26,10 +21,7 @@ const Navbar = () => {
         }
     },[islogin])
 
-    
-
     const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-    // console.log("Navbar",ProfileData);
     
     const logoutUser = () => {
         localStorage.removeItem("token")
@@ -43,7 +35,6 @@ const Navbar = () => {
             progress: undefined,
             theme: "light",
             });
-        // navigate("/login")
     }
 
 
@@ -61,7 +52,6 @@ const Navbar = () => {
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
-                    {/* <li><NavLink to="/">Contact</NavLink></li> */}
                     {
                         islogin ?
                         <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
@@ -100,7 +90,6 @@ const Navbar = () => {
                     <li><NavLink to="/vehicles">Vehicles</NavLink></li>
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
-                    {/* <li><NavLink to="/">Contact</NavLink></li> */}
                 </ul>
             </div>
         : ''}
@@ -127,7 +116,6 @@ const Navbar = () => {
                                 : ""
                             }
                             <li><NavLink onClick={logoutUser} to="/login">Logout</NavLink></li>
-                            {/* <li><NavLink to="/">Logout</NavLink></li> */}
                         </ul>
                     </div>
         : ''}

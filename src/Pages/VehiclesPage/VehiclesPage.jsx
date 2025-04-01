@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import VehicleCard from '../../Components/VehicleCard/VehicleCard'
 import Styles from '../VehiclesPage/VehiclesPage.module.css'
-import { CgMenuGridR } from "react-icons/cg";
-import { FaList, FaSearch } from "react-icons/fa";
-import { IoSearchSharp } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 import { fetchVehicleList } from '../../store/getVehicleSlice';
 import {useDispatch, useSelector} from "react-redux"
 import Footer from '../../Components/Footer/Footer';
-import Loader from '../../Components/Loader/Loader';
 import { fetchFeedback } from '../../store/getFeedbackSlice';
 
 // const vehicledata = [

@@ -10,14 +10,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-body{
-    /* background-color: rgb(243, 243, 243); */
-    /* background-color: rgb(226, 226, 226); */
-    /* background-color: black; */
-}
-
 .subp{
-    /* color: rgb(173, 173, 173); */
     color: rgb(189, 189, 189);
     font-size: 18px;
     font-weight: 300;
@@ -37,7 +30,6 @@ body{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  /* box-shadow: inset 0 0 5px grey;  */
   border-radius: 10px;
 }
  

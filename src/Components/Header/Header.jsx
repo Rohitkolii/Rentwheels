@@ -1,19 +1,10 @@
 import React, { useEffect } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Styles from '../Header/Header.module.css'
-import {FaGithub, FaInstagram } from "react-icons/fa6";
-// import { FaNavLinkedin } from "react-icons/fa6";
-import { FaSquareGithub } from "react-icons/fa6";
-import { FaFacebookSquare } from "react-icons/fa";
-import { GrContact } from "react-icons/gr";
+import { NavLink } from 'react-router';
 import { MdKeyboardArrowRight } from "react-icons/md";
-
-
-
-
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { NavLink } from 'react-router';
 
 
 const Header = () => {
@@ -36,7 +27,6 @@ const Header = () => {
                 <p>Fast, affordable, and hassle-free car rentals for every journey. Pick your ride, hit the road, and enjoy the drive—whenever you need it!</p>
                   
                   <div className={Styles.btncon}>
-                    {/* <NavLink to='/services'>Services</NavLink> */}
                     <NavLink to='/vehicles'>Vehicles <MdKeyboardArrowRight /></NavLink>
                     <NavLink to='/bookings'>Bookings <MdKeyboardArrowRight /></NavLink>
                   </div>
@@ -44,9 +34,8 @@ const Header = () => {
 
             <div className={Styles.imgcol}>
               <img src="images/supcar1.png" alt="" />
-              {/* <img src="images/supbike2.png" alt="" /> */}
             </div>
-
+            
             <div className={Styles.dd}></div>
 
         </section>

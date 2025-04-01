@@ -3,6 +3,7 @@ import Navbar from '../../Components/Navbar/Navbar'
 import Styles from '../ProfilePage/ProfilePage.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserProfile } from '../../store/ProfileSlice'
+import { toast } from 'react-toastify'
 
 const ProfilePage = () => {
   const dispatch = useDispatch()
@@ -19,9 +20,19 @@ const ProfilePage = () => {
   const [add,setadd] = useState(ProfileData?.adress)
   const [email,setemail] = useState(ProfileData?.email)
 
+  const setDetails = () => {
+    setEditUSer(true)
+    setname(ProfileData?.username)
+    setage(ProfileData?.age)
+    setphone(ProfileData?.phone)
+    setdl(ProfileData?.dlnumber)
+    setadd(ProfileData?.adress)
+    setemail(ProfileData?.email)
+  }
 
   const updateUser = async (e) => {
     e.preventDefault();
+    
     const id = ProfileData?._id;
     const data = {
       username: name,
@@ -66,13 +77,14 @@ try {
   
   useEffect(()=> {
     dispatch(fetchUserProfile(localStorage.getItem("token")))
-  }, [])
+    
+  }, [ProfileData])
   return (
     <>
       <Navbar />
 
       <div className={Styles.profilecon}>
-        <p></p>
+        <h2>PROFILE PAGE</h2>
         <div className={Styles.profilecol}>
           <p>Name : <span>{ProfileData?.username || ""}</span></p>
           <p>Age : <span>{ProfileData?.age || ""}</span></p>
@@ -82,7 +94,7 @@ try {
           <p>Role : <span>{ProfileData?.role || ""}</span></p>
 
           <div className={Styles.profilebuttons}>
-            <button onClick={()=> setEditUSer(true)}>Edit</button>
+            <button onClick={()=> setDetails()}>Edit</button>
           </div>
         </div>
 

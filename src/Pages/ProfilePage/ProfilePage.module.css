@@ -26,6 +26,7 @@
     border: transparent;
     padding: 10px 30px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .EditUSer{
@@ -84,6 +85,7 @@ input[type=submit]{
     color: white;
     font-weight: 500;
     width: 100%;
+    cursor: pointer;
 }
 input[type=button]{
     background-color: #000;
@@ -92,6 +94,7 @@ input[type=button]{
     color: #fff;
     font-weight: 500;
     width: 100%;
+    cursor: pointer;
 }
 
 @media only screen and (max-width:900px) {

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
-import Alert from "../../../Components/Alert/Alert"
-// import Styles from '../AdminBookings/AdminBookings.module.css'
 import Styles from '../VehiclesListPage/VehiclesListPage.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 import { fetchVehicleList } from '../../../store/getVehicleSlice'
@@ -121,7 +119,7 @@ const deleteVehicle = async (id) => {
   return (
     <>
     {/* <Alert /> */}
-        <div style={{display: 'flex'}}>
+        <div className={Styles.allcon} style={{display: 'flex'}}>
             <AdminSidebar
             setSidebarVisiblity={setSidebarVisiblity}
             sidebarVisiblity={sidebarVisiblity}/>

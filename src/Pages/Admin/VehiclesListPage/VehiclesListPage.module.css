@@ -1,6 +1,7 @@
-/* .bookingtable{
-    overflow: scroll;
-} */
+.bookingtable{
+    /* height: 100vh;
+    overflow: scroll; */
+}
 .bookingtable input{
     height: 30px;
     border-radius: 6px;

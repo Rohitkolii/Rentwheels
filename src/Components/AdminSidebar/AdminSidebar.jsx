@@ -57,7 +57,6 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
             <li><Link to='/vendor/editvehicle'><PiSteeringWheelBold />Vehicles</Link></li>
             <li><Link to='/vendor/bookinghistory'><MdManageHistory />Booking History</Link></li>
               <li><Link to='/vendor/feedbacks'><MdAdminPanelSettings />Feedbacks</Link></li>
-            {/* <li><Link to='/'><MdAdminPanelSettings />Settings</Link></li> */}
           </ul>
           : ""
           }

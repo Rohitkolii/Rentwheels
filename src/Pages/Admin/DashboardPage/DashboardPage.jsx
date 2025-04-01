@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import AdminNavabar from '../../../Components/AdminNavbar/AdminNavabar'
 import AdminSidebar from '../../../Components/AdminSidebar/AdminSidebar'
-import Loader from '../../../Components/Loader/Loader'
-// import Styles from '../DashboardPage/DashboardPage.module.css'
 import { IoCarOutline } from "react-icons/io5";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { VscBook } from "react-icons/vsc";
-import { GrUserWorker } from "react-icons/gr";
 import { PiUserListLight } from "react-icons/pi";
 import Styles from "../../Admin/DashboardPage/DashboardPage.module.css"
-import { useNavigate } from 'react-router';
 
-import { FaCar } from "react-icons/fa";
+import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from '../../../store/ProfileSlice';
 import { fetchVehicleList } from '../../../store/getVehicleSlice';
@@ -42,16 +38,11 @@ const DashboardPage = () => {
   
   const vendor = userdatalist && userdatalist.filter((item) => item?.role == 'vendor')
   const user = userdatalist && userdatalist.filter((item) => item?.role == 'user')
-  
-  // if(ProfileDataStatus === "loading"){
-  //   return <Loader />
-  // }
+
   
   if(ProfileData?.role != "admin"){
     navigate("/")
   }
-
-  
 
   return (
     <>
@@ -68,7 +59,6 @@ const DashboardPage = () => {
               <section className={Styles.dashContent}>
                 <h1>Dashboard</h1>
                 <p className='sublight' style={{fontSize : 15}}>plan, pripritize, and accoplish your tasks with ease.</p>
-                {/* <br /> */}
                 <div className={Styles.dashTop}>
                   <div>
                     <p><IoCarOutline /></p>

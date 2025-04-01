@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Styles from '../AdminNavbar/AdminNavbar.module.css'
-import { NavLink, useNavigate } from 'react-router'
+import { useNavigate, NavLink } from 'react-router'
 import { RiMenu2Fill } from 'react-icons/ri'
 import { fetchUserProfile } from '../../store/ProfileSlice'
 import { useDispatch, useSelector } from 'react-redux'

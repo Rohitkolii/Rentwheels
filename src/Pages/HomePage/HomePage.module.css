@@ -1,16 +1,16 @@
 .detailsconinner{
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 
 .detailscon{
-    background: linear-gradient(135deg, #fff 10%, #011859 100%);
+    /* background: linear-gradient(135deg, #fff 10%, #000000 100%); */
     padding: 50px 0;
 }
 .row1{
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 50px;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -64,8 +64,9 @@
 
 /* //Card latest */
 .latestCon{
-    padding: 50px 0;
-    background-color: #ebe8dbb4;
+    padding: 80px 0;
+    background:linear-gradient(to top,#fff 20% ,#4372d1);
+    /* background-color: #fff; */
     
 }
 
@@ -81,7 +82,7 @@
 .grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 10px;
 }
 
 

@@ -1,0 +1,46 @@
+.loadercon2{
+  position: relative;
+  /* left: 0;
+  top: 0; */
+  background-color: red;
+  /* width: 100%; */
+  /* height: 100vh; */
+  /* z-index: 9; */
+  /* filter: blur(5px); */
+  padding: 500px 0;
+}
+
+.loader2 {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image:
+    linear-gradient(#FFF 20px, transparent 0) ,
+    linear-gradient(#0061ff 20px, transparent 0) ,
+    linear-gradient(#0061ff 20px, transparent 0) ,
+    linear-gradient(#FFF 20px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: left top , left bottom , right top , right bottom;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(0deg)
+  }
+  50% {
+    width: 30px;
+    height: 30px;
+    transform: rotate(180deg)
+  }
+  100% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(360deg)
+  }
+}

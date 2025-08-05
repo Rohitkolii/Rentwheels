@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchVehicleList } from '../../store/getVehicleSlice'
 import Stylesc from '../../Components/VehicleCard/VehicleCard.module.css'
 import { Link } from 'react-router'
+import Loading from '../../Components/Loading/Loading'
+import Head from '../../Components/Head/Head'
 
 const HomePage = () => {
 
@@ -19,6 +21,7 @@ const HomePage = () => {
     dispatch(fetchVehicleList())
   },[])
 
+  const Loadingstatus = useSelector(state => state.getVehicleSlice.status)
   const featuredVehicle = useSelector(state => state.getVehicleSlice.data)
   const filterfeaturedVehicle = featuredVehicle && featuredVehicle.filter((v)=> v.isBooked === false)
   // console.log(filterfeaturedVehicle);
@@ -26,7 +29,8 @@ const HomePage = () => {
 
   return (
     <>
-        <Header />
+        {/* <Header /> */}
+        <Head />
         <TechStack />
         <section className={Styles.latestCon}>
           <div className={Styles.latestConInn}>
@@ -34,7 +38,10 @@ const HomePage = () => {
           <p style={{marginBottom: 15}}>Redefining the road with innovation, power, and style!</p>
             <div className={Styles.grid}>
               {
-                filterfeaturedVehicle && filterfeaturedVehicle.slice(0,3).map((vehicle)=> {
+                Loadingstatus === "loading" ? <h1>Loading...</h1> : ""
+              }
+              {
+                filterfeaturedVehicle ? filterfeaturedVehicle.slice(0,3).map((vehicle)=> {
                   return(
                           <div key={vehicle._id} className={Stylesc.VehicleCard}>
                             <div className={Stylesc.Vehicleimg}>
@@ -64,7 +71,7 @@ const HomePage = () => {
                   )
                 } 
                 // <VehicleCard vehicle={vehicle} />
-              )
+              ):""
               }
             </div>
           </div>
@@ -88,18 +95,18 @@ const HomePage = () => {
 
               <div className={Styles.row2inner}>
                 <div className={Styles.row2inner_1}>
-                  <img src="images/bg3.jpg" alt="" />
+                  <img src="images/bg3.webp" alt="" />
                 </div>
 
                 <div className={Styles.row2inner_2}>
                   <div>
-                    <img src="images/singlecar.jpg" alt="" />
+                    <img src="images/singlecar.webp" alt="" />
                   </div>
                   <div>
-                    <img src="images/bg2.jpg" alt="" />
+                    <img src="images/bg2.webp" alt="" />
                   </div>
                   <div>
-                    <img src="images/bg1.jpg" alt="" />
+                    <img src="images/bg1.webp" alt="" />
                   </div>
                     </div>
                   </div>

@@ -5,6 +5,10 @@
     border-radius: 6px;
     box-shadow: 1px 1px 5px rgba(126, 126, 126, 0.699);
     position: relative;
+    transition: .3s;
+}
+.VehicleCard:hover{
+    transform: translateY(-10px);
 }
 .info_row1{
     display: flex;
@@ -53,13 +57,14 @@ line-height: 22px;
 }
 .btn a:hover{
     background-color: #0080ffc0;
+    color: black;
 }
 
 .btn a{
-    background-color: #359affc0;
+    background-color: #0061ff;
     /* background-color: #ff3131; */
+    /* color: rgb(25, 25, 25); */
     color: white;
-    color: rgb(25, 25, 25);
     text-decoration: none;
     padding: 10px 0px;
     border-radius: 3px;

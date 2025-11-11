@@ -5,7 +5,6 @@ import Styles from '../BookingsPage/BookingsPage.module.css'
 import { FaRupeeSign, FaSearch } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBookingList } from '../../store/getBookingListSlice';
-import { fetchUserProfile } from '../../store/ProfileSlice';
 
 const BookingsPage = () => {
 
@@ -13,22 +12,16 @@ const BookingsPage = () => {
     
     useEffect(()=> {
         dispatch(fetchBookingList())
-        dispatch(fetchUserProfile(localStorage.getItem("token")))
     },[])
 
-    const userid = useSelector(state => state.profileSlice.data.userData)
     const bookingData = useSelector(state => state.BookingListSlice.data)
-    console.log(bookingData);
+    // console.log(bookingData);
     // console.log(userid);
-    
-    
-    const filteredbookingData = bookingData && bookingData.filter((booking)=> booking?.Booking_User_id === userid?._id)
-    // console.log(filteredbookingData);
 
     const [searchQuery, setSearchQuery] = useState("");
       const [selectedType, setSelectedType] = useState("");
     
-    const filteredVehicles = filteredbookingData.filter(booking => {
+    const filteredVehicles = bookingData.filter(booking => {
         const matchesName = booking.Vehicle_name.toLowerCase().includes(searchQuery.toLowerCase());
         let matchesType;
         if(selectedType == 'a'){

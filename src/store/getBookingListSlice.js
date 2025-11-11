@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { AXIOS } from '../utils/axios';
 
 const getBookingListSlice = createSlice({
     name: 'Booking List',
@@ -30,14 +31,13 @@ export const fetchBookingList = ()=> {
         dispatch(setBookingListStatus('loading'))
         
         try {
-            const response = await fetch(`${import.meta.env.VITE_URL}/api/booking/get`);
+            const response = await AXIOS.get(`${import.meta.env.VITE_URL}/api/booking/get`);
             // console.log(response);
             
-            if(response.ok){
-                const data = await response.json();
+            if(response.status === 200){
                 dispatch(setBookingListStatus('idle'));
-                dispatch(setBookingList(data));
-                // console.log(data);
+                dispatch(setBookingList(response.data));
+                // console.log(response);
             }
         } catch (error) {
             console.log(error)

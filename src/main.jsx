@@ -8,7 +8,7 @@ import store from "./store/store.js"
 import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <Provider store={store}>
 
     <BrowserRouter>
@@ -16,5 +16,5 @@ createRoot(document.getElementById('root')).render(
       <ToastContainer />
     </BrowserRouter>
     </Provider>
-  </StrictMode>,
+  // </StrictMode>,
 )

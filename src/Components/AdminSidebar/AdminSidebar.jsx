@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Styles from '../AdminSidebar/AdminSidebar.module.css'
-import { Link } from 'react-router'
 import { MdDashboard } from "react-icons/md";
 import { PiSteeringWheelBold } from "react-icons/pi";
 import { FaBookReader } from "react-icons/fa";
@@ -13,21 +12,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserProfile } from '../../store/ProfileSlice';
 import { HiOutlineDocumentPlus } from "react-icons/hi2";
 import { MdManageHistory } from "react-icons/md";
-
-
+import { NavLink } from 'react-router-dom';
 
 
 const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
   const dispatch = useDispatch()
 
+  const ProfileRole = useSelector((state) => state?.profileSlice?.data?.userData?.role);
+  // console.log(ProfileRole);
   
   useEffect(()=> {
-    dispatch(fetchUserProfile(localStorage.getItem("token")))
+    dispatch(fetchUserProfile())
   }, [])
-
-  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
-  // console.log(ProfileData.role);
 
   return (
     <>
@@ -40,23 +36,23 @@ const AdminSidebar = ({setSidebarVisiblity, sidebarVisiblity}) => {
           <IoMdClose className={Styles.closeMenu} onClick={()=> setSidebarVisiblity(!sidebarVisiblity)} />
         </div>
           {
-            ProfileData?.role == "admin" ?
+            ProfileRole == "admin" ?
           <ul>
-            <li><Link to='/admin'><MdDashboard /> Dashboard</Link></li>
-            <li><Link to='/admin/userslist'><FaUsersCog /> Users</Link></li>
-            <li><Link to='/admin/vendors'><FaUserSecret />Vendors</Link></li>
-            <li><Link to='/admin/vehicleslist'><PiSteeringWheelBold />Vehicles</Link></li>
-            <li><Link to='/admin/bookings'><FaBookReader />Booking</Link></li>
-            <li><Link to='/admin/feedbacks'><MdAdminPanelSettings />Feedbacks</Link></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin'><MdDashboard /> Dashboard</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin/userslist'><FaUsersCog /> Users</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin/vendors'><FaUserSecret />Vendors</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin/vehicleslist'><PiSteeringWheelBold />Vehicles</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin/bookings'><FaBookReader />Booking</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/admin/feedbacks'><MdAdminPanelSettings />Feedbacks</NavLink></li>
           </ul>
             :
-            ProfileData?.role == "vendor" ? 
+            ProfileRole == "vendor" ? 
             <ul>
-            <li><Link to='/vendor'><MdDashboard /> Dashboard</Link></li>
-            <li><Link to='/vendor/addvehicle'><HiOutlineDocumentPlus /> Add Vehicle</Link></li>
-            <li><Link to='/vendor/editvehicle'><PiSteeringWheelBold />Vehicles</Link></li>
-            <li><Link to='/vendor/bookinghistory'><MdManageHistory />Booking History</Link></li>
-              <li><Link to='/vendor/feedbacks'><MdAdminPanelSettings />Feedbacks</Link></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/vendor'><MdDashboard /> Dashboard</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/vendor/addvehicle'><HiOutlineDocumentPlus /> Add Vehicle</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/vendor/editvehicle'><PiSteeringWheelBold />Vehicles</NavLink></li>
+            <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/vendor/bookinghistory'><MdManageHistory />Booking History</NavLink></li>
+              <li><NavLink end className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)} to='/vendor/feedbacks'><MdAdminPanelSettings />Feedbacks</NavLink></li>
           </ul>
           : ""
           }

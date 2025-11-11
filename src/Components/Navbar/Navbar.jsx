@@ -11,17 +11,19 @@ const Navbar = () => {
 
     const dispatch = useDispatch()
     const [menuStatus, setMenuStatus] = useState(false);
-    const [islogin, setislogin] = useState(false);
+    // const [islogin, setislogin] = useState(false);
     const [profileStatus, setProfileStatus] = useState(false);
 
     useEffect(()=> {
-        dispatch(fetchUserProfile(localStorage.getItem("token")))
-        if(localStorage.getItem("token")){
-            setislogin(true)
-        }
-    },[islogin])
+        dispatch(fetchUserProfile())
+        // if(localStorage.getItem("token")){
+        //     setislogin(true)
+        // }
+    },[])
 
-    const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+    const ProfileData = useSelector((state)=> state.profileSlice?.data?.userData)
+    console.log(ProfileData);
+    
     
     const logoutUser = () => {
         localStorage.removeItem("token")
@@ -53,7 +55,7 @@ const Navbar = () => {
                     <li><NavLink to="/bookings">Bookings</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     {
-                        islogin ?
+                        ProfileData ?
                         <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
                             <img src="/images/user2.jpg" alt="profile" />
                             <div>
@@ -68,7 +70,7 @@ const Navbar = () => {
             </div>  
             <div className={Styles.mobextra}>
                 {
-                    islogin ?
+                    ProfileData ?
                     <li className={Styles.profilelogo} onClick={()=> setProfileStatus(!profileStatus)}>
                     <img src="/images/user2.jpg" alt="profile" />
                     <div className={Styles.userinfo}>

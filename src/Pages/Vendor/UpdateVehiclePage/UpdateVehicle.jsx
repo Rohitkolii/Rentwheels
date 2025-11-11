@@ -21,7 +21,7 @@ const UpdateVehicle = () => {
     useEffect(()=> {
         dispatch(fetchVehicleList())
         dispatch(fetchUserProfile(localStorage.getItem("token")))
-    },[vehicledata])
+    },[])
 
     const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 

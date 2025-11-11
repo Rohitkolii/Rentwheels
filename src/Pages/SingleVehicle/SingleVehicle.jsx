@@ -18,6 +18,7 @@ import { addBooking } from "../../store/addBookingSlice";
 
 import { toast } from 'react-toastify';
 import { fetchFeedback } from '../../store/getFeedbackSlice';
+import { fetchBookingList } from '../../store/getBookingListSlice';
 // import PaymentGateway from '../../Components/PaymentGateway/PaymentGateway';
 
 const SingleVehicle = () => {
@@ -30,10 +31,10 @@ const SingleVehicle = () => {
     const[DisplayFeed, setDisplayFeed] = useState(false);
     const[FeedbackMessage, setFeedbackMessage] = useState("");
 
-    const SingleVehicleData = useSelector(state => state.SingleVehicleSlice.data)
-    const Feedbacks = useSelector(state => state.FeedbackSlice.data)
-    const SingleVehicleStatus = useSelector(state => state.SingleVehicleSlice.status)
-    const Booking_Userid = useSelector(state => state.profileSlice.data.userData)
+    const SingleVehicleData = useSelector(state => state?.SingleVehicleSlice?.data)
+    const Feedbacks = useSelector(state => state?.FeedbackSlice?.data)
+    const SingleVehicleStatus = useSelector(state => state?.SingleVehicleSlice?.status)
+    const Booking_Userid = useSelector(state => state?.profileSlice?.data?.userData)
     // console.log("vehicle", SingleVehicleData);
     // console.log("Booking_Userid", Booking_Userid);
 
@@ -108,6 +109,7 @@ const SingleVehicle = () => {
                 //   console.log("res", response);
                   if(paymentId){
                     dispatch(addBooking(data))
+                    dispatch(fetchBookingList())
                     navigate("/bookings")
                   }
                 },

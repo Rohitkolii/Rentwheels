@@ -38,6 +38,10 @@ const LoginPage = () => {
                 const res_data = await response.json();
                 // console.log(res_data);
                 localStorage.setItem("token", res_data.token)
+                // console.log("role", res_data.role)
+                if(res_data?.role === 'admin') navigate("/admin")
+                if(res_data?.role === 'vendor') navigate("/vendor")
+                if(res_data?.role === 'user') navigate("/")
                 setemail("");
                 setpassword("");
                 toast.success('Login Successfull', {
@@ -50,7 +54,7 @@ const LoginPage = () => {
                     progress: undefined,
                     theme: "light",
                     });
-                navigate("/")
+                // navigate("/")
             }else{
                 toast.error('Check Credentials', {
                     position: "top-center",

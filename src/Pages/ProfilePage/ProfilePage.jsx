@@ -8,8 +8,11 @@ import { toast } from 'react-toastify'
 const ProfilePage = () => {
   const dispatch = useDispatch()
 
-  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-  console.log(ProfileData);
+  // const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
+  // console.log(ProfileData);
+
+  const ProfileData = useSelector((state)=> state.profileSlice?.data?.userData)
+    console.log(ProfileData);
 
   const [EditUSer,setEditUSer] = useState(false)
   const [name,setname] = useState(ProfileData?.username)
@@ -60,6 +63,7 @@ try {
       theme: "light",
       });
       setEditUSer(false)
+      dispatch(fetchUserProfile())
 } catch (error) {
   toast.error('Something went wrong!', {
       position: "top-center",
@@ -76,9 +80,8 @@ try {
                
   
   useEffect(()=> {
-    dispatch(fetchUserProfile(localStorage.getItem("token")))
-    
-  }, [ProfileData])
+    dispatch(fetchUserProfile())
+  }, [])
   return (
     <>
       <Navbar />

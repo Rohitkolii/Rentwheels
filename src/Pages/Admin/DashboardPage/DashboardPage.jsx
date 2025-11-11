@@ -6,47 +6,35 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { VscBook } from "react-icons/vsc";
 import { PiUserListLight } from "react-icons/pi";
 import Styles from "../../Admin/DashboardPage/DashboardPage.module.css"
+import { MdOutlineFeedback } from "react-icons/md";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchDashboardData } from '../../../store/DashSlice';
 import { fetchUserProfile } from '../../../store/ProfileSlice';
-import { fetchVehicleList } from '../../../store/getVehicleSlice';
-import { fetchBookingList } from '../../../store/getBookingListSlice';
-import { fetchUserList } from '../../../store/userlistSlice';
+import Loading from '../../../Components/Loading/Loading';
+import Loader from '../../../Components/Loader/Loader';
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()  
+
   useEffect(()=> {
-    dispatch(fetchUserProfile(localStorage.getItem("token")))
-    dispatch(fetchVehicleList())
-    dispatch(fetchBookingList())
-    dispatch(fetchUserList(localStorage.getItem("token")))
+    dispatch(fetchDashboardData())
   },[])
   
   const[sidebarVisiblity, setSidebarVisiblity] = useState(false)
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
 
-  const ProfileData = useSelector((state)=> state.profileSlice.data.userData)
-  const ProfileDataStatus = useSelector((state)=> state.profileSlice.status)
-  // console.log(ProfileData);
-  
-    const Vehiclesdata = useSelector(state=> state.getVehicleSlice.data)
-    const Bookingdata = useSelector(state=> state.BookingListSlice.data)
-    const userdatalist = useSelector(state=> state.userListSlice.data.userslist)
-  // console.log(userdatalist);
-  
-  const vendor = userdatalist && userdatalist.filter((item) => item?.role == 'vendor')
-  const user = userdatalist && userdatalist.filter((item) => item?.role == 'user')
+  const {data, status} = useSelector(state=> state.DashDataSlice)
 
-  
-  if(ProfileData?.role != "admin"){
-    navigate("/")
-  }
+    if(status === 'loading'){
+      return <Loader />
+    }
 
   return (
     <>
-
         <div style={{display: 'flex'}}>
             <AdminSidebar 
             setSidebarVisiblity={setSidebarVisiblity}
@@ -60,25 +48,35 @@ const DashboardPage = () => {
                 <h1>Dashboard</h1>
                 <p className='sublight' style={{fontSize : 15}}>plan, pripritize, and accoplish your tasks with ease.</p>
                 <div className={Styles.dashTop}>
-                  <div>
+                  <div onClick={()=> navigate("vehicleslist")}>
                     <p><IoCarOutline /></p>
                     <p>Total Vehicles</p>
-                    <p>{Vehiclesdata?.length || 0}</p>
+                    <p>{data?.Total_Vehicle || 0}</p>
                   </div>
-                  <div>
+                  <div onClick={()=> navigate("userslist")}>
                     <p><HiOutlineUsers /></p>
                     <p>Total Customer</p>
-                    <p>{vendor?.length || 0}</p>
+                    <p>{data?.Total_Users || 0}</p>
                   </div>
-                  <div>
+                  <div onClick={()=> navigate("vendors")}>
                     <p><PiUserListLight /></p>
                     <p>Total Vendors</p>
-                    <p>{vendor?.length || 0}</p>
+                    <p>{data?.Total_Vendors || 0}</p>
                   </div>
-                  <div>
+                  <div onClick={()=> navigate("bookings")}>
                     <p><VscBook /></p>
                     <p>Total Bookings</p>
-                    <p>{Bookingdata?.length || 0}</p>
+                    <p>{data?.Total_Bookings || 0}</p>
+                  </div>
+                  <div onClick={()=> navigate("feedbacks")}>
+                    <p><MdOutlineFeedback /></p>
+                    <p>Total Feedbacks</p>
+                    <p>{data?.Total_Feedbacks || 0}</p>
+                  </div>
+                  <div>
+                    <p><FaIndianRupeeSign /></p>
+                    <p>Vendors Total Earnings</p>
+                    <p>{data?.Total_Earnings || 0}</p>
                   </div>
                 </div>
               </section>

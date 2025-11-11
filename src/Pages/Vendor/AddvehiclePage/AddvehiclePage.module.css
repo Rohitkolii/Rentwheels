@@ -1,15 +1,16 @@
 .AddVehiclecon{
     background-color: white;
     /* height: 400px; */
-    width: 80%;
+    width: 90%;
     margin:50px auto;
     padding: 20px 50px;
     box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.623);
+    border-radius: 12px;
 }
 
 .AddVehiclecon .row{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     /* margin: 20px 0; */
     gap: 30px;
     width: 100%;
@@ -24,14 +25,16 @@
 }
 
 .AddVehiclecon input, .AddVehiclecon select{
-    height: 40px;
+    height: 45px;
     width: 100%;
-    padding: 0 10px;
+    padding: 5px 10px;
     border: 1px solid rgba(128, 128, 128, 0.445);
+    border-radius: 6px;
 }
 
 .AddVehiclecon input:focus, .AddVehiclecon select:focus{
     outline: transparent;
+    border: 1px solid #0061ff;
 }
 
 .AddVehiclecon .btn{
@@ -77,7 +80,18 @@
     }
 }
 @media only screen and (max-width: 500px) {
-    /* .col label{
-        font-size: 15px;
-    } */
+    .AddVehiclecon .row{
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.AddVehiclecon .btn{
+    background-color: #0061ff;
+    color: white;
+    border: transparent;
+    width: fit-content;
+    padding:10px 25px;
+    cursor: pointer;
+    width: 100%;
+}
+
 }

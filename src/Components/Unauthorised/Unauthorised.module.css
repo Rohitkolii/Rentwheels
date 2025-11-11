@@ -1,0 +1,26 @@
+.Unauthorised{
+    text-align: center;
+    margin: 100px auto;
+}
+
+
+.Unauthorised a{
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid blue;
+    transition: .3s;
+}
+
+.Unauthorised a:hover{
+    background-color: white;
+    color: blue;
+    border-radius: 6px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
+}

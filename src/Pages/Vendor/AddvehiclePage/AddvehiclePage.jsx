@@ -94,33 +94,33 @@ const AddvehiclePage = () => {
 
                 <div className={StylesVendor.col}>
                     <label htmlFor=""><MdDriveFileRenameOutline />Vehicle name</label>
-                    <input onChange={(e)=> setVehicle_name(e.target.value)} value={Vehicle_name} placeholder='ex- Maruti Suzuki' type="text" required />
+                    <input onChange={(e)=> setVehicle_name(e.target.value)} value={Vehicle_name} placeholder='Maruti Suzuki' type="text" required />
                 </div>
 
                 <div className={StylesVendor.col}>
                     <label htmlFor=""><IoLogoModelS />Model</label>
-                    <input onChange={(e)=> setVehicle_model(e.target.value)} value={Vehicle_model} placeholder='enter model number' type="text" required />
+                    <input onChange={(e)=> setVehicle_model(e.target.value)} value={Vehicle_model} placeholder='Enter model number' type="text" required />
                 </div>
-
-                <div className={StylesVendor.col}>
-                    <label htmlFor='fileupload'><FaRegImage />Upload image</label>
-                    <input onChange={(e)=> setimage(e.target.files[0])}  id='fileupload' type="file" required />
-                </div>
-
 
                 <div className={StylesVendor.col}>
                     <label htmlFor=""><BiEqualizer />Average</label>
-                    <input onChange={(e)=> setVehicle_average(e.target.value)} value={Vehicle_average} placeholder='enter vehicle average' type="text" required />
+                    <input onChange={(e)=> setVehicle_average(e.target.value)} value={Vehicle_average} placeholder='Enter vehicle average' type="text" required />
                 </div>
 
                 <div className={StylesVendor.col}>
                     <label htmlFor=""><MdCurrencyRupee />Rent/day</label>
-                    <input onChange={(e)=> setVehicle_rent(e.target.value)} value={Vehicle_rent} placeholder='ex- 2200' min="500" max="15000" type="number" required />
+                    <input onChange={(e)=> setVehicle_rent(e.target.value)} value={Vehicle_rent} placeholder='Enetr Price' min="500" max="15000" type="number" required />
                 </div>
+
+                 <div className={StylesVendor.col}>
+                    <label htmlFor='fileupload'><FaRegImage />Upload image</label>
+                    <input onChange={(e)=> setimage(e.target.files[0])}  id='fileupload' type="file" required />
+                </div>
+
+            </div>
                 <div className={StylesVendor.col}>
                     <input className={StylesVendor.btn} type="submit" value="Add vehicle" />
                 </div>
-            </div>
           </form>
           </section>
         </div>

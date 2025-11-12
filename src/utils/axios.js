@@ -30,12 +30,7 @@ AXIOS.interceptors.response.use(
     if (status === 401 && !isRedirecting) {
       isRedirecting = true; // prevent further redirects
       localStorage.removeItem("token");
-      localStorage.removeItem("refreshToken"); // also clear refresh token if exists
       window.location.replace("/login");
-      // Reset flag after redirect to handle future 401s properly
-      setTimeout(() => {
-        isRedirecting = false;
-      }, 1000);
     }
 
     return Promise.reject(error);
